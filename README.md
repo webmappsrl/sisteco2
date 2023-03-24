@@ -10,13 +10,13 @@ SISTECO è una applicazione WEB basata su framework laravel con interfaccia NOVA
 Descrizione: utenti che accedono al sistema per effettuare operazioni di ricerca, elaborazione, stampa dei risultati. Al momento non sono previsti ruoli specifici con livelli di accesso di conseguenza non è necessario prevedere utilizzo di UserRoles e di Policy
 Relazioni: nessuna
 
-### CadastralParcel (cadastral_parcels): 
-Descrizione: Rappresentano le particelle catastali. Hanno una geometry di tipo MultiPolygon. Gli altri campi definiscono le caratteristiche della particella (codice, pendenza, distanza da strada, distanza da sentiero, comune di pertinenza, …, alcuni campi di supporto vengono utilizzati per il salvataggio delle stime e del loro dettaglio in base alle aree di pertinenza dei cataloghi)
-Relazioni: owners (belongsToMany Owner)
-
 ### Owner (owners):
 Descrizione: Rappresenta il proprietario di una o più particelle catastale. Caratterizzato dai dati anagrafici e dalle particelle catastali possedute che permettono di realizzare estrazioni, report e mappe da consegnare ai proprietari stessi, obbiettivo principale della applicazione SISTECO.
 Relazioni: cadastralParcels (belongsToMany CadastralParcel)
+
+### CadastralParcel (cadastral_parcels): 
+Descrizione: Rappresentano le particelle catastali. Hanno una geometry di tipo MultiPolygon. Gli altri campi definiscono le caratteristiche della particella (codice, pendenza, distanza da strada, distanza da sentiero, comune di pertinenza, …, alcuni campi di supporto vengono utilizzati per il salvataggio delle stime e del loro dettaglio in base alle aree di pertinenza dei cataloghi)
+Relazioni: owners (belongsToMany Owner)
 
 ### Catalog (catalogs):
 Descrizione: Rappresenta una collezione di aree utilizzate per effettuare il calcolo del valore dei servizi ecosistemici. E’ un collettore di aree ed ha associato i prezzi che vengono utilizzati per effettuare il calcolo del servizio.
