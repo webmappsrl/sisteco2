@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
     {
 
         //$this->call(OwnerSeeder::class);
+        //$this->call(CadastralParcelSeeder::class);
     }
 }
