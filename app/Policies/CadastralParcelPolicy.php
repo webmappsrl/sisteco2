@@ -8,10 +8,15 @@ use Illuminate\Auth\Access\Response;
 
 class CadastralParcelPolicy
 {
+
+    public function before()
+    {
+        return true;
+    }
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(User $user): bool
+    public function viewAny(User $user)
     {
         //
     }
@@ -19,7 +24,7 @@ class CadastralParcelPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, CadastralParcel $cadastralParcel): bool
+    public function view(User $user, CadastralParcel $cadastralParcel)
     {
         //
     }
@@ -27,7 +32,7 @@ class CadastralParcelPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(User $user)
     {
         //
     }
@@ -35,7 +40,7 @@ class CadastralParcelPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, CadastralParcel $cadastralParcel): bool
+    public function update(User $user, CadastralParcel $cadastralParcel)
     {
         //
     }
@@ -43,7 +48,7 @@ class CadastralParcelPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, CadastralParcel $cadastralParcel): bool
+    public function delete(User $user, CadastralParcel $cadastralParcel)
     {
         //
     }
@@ -51,7 +56,7 @@ class CadastralParcelPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, CadastralParcel $cadastralParcel): bool
+    public function restore(User $user, CadastralParcel $cadastralParcel)
     {
         //
     }
@@ -59,7 +64,7 @@ class CadastralParcelPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, CadastralParcel $cadastralParcel): bool
+    public function forceDelete(User $user, CadastralParcel $cadastralParcel)
     {
         //
     }
