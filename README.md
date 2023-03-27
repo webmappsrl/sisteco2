@@ -27,7 +27,6 @@ Descrizione: Definisce una singola voce di prezzo caratterizzata da codice prezz
 Relazioni: catalog (belongsTo Catalog), catalogAreas (hasMany CatalogAreas)
 
 ### CatalogArea (catalog_areas):
-### CatalogArea (catalog_areas):
 Descrizione: Rappresenta una singola area di un catalogo. Geometria MultiPolygon. Codice Prezzo (deve essere presente nel prezzarlo associato al catalogo per permettere di effettuare la stima).  
 Relazioni: catalog (belongsTo Catalog), catalogType (belongsTo CatalogType)
 
