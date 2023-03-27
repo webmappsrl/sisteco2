@@ -2,8 +2,9 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Owner extends Resource
@@ -20,7 +21,7 @@ class Owner extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'last_name' ?? 'first_name';
 
     /**
      * The columns that should be searched.
@@ -28,7 +29,7 @@ class Owner extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'name', 'email', 'phone', 'address', 'city', 'state', 'zip', 'country'
     ];
 
     /**
@@ -40,7 +41,12 @@ class Owner extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            ID::make()->sortable(),
+            Text::make('Nome', 'first_name')->sortable(),
+            Text::make('Cognome', 'last_name')->sortable(),
+            Text::make('Email', 'email')->sortable(),
+            Text::make('Telefono', 'phone')->sortable(),
+            Text::make('Codice Fiscale', 'fiscal_code')->sortable(),
+            Text::make('Indirizzo', 'address')->sortable()->onlyOnDetail()
         ];
     }
 
