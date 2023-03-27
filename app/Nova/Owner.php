@@ -41,13 +41,50 @@ class Owner extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            Text::make('Nome', 'first_name')->sortable(),
-            Text::make('Cognome', 'last_name')->sortable(),
-            Text::make('Email', 'email')->sortable(),
-            Text::make('Telefono', 'phone')->sortable(),
-            Text::make('Codice Fiscale', 'fiscal_code')->sortable(),
-            Text::make('Indirizzo', 'address')->sortable()->onlyOnDetail(),
-            Text::make('Partita IVA', 'vat_number')->sortable()->onlyOnDetail(),
+            Text::make('Nome', 'first_name')
+                ->sortable()
+                ->required(),
+            Text::make('Cognome', 'last_name')
+                ->sortable()
+                ->required(),
+            Text::make('Email', 'email')
+                ->rules(
+                    'required',
+                    'email',
+                    'max:255'
+                ),
+            Text::make('Telefono', 'phone')
+                ->rules(
+                    'required',
+                    'regex:/^[0-9]{10}$/', //* Regex for phone number with 10 digits
+                ),
+            Text::make('Codice Fiscale', 'fiscal_code')
+                ->rules(
+                    'required',
+                ),
+            Text::make('Indirizzo', function () {
+                return $this->{'addr:street'} . ' ' . $this->{'addr:housenumber'} . ', ' . $this->{'addr:city'} . ' ' . $this->{'addr:province'} . ' (' . $this->{'addr:postcode'} . ')' . ' ' . $this->{'addr:locality'};
+            })
+                ->onlyOnDetail(),
+            Text::make('Partita IVA', 'vat_number')
+                ->hideFromIndex()
+                ->rules(
+                    'required',
+                ),
+            Text::make('Nome Azienda', 'business_name')
+                ->hideFromIndex(),
+            Text::make('Via', 'addr:street')
+                ->onlyOnForms(),
+            Text::make('Civico', 'addr:housenumber')
+                ->onlyOnForms(),
+            Text::make('Città', 'addr:city')
+                ->onlyOnForms(),
+            Text::make('CAP', 'addr:postcode')
+                ->onlyOnForms(),
+            Text::make('Provincia', 'addr:province')
+                ->onlyOnForms(),
+            Text::make('Localitá', 'addr:locality')
+                ->onlyOnForms(),
         ];
     }
 
