@@ -26,5 +26,17 @@ class CadastralParcel extends Model
 
     protected $casts = [
         'catalog_estimate' => 'array',
+
     ];
+
+
+    /**
+     * Get the owners that own the CadastralParcel.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function owners(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Owner::class);
+    }
 }

@@ -26,8 +26,8 @@ class CadastralParcelFactory extends Factory
             'square_meter_surface' => $this->faker->randomFloat(),
             'slope' => $this->faker->randomNumber(),
             'way' => $this->faker->randomNumber(),
-            'catalog_estimate' => $this->faker->word,
-            'geometry' => $this->faker->word,
+            'catalog_estimate' => ['foo' => 'bar', 'bar' => 'foo'],
+            //'geometry' => ['type' => 'MultiPolygon', 'coordinates' => [[[[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]]]],
             'sisteco_legacy_id' => $this->faker->randomNumber(),
 
         ];

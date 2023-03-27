@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Owner;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\CadastralParcel;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class OwnerSeeder extends Seeder
 {
@@ -14,5 +15,11 @@ class OwnerSeeder extends Seeder
     public function run(): void
     {
         Owner::factory(10)->create();
+
+        foreach (Owner::all() as $owner) {
+            $owner->cadastralParcels->attach(
+                CadastralParcel::inRandomOrder()->first()
+            );
+        }
     }
 }
