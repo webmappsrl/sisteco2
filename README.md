@@ -11,24 +11,26 @@ Descrizione: utenti che accedono al sistema per effettuare operazioni di ricerca
 Relazioni: nessuna
 
 ### Owner (owners):
-Descrizione: Rappresenta il proprietario di una o più particelle catastale. Caratterizzato dai dati anagrafici e dalle particelle catastali possedute che permettono di realizzare estrazioni, report e mappe da consegnare ai proprietari stessi, obbiettivo principale della applicazione SISTECO.
+Descrizione: Rappresenta il proprietario di una o più particelle catastale. Caratterizzato dai dati anagrafici e dalle particelle catastali possedute che permettono di realizzare estrazioni, report e mappe da consegnare ai proprietari stessi, obbiettivo principale della applicazione SISTECO.  
 Relazioni: cadastralParcels (belongsToMany CadastralParcel)
 
 ### CadastralParcel (cadastral_parcels): 
-Descrizione: Rappresentano le particelle catastali. Hanno una geometry di tipo MultiPolygon. Gli altri campi definiscono le caratteristiche della particella (codice, pendenza, distanza da strada, distanza da sentiero, comune di pertinenza, …, alcuni campi di supporto vengono utilizzati per il salvataggio delle stime e del loro dettaglio in base alle aree di pertinenza dei cataloghi)
+Descrizione: Rappresentano le particelle catastali. Hanno una geometry di tipo MultiPolygon. Gli altri campi definiscono le caratteristiche della particella (codice, pendenza, distanza da strada, distanza da sentiero, comune di pertinenza, …, alcuni campi di supporto vengono utilizzati per il salvataggio delle stime e del loro dettaglio in base alle aree di pertinenza dei cataloghi). 
 Relazioni: owners (belongsToMany Owner)
 
 ### Catalog (catalogs):
-Descrizione: Rappresenta una collezione di aree utilizzate per effettuare il calcolo del valore dei servizi ecosistemici. E’ un collettore di aree ed ha associato i prezzi che vengono utilizzati per effettuare il calcolo del servizio.
+Descrizione: Rappresenta una collezione di aree utilizzate per effettuare il calcolo del valore dei servizi ecosistemici. E’ un collettore di aree ed ha associato i prezzi che vengono utilizzati per effettuare il calcolo del servizio.  
 Relazioni: catalogAreas (hasMany CatalogArea), catalogPrices (hasMany CatalogPrice)
 
-### CatalogArea (catalog_areas):
-Descrizione: Rappresenta una singola area di un catalogo. Geometria MultiPolygon. Codice Prezzo (deve essere presente nel prezzarlo associato al catalogo per permettere di effettuare la stima)
-Relazioni: catalog (belongsTo Catalog)
+### CatalogType (catalog_types):
+Descrizione: Definisce una singola voce di prezzo caratterizzata da codice prezzo (stesso usato in CatalogArea) e da come questo varia in funzione delle caratteristiche del terreno (pendenza, distanza da strada). Vengono definite alcune classi di pendenza e alcune classi di distanza da strada corrispondenti a quelle del prezzarlo della Regione Toscana.  
+Relazioni: catalog (belongsTo Catalog), catalogAreas (hasMany CatalogAreas)
 
-### CatalogPrices (catalog_prices):
-Descrizione: Definisce una singola voce di prezzo caratterizzata da codice prezzo (stesso usato in CatalogArea) e da come questo varia in funzione delle caratteristiche del terreno (pendenza, distanza da strada). Vengono definite alcune classi di pendenza e alcune classi di distanza da strada corrispondenti a quelle del prezzarlo della Regione Toscana.
-Relazioni: catalog (belongsTo Catalog)
+### CatalogArea (catalog_areas):
+### CatalogArea (catalog_areas):
+Descrizione: Rappresenta una singola area di un catalogo. Geometria MultiPolygon. Codice Prezzo (deve essere presente nel prezzarlo associato al catalogo per permettere di effettuare la stima).  
+Relazioni: catalog (belongsTo Catalog), catalogType (belongsTo CatalogType)
+
 
 ## Menu:
 Admin: User  
