@@ -46,7 +46,8 @@ class Owner extends Resource
             Text::make('Email', 'email')->sortable(),
             Text::make('Telefono', 'phone')->sortable(),
             Text::make('Codice Fiscale', 'fiscal_code')->sortable(),
-            Text::make('Indirizzo', 'address')->sortable()->onlyOnDetail()
+            Text::make('Indirizzo', 'address')->sortable()->onlyOnDetail(),
+            Text::make('Partita IVA', 'vat_number')->sortable()->onlyOnDetail(),
         ];
     }
 
