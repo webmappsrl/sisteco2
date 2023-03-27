@@ -2,8 +2,15 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate;
+
+use App\Nova\User;
 use Laravel\Nova\Nova;
+use Illuminate\Http\Request;
+use App\Nova\Dashboards\Main;
+use App\Nova\Owner;
+use Laravel\Nova\Menu\MenuItem;
+use Laravel\Nova\Menu\MenuSection;
+use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
@@ -16,6 +23,24 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function boot()
     {
         parent::boot();
+
+        Nova::mainMenu(function (Request $request) {
+            return [
+                MenuSection::dashboard(Main::class)
+                    ->icon('home'),
+
+                MenuSection::make('ADMIN', [
+                    MenuItem::resource(User::class)
+                ])->icon('user')->collapsable(),
+
+                MenuSection::make('SISTECO', [
+                    MenuItem::resource(Owner::class)
+                ])->icon('globe')->collapsable(),
+
+                MenuSection::make('CATALOG')
+                    ->icon('book-open')->collapsable(),
+            ];
+        });
     }
 
     /**
@@ -26,9 +51,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function routes()
     {
         Nova::routes()
-                ->withAuthenticationRoutes()
-                ->withPasswordResetRoutes()
-                ->register();
+            ->withAuthenticationRoutes()
+            ->withPasswordResetRoutes()
+            ->register();
     }
 
     /**
