@@ -118,8 +118,10 @@ class ImportUsers extends Command
                     'addr:province' => $owner['addr:province'],
                     'addr:locality' => $owner['addr:locality'],
                 ]);
+
+                // import cadastral parcels related to the owner
+                $this->importCadastralParcels($owner['cadastral_parcels'], $owner['last_name']);
             }
-            $this->importCadastralParcels($owner['cadastral_parcels']);
         }
         $this->info('Done! Imported ' . $count . ' owners.');
     }
@@ -130,9 +132,9 @@ class ImportUsers extends Command
      * 
      * @return void
      */
-    private function importCadastralParcels(array $data)
+    private function importCadastralParcels(array $data, $owner = null)
     {
-        $this->info('Importing ' . count($data) . ' cadastral parcels...');
+        $this->info('Importing ' . count($data) . ' cadastral parcels' . ($owner ? ' for ' . $owner : ''));
         foreach ($data as $element) {
 
             $parcel = json_decode(file_get_contents('http://sis-te.com/api/export/cadastral_parcel/' . $element), true);
@@ -143,7 +145,9 @@ class ImportUsers extends Command
             }
             $this->info('Importing cadastral parcel ' . $parcelData['id']);
             if ($parcelData['geometry']) {
-                $parcelGeometry = DB::raw("ST_Multi(ST_GeomFromWKB('" . $parcelData['geometry'] . "', 4326))");
+                $geojson_content = json_encode($parcelData['geometry']);
+                $sql = "SELECT ST_AsText(ST_Force2D(ST_CollectionExtract(ST_Polygonize(ST_GeomFromGeoJSON('" . $geojson_content . "')), 3))) As wkt";
+                $parcelGeometry = DB::select($sql)[0]->wkt;
             } else {
                 $parcelGeometry = null;
             }
@@ -155,9 +159,9 @@ class ImportUsers extends Command
                     'municipality' => $parcelData['municipality'],
                     'estimated_value' => $parcelData['estimated_value'],
                     'average_slope' => $parcelData['average_slope'],
-                    'meter_min_distance_road' => $parcelData['meter_min_distance_road'],
-                    'meter_min_distance_path' => $parcelData['meter_min_distance_path'],
-                    'square_meter_surface' => $parcelData['square_meter_surface'],
+                    'meter_min_distance_road' => intval($parcelData['meter_min_distance_road']),
+                    'meter_min_distance_path' => intval($parcelData['meter_min_distance_path']),
+                    'square_meter_surface' => floatval($parcelData['square_meter_surface']),
                     'slope' => $parcelData['slope'],
                     'way' => $parcelData['way'],
                     'catalog_estimate' => $parcelData['catalog_estimate'],
