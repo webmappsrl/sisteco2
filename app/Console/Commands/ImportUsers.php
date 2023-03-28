@@ -7,11 +7,10 @@ use App\Models\Owner;
 use App\Models\Catalog;
 use App\Models\CatalogArea;
 use App\Models\CatalogType;
-use Illuminate\Support\Arr;
 use App\Models\CadastralParcel;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-use PhpParser\Node\Expr\Cast\Array_;
+
 
 class ImportUsers extends Command
 {

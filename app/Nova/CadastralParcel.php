@@ -53,18 +53,18 @@ class CadastralParcel extends Resource
                 ->displayUsing(function ($value) {
                     return number_format($value, 2, ',', '.') . ' €';
                 }),
-            Text::make('Area (mq)', 'area')
+            Text::make('Area (mq)', 'square_meter_surface')
                 ->sortable()
                 ->displayUsing(function ($value) {
                     return number_format($value, 2, ',', '.') . ' MQ';
                 }),
-            Text::make('Pendenza media (º)', 'average_slope', function (string $slope) {
+            Text::make('Pendenza media (º)', 'average_slope', function ($slope) {
                 return str_replace('.', ',', round($slope, 2));
             })->onlyOnDetail(),
-            Text::make('Distanza minima sentiero (m)', 'meter_min_distance_path', function (string $distance) {
+            Text::make('Distanza minima sentiero (m)', 'meter_min_distance_path', function ($distance) {
                 return intval($distance) . ' m';
             })->onlyOnDetail(),
-            Text::make('Distanza minima strada (m)', 'meter_min_distance_road', function (string $distance) {
+            Text::make('Distanza minima strada (m)', 'meter_min_distance_road', function ($distance) {
                 return intval($distance) . ' m';
             })->onlyOnDetail(),
             Text::make('Classe Trasporto', 'way')->onlyOnDetail(),
@@ -105,7 +105,7 @@ class CadastralParcel extends Resource
             MapMultiPolygon::make('Geometry', 'geometry')->withMeta([
                 'center' => ['42.795977075', '10.326813853'],
                 'attribution' => '<a href="https://webmapp.it/">Webmapp</a> contributors',
-            ]),
+            ])->hideFromIndex()
 
         ];
     }
