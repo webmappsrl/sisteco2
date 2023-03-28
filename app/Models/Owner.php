@@ -24,4 +24,15 @@ class Owner extends Model
         'addr:postcode',
         'addr:locality',
     ];
+
+
+    /**
+     * Get the cadastral parcels that belong to the Owner.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function cadastralParcels(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(CadastralParcel::class);
+    }
 }

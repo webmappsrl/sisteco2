@@ -5,6 +5,7 @@ namespace App\Nova;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Owner extends Resource
@@ -85,6 +86,7 @@ class Owner extends Resource
                 ->onlyOnForms(),
             Text::make('Localitá', 'addr:locality')
                 ->onlyOnForms(),
+            BelongsToMany::make('Particelle Catastali', 'cadastralParcels', CadastralParcel::class),
         ];
     }
 

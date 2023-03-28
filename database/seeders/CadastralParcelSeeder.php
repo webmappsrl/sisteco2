@@ -7,18 +7,18 @@ use App\Models\CadastralParcel;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class OwnerSeeder extends Seeder
+class CadastralParcelSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Owner::factory(10)->create();
+        CadastralParcel::factory(10)->create();
 
-        foreach (Owner::all() as $owner) {
-            $owner->cadastralParcels->attach(
-                CadastralParcel::inRandomOrder()->first()
+        foreach (CadastralParcel::all() as $cadastralParcel) {
+            $cadastralParcel->owners()->attach(
+                Owner::inRandomOrder()->first()
             );
         }
     }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b72b3664698eb772cb95f6c16db3f066",
+    "content-hash": "5203bd0136f891c8c99c3684938cf89f",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -6943,8 +6943,53 @@
             "time": "2022-06-03T18:03:27+00:00"
         },
         {
+            "name": "wm/map-multi-polygon",
+            "version": "v0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webmappsrl/map-multi-polygon.git",
+                "reference": "b3eb2348740e7000e4cee1f4094a2be6acafa158"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webmappsrl/map-multi-polygon/zipball/b3eb2348740e7000e4cee1f4094a2be6acafa158",
+                "reference": "b3eb2348740e7000e4cee1f4094a2be6acafa158",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Wm\\MapMultiPolygon\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Wm\\MapMultiPolygon\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/webmappsrl/map-multi-polygon/issues",
+                "source": "https://github.com/webmappsrl/map-multi-polygon/tree/v0.0.2"
+            },
+            "time": "2023-03-21T14:18:25+00:00"
+        },
+        {
             "name": "wm/wm-internal",
-            "version": "dev-develop",
+            "version": "dev-feature/Import_cadastral_parcels",
             "dist": {
                 "type": "path",
                 "url": "./wm-internal",

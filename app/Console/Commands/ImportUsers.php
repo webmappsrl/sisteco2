@@ -4,7 +4,11 @@ namespace App\Console\Commands;
 
 use App\Models\User;
 use App\Models\Owner;
+use Illuminate\Support\Arr;
+use App\Models\CadastralParcel;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Expr\Cast\Array_;
 
 class ImportUsers extends Command
 {
@@ -30,15 +34,30 @@ class ImportUsers extends Command
         $usersData = json_decode(file_get_contents('http://sis-te.com/api/export/users'), true);
         $ownersData = json_decode(file_get_contents('http://sis-te.com/api/export/owners'), true);
 
-        if ($this->argument('subject') == 'owners') {
-            $this->importOwners($ownersData);
-        } elseif ($this->argument('subject') == 'users') {
-            $this->importUsers($usersData);
-        } else {
-            $this->importUsers($usersData);
-            $this->importOwners($ownersData);
+
+        switch ($this->argument('subject')) {
+            case 'owners':
+                $this->importOwners($ownersData);
+                break;
+            case 'users':
+                $this->importUsers($usersData);
+                break;
+            case $this->argument('subject') != 'owners' && $this->argument('subject') != 'users':
+                $this->error('Invalid subject. Usage: php artisan sisteco2:import {subject} where subject is either "users" or "owners". If no subject is specified, both users and owners will be imported.');
+                break;
+            default:
+                $this->importUsers($usersData);
+                $this->importOwners($ownersData);
+                break;
         }
     }
+
+    /**
+     * Import users
+     * @param $data
+     * 
+     * @return void
+     */
     private function importUsers($data)
     {
         $count = 0;
@@ -64,6 +83,12 @@ class ImportUsers extends Command
         $this->info('Done! Imported ' . $count . ' users.');
     }
 
+    /**
+     * Import owners
+     * @param $data
+     * 
+     * @return void
+     */
     private function importOwners($data)
     {
         $count = 0;
@@ -94,8 +119,53 @@ class ImportUsers extends Command
                     'addr:locality' => $owner['addr:locality'],
                 ]);
             }
+            $this->importCadastralParcels($owner['cadastral_parcels']);
         }
-
         $this->info('Done! Imported ' . $count . ' owners.');
+    }
+
+    /**
+     * Import cadastral parcels
+     * @param $data
+     * 
+     * @return void
+     */
+    private function importCadastralParcels(array $data)
+    {
+        $this->info('Importing ' . count($data) . ' cadastral parcels...');
+        foreach ($data as $element) {
+
+            $parcel = json_decode(file_get_contents('http://sis-te.com/api/export/cadastral_parcel/' . $element), true);
+            $parcelData = $parcel['data'];
+            if (CadastralParcel::where('sisteco_legacy_id', $parcelData['id'])->exists()) {
+                $this->info('Cadastral parcel ' . $parcelData['id'] . ' already exists, skipping...');
+                continue;
+            }
+            $this->info('Importing cadastral parcel ' . $parcelData['id']);
+            if ($parcelData['geometry']) {
+                $parcelGeometry = DB::raw("ST_Multi(ST_GeomFromWKB('" . $parcelData['geometry'] . "', 4326))");
+            } else {
+                $parcelGeometry = null;
+            }
+
+            CadastralParcel::updateOrCreate(
+                ['sisteco_legacy_id' => $parcelData['id']],
+                [
+                    'code' => $parcelData['code'],
+                    'municipality' => $parcelData['municipality'],
+                    'estimated_value' => $parcelData['estimated_value'],
+                    'average_slope' => $parcelData['average_slope'],
+                    'meter_min_distance_road' => $parcelData['meter_min_distance_road'],
+                    'meter_min_distance_path' => $parcelData['meter_min_distance_path'],
+                    'square_meter_surface' => $parcelData['square_meter_surface'],
+                    'slope' => $parcelData['slope'],
+                    'way' => $parcelData['way'],
+                    'catalog_estimate' => $parcelData['catalog_estimate'],
+                    'geometry' => $parcelGeometry,
+
+                ]
+            );
+        }
+        $this->info('Done! Imported ' . count($data) . ' cadastral parcels.');
     }
 }

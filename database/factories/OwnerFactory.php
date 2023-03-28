@@ -17,7 +17,7 @@ class OwnerFactory extends Factory
     public function definition(): array
     {
         return [
-            'sisteco_legacy_id' => $this->faker->randomNumber(),
+            //'sisteco_legacy_id' => $this->faker->randomNumber(),
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),

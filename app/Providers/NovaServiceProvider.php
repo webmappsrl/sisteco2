@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-
+use App\Nova\CadastralParcel;
 use App\Nova\User;
 use Laravel\Nova\Nova;
 use Illuminate\Http\Request;
@@ -34,8 +34,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 ])->icon('user')->collapsable(),
 
                 MenuSection::make('SISTECO', [
-                    MenuItem::resource(Owner::class)
+                    MenuItem::resource(Owner::class),
+                    MenuItem::resource(CadastralParcel::class)
                 ])->icon('globe')->collapsable(),
+
 
                 MenuSection::make('CATALOG')
                     ->icon('book-open')->collapsable(),
