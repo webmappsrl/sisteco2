@@ -14,6 +14,11 @@ class CatalogType extends Model
         'cod_int',
         'catalog_id',
         'sisteco_legacy_id',
+        'prices'
+    ];
+
+    protected $casts = [
+        'prices' => 'array',
     ];
 
     /**

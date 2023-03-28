@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('cod_int');
             $table->foreignId('catalog_id')->constrained();
             $table->bigInteger('sisteco_legacy_id')->nullable();
+            $table->json('prices')->nullable();
         });
     }
 

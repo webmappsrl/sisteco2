@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->multiPolygon('geometry');
-            $table->foreingId('catalog_type_id')->constrained();
+            $table->foreignId('catalog_type_id')->constrained();
             $table->foreignId('catalog_id')->constrained();
             $table->bigInteger('sisteco_legacy_id')->nullable();
         });
