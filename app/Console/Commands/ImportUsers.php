@@ -69,6 +69,7 @@ class ImportUsers extends Command
             default:
                 $this->importUsers($usersData);
                 $this->importOwners($ownersData);
+                $this->importCatalogs($catalogData, $catalogTypeData, $catalogAreaData);
                 break;
         }
     }
@@ -109,7 +110,7 @@ class ImportUsers extends Command
     }
 
     /**
-     * Import owners function
+     * Import owners and related cadastral parcels function
      * @param $data
      * 
      * @return void
@@ -126,7 +127,7 @@ class ImportUsers extends Command
                     continue;
                 }
                 $count++;
-                $this->info('Importing owner ' . $owner['last_name'] . ' (' . $count . '/' . count($owners));
+                $this->info('Importing owner ' . $owner['last_name'] . ' (' . $count . '/' . count($owners) . ')');
                 //create owner
                 Owner::updateOrCreate([
                     'sisteco_legacy_id' => $owner['id'],
@@ -147,7 +148,7 @@ class ImportUsers extends Command
                 ]);
 
                 // call cadastral parcels import function to import related parcels for each owner
-                $this->importCadastralParcels($owner['cadastral_parcels'], $owner['last_name']);
+                $this->importCadastralParcels($owner['cadastral_parcels'], $owner);
             }
         }
         $this->info('Done! Imported ' . $count . ' owners.');
@@ -159,20 +160,14 @@ class ImportUsers extends Command
      * 
      * @return void
      */
-    private function importCadastralParcels(array $data, $owner = null)
+    private function importCadastralParcels(array $data, $ownerData = null)
     {
-        $this->info('Importing ' . count($data) . ' cadastral parcels' . ($owner ? ' for ' . $owner : ''));
+        $this->info('Importing ' . count($data) . ' cadastral parcels' . ($ownerData ? ' for ' . $ownerData['last_name'] : ''));
         foreach ($data as $element) {
 
             // get parcel data from API
             $parcel = json_decode(file_get_contents('http://sis-te.com/api/export/cadastral_parcel/' . $element), true);
             $parcelData = $parcel['data'];
-
-            // check if parcel already exists
-            if (CadastralParcel::where('sisteco_legacy_id', $parcelData['id'])->exists()) {
-                $this->info('Cadastral parcel ' . $parcelData['id'] . ' already exists, skipping...');
-                continue;
-            }
             $this->info('Importing cadastral parcel ' . $parcelData['id']);
 
             // get parcel geometry
@@ -202,6 +197,13 @@ class ImportUsers extends Command
 
                 ]
             );
+
+            //attach parcel to owner
+            if ($ownerData) {
+                $owner = Owner::where('sisteco_legacy_id', $ownerData['id'])->first();
+                $parcel = CadastralParcel::where('sisteco_legacy_id', $parcelData['id'])->first();
+                $owner->cadastralParcels()->attach($parcel);
+            }
         }
         $this->info('Done! Imported ' . count($data) . ' cadastral parcels.');
     }
