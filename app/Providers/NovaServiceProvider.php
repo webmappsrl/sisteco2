@@ -2,12 +2,15 @@
 
 namespace App\Providers;
 
-use App\Nova\CadastralParcel;
 use App\Nova\User;
-use Laravel\Nova\Nova;
-use Illuminate\Http\Request;
-use App\Nova\Dashboards\Main;
 use App\Nova\Owner;
+use App\Nova\Catalog;
+use Laravel\Nova\Nova;
+use App\Nova\CatalogArea;
+use App\Nova\CatalogType;
+use Illuminate\Http\Request;
+use App\Nova\CadastralParcel;
+use App\Nova\Dashboards\Main;
 use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Menu\MenuSection;
 use Illuminate\Support\Facades\Gate;
@@ -39,7 +42,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 ])->icon('globe')->collapsable(),
 
 
-                MenuSection::make('CATALOG')
+                MenuSection::make('CATALOG', [
+                    MenuItem::resource(Catalog::class),
+                    MenuItem::resource(CatalogType::class),
+                    MenuItem::resource(CatalogArea::class),
+                ])
                     ->icon('book-open')->collapsable(),
             ];
         });
