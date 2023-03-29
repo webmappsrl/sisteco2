@@ -6,6 +6,8 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Currency;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Owner extends Resource
@@ -63,6 +65,17 @@ class Owner extends Resource
                 ->rules(
                     'required',
                 ),
+            Number::make('Num TOT', function () {
+                return $this->cadastralParcels()->count();
+            })->onlyOnIndex(),
+            Currency::make('Val TOT', function () {
+                return $this->cadastralParcels()->sum('estimated_value');
+            })
+                ->currency('EUR')
+                ->displayUsing(function ($value) {
+                    return number_format($value, 2, ',', '.') . ' €';
+                })
+                ->onlyOnIndex(),
             Text::make('Indirizzo', function () {
                 return $this->{'addr:street'} . ' ' . $this->{'addr:housenumber'} . ', ' . $this->{'addr:city'} . ' ' . $this->{'addr:province'} . ' (' . $this->{'addr:postcode'} . ')' . ' ' . $this->{'addr:locality'};
             })
