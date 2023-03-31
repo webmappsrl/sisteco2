@@ -67,7 +67,8 @@ class Owner extends Resource
                 ),
             Number::make('Num TOT', function () {
                 return $this->cadastralParcels()->count();
-            })->onlyOnDetail(),
+            })->hideWhenCreating()
+                ->hideWhenUpdating(),
             Currency::make('Val TOT', function () {
                 return $this->cadastralParcels()->sum('estimated_value');
             })
@@ -75,7 +76,8 @@ class Owner extends Resource
                 ->displayUsing(function ($value) {
                     return number_format($value, 2, ',', '.') . ' €';
                 })
-                ->onlyOnDetail(),
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
             Text::make('Indirizzo', function () {
                 return $this->{'addr:street'} . ' ' . $this->{'addr:housenumber'} . ', ' . $this->{'addr:city'} . ' ' . $this->{'addr:province'} . ' (' . $this->{'addr:postcode'} . ')' . ' ' . $this->{'addr:locality'};
             })
