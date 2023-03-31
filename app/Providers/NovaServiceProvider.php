@@ -48,6 +48,17 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::resource(CatalogArea::class),
                 ])
                     ->icon('book-open')->collapsable(),
+                //Menu section for downloads.
+                MenuSection::make('DOWNLOADS', [
+                    //Owners excel download. The page should open in a new tab.
+                    MenuItem::externalLink('Owners.xlsx', '/owners/export')
+                        ->openInNewTab()
+                        ->canSee(function (Request $request) {
+                            //Check if the user has permission to view the Owners resource.
+                            return $request->user()->can('viewAny', Owner::newModel());
+                        })
+                ])
+                    ->icon('download')->collapsable(),
             ];
         });
     }

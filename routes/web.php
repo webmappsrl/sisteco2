@@ -1,6 +1,9 @@
 <?php
 
+use App\Exports\OwnersExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OwnersExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,3 +15,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/owners/export', [OwnersExportController::class, 'export']);

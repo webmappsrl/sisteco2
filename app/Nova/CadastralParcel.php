@@ -36,6 +36,13 @@ class CadastralParcel extends Resource
     ];
 
     /**
+     * Number of displayed items per page.
+     * @var int
+     * 
+     */
+    public static $perPageViaRelationship = 50;
+
+    /**
      * Get the fields displayed by the resource.
      *
      * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
