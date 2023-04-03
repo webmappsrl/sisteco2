@@ -69,7 +69,9 @@ class EstimateByCatalog extends Command
             $total_price = 0;
             $json = [];
             if (count($results) > 0) {
-                $items = [];
+                $interventions = [];
+                $maintenance = [];
+                $general = [];
                 $count = count($results);
                 $this->info("Found $count intersections");
                 foreach ($results as $item) {
@@ -84,10 +86,14 @@ class EstimateByCatalog extends Command
                         'price' => number_format($price, 2, ',', '.'),
                     ];
                 }
-                $json = [
+                $interventions[] = [
                     'items' => $items,
-                    'price' => number_format($total_price, 2, ',', '.')
+                    'total' => number_format($total_price, 2, ',', '.'),
                 ];
+                $json['interventions'] = $interventions;
+                $json['maintenance'] = $maintenance;
+                $json['general'] = $general;
+
                 $p->catalog_estimate = $json;
                 $p->estimated_value = $total_price;
                 $this->info(json_encode($json));
