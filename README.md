@@ -49,7 +49,7 @@ Catalog: Catalog, CatalogArea, CatalogPrice
 | team_management | Perc. Gestione CDB           | %         | 2     |
 | platform_maintenance | Perc. Mantenimento piattaforma | % | 2     |
 | maintenance   | Costo manutenzione annua per ettaro | €/ettaro | 1000 |
-| maintenance_certification | Costo certificazione manutenzione | €/ettaro | 1000 |
+| maintenance_certification | Costo certificazione manutenzione | € | 850 |
 
 
 
