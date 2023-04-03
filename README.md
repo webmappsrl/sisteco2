@@ -37,6 +37,22 @@ Sisteco: Owner, CadastralParcel
 Catalog: Catalog, CatalogArea, CatalogPrice  
 
 
+## Variabili di configurazione:
+
+| Variable Name | Label                        | Unit      | Value |
+|---------------|------------------------------|-----------|-------|
+| vat           | IVA                          | %         | 22    |
+| supervision   | Direzione Lavori             | %         | 10    |
+| overheads     | Spese Generali               | %         | 16    |
+| business_profit| Utile di Impresa             | %         | 10    |
+| intervention_certification | Costo certificazione intervento | € | 1100 |
+| team_management | Perc. Gestione CDB           | %         | 2     |
+| platform_maintenance | Perc. Mantenimento piattaforma | % | 2     |
+| maintenance   | Costo manutenzione annua per ettaro | €/ettaro | 1000 |
+| maintenance_certification | Costo certificazione manutenzione | € | 850 |
+
+
+
 
 # GEOBOX README FROM BOILERPLATE
 
