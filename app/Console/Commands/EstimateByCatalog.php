@@ -45,6 +45,8 @@ class EstimateByCatalog extends Command
         $parcels = CadastralParcel::whereIn('id', $ids)->get();
         $tot_p = $parcels->count();
         $count_p = 1;
+        //get the VAT value from sisteco config file
+        $vat = config('sisteco.vat.value');
         // Loop on particles
         foreach ($parcels as $p) {
             $this->info("($count_p/$tot_p)Processing cadastral parcel {$p->id}");
@@ -67,17 +69,19 @@ class EstimateByCatalog extends Command
             // SLOPE AND DISTANCE
             $parcel_code = $p->computeSlopeClass() . '.' . $p->computeTransportClass();
             $total_price = 0;
+            //define json structure
+
+            $interventions = [];
+            $maintenance = [];
+            $general = [];
             $json = [];
             if (count($results) > 0) {
-                $interventions = [];
-                $maintenance = [];
-                $general = [];
                 $count = count($results);
                 $this->info("Found $count intersections");
                 foreach ($results as $item) {
                     $cod_int = $types[$item->catalog_type_id];
                     $unit_price = $prices[$cod_int][$parcel_code];
-                    $price = $item->area / 10000 * $unit_price;
+                    $price = $item->area / 10000 * $unit_price * (1 + $vat / 100); //adding the VAT to the price
                     $total_price += $price;
                     $items[] = [
                         'code' => $cod_int . '.' . $parcel_code,
@@ -86,10 +90,12 @@ class EstimateByCatalog extends Command
                         'price' => number_format($price, 2, ',', '.'),
                     ];
                 }
-                $interventions[] = [
-                    'items' => $items,
-                    'total' => number_format($total_price, 2, ',', '.'),
-                ];
+                //code that starts with '0' should not be present in the catalog
+                //other codes should be present in the catalog even if the area is 0
+                $interventions = array_filter($items, function ($item) {
+                    return substr($item['code'], 0, 1) != '0';
+                });
+
                 $json['interventions'] = $interventions;
                 $json['maintenance'] = $maintenance;
                 $json['general'] = $general;
