@@ -78,6 +78,7 @@ class EstimateByCatalog extends Command
 
             $intervention_area = 0;
             $intervention_price = 0;
+            $items = [];
             if (count($results) > 0) {
                 $count = count($results);
                 $this->info("Found $count intersections");
@@ -97,9 +98,9 @@ class EstimateByCatalog extends Command
                             'unit_price' => number_format($unit_price, 2, ',', '.'),
                             'price' => number_format($price, 2, ',', '.'),
                         ];
-                        $interventions['items'] = $items;
                     }
                 }
+                $interventions['items'] = $items;
 
                 //define the variables for the general array
                 $supervision_price = $intervention_price * (1 + config('sisteco.supervision.value') / 100);
@@ -112,7 +113,7 @@ class EstimateByCatalog extends Command
                 $total_intervention_gross_price = $total_intervention_certificated_price + $team_price + $platform_maintenance_price;
                 $total_intervention_net_price = $total_intervention_gross_price - ($total_intervention_gross_price * $vat / 100);
                 $total_intervention_vat = $total_intervention_gross_price - $total_intervention_net_price;
-                $intervention_gross_price_per_area = $total_intervention_gross_price / $intervention_area;
+                $intervention_gross_price_per_area = $intervention_area != 0 ? $total_intervention_gross_price / $intervention_area : $total_intervention_gross_price; //if intervention_area is 0 the default value is total_intervention_gross_price
 
                 //create an array with all the variables above using number_format to format the numbers
                 $interventions['info'] = [
