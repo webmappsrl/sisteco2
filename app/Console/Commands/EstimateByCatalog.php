@@ -137,37 +137,37 @@ class EstimateByCatalog extends Command
                 // items.[].area data taken from the intervention area
                 // items..[].unit_price: config('sisteco.maintenance.val')
                 // items.[].price: product from area * unit_price * config('sisteco.vat.val')
-                $maintenanceItemPrice = $intervention_area * config('sisteco.maintenance.value') * (1 + $vat / 100);
+                $maintenance_item_price = $intervention_area * config('sisteco.maintenance.value') * (1 + $vat / 100);
                 $maintenance['items'] = [
                     [
                         'code' => 'year_1',
                         'area' => number_format($intervention_area, 4, ',', '.'),
                         'unit_price' => number_format(config('sisteco.maintenance.value'), 2, ',', '.'),
-                        'price' => number_format($maintenanceItemPrice, 2, ',', '.'),
+                        'price' => number_format($maintenance_item_price, 2, ',', '.'),
                     ],
                     [
                         'code' => 'year_2',
                         'area' => number_format($intervention_area, 4, ',', '.'),
                         'unit_price' => number_format(config('sisteco.maintenance.value'), 2, ',', '.'),
-                        'price' => number_format($maintenanceItemPrice, 2, ',', '.'),
+                        'price' => number_format($maintenance_item_price, 2, ',', '.'),
                     ],
                     [
                         'code' => 'year_3',
                         'area' => number_format($intervention_area, 4, ',', '.'),
                         'unit_price' => number_format(config('sisteco.maintenance.value'), 2, ',', '.'),
-                        'price' => number_format($maintenanceItemPrice, 2, ',', '.'),
+                        'price' => number_format($maintenance_item_price, 2, ',', '.'),
                     ],
                     [
                         'code' => 'year_4',
                         'area' => number_format($intervention_area, 4, ',', '.'),
                         'unit_price' => number_format(config('sisteco.maintenance.value'), 2, ',', '.'),
-                        'price' => number_format($maintenanceItemPrice, 2, ',', '.'),
+                        'price' => number_format($maintenance_item_price, 2, ',', '.'),
                     ],
                     [
                         'code' => 'year_5',
                         'area' => number_format($intervention_area, 4, ',', '.'),
                         'unit_price' => number_format(config('sisteco.maintenance.value'), 2, ',', '.'),
-                        'price' => number_format($maintenanceItemPrice, 2, ',', '.'),
+                        'price' => number_format($maintenance_item_price, 2, ',', '.'),
                     ],
                 ];
                 //defining $maintenance['certifications'] array
@@ -188,13 +188,27 @@ class EstimateByCatalog extends Command
                 // total_maintenance_net_price: total_maintenance_gross_price divided by config(sisteco.vat.val)
                 // total_maintenance_vat: diference gross - net
                 // maintenance_gross_price_per_area: total_maintenance_gross_price / area
-                $totalMaintenanceGrossPrice = $maintenanceItemPrice * 5; //price of the 5 years of maintenance plus vat
-                $totalMaintenanceNetPrice = $totalMaintenanceGrossPrice / (1 + $vat / 100); //price of the 5 years of maintenance without vat
+                $total_maintenance_gross_price = $maintenance_item_price * 5; //price of the 5 years of maintenance plus vat
+                $total_maintenance_net_price = $total_maintenance_gross_price / (1 + $vat / 100); //price of the 5 years of maintenance without vat
                 $maintenance['summary'] = [
-                    'total_maintenance_gross_price' => number_format($totalMaintenanceGrossPrice, 2, ',', '.'),
-                    'total_maintenance_net_price' => number_format($totalMaintenanceNetPrice, 2, ',', '.'),
-                    'total_maintenance_vat' => number_format($totalMaintenanceGrossPrice - $totalMaintenanceNetPrice, 2, ',', '.'), //vat
-                    'maintenance_gross_price_per_area' => number_format($totalMaintenanceGrossPrice / $intervention_area, 2, ',', '.'),
+                    'total_maintenance_gross_price' => number_format($total_maintenance_gross_price, 2, ',', '.'),
+                    'total_maintenance_net_price' => number_format($total_maintenance_net_price, 2, ',', '.'),
+                    'total_maintenance_vat' => number_format($total_maintenance_gross_price - $total_maintenance_net_price, 2, ',', '.'), //vat
+                    'maintenance_gross_price_per_area' => number_format($total_maintenance_gross_price / $intervention_area, 2, ',', '.'),
+                ];
+
+                //defining $general array
+                //total_gross_price: sum of total_intervention_gross_price and total_maintenance_gross_price
+                //total_net_price: total_gross_price divided by config(sisteco.vat.val)
+                //total_vat: diference gross - net
+                //total_gross_price_per_area: total_gross_price / area
+                $total_general_gross_price = $total_intervention_gross_price + $total_maintenance_gross_price;
+                $total_net_price = $total_general_gross_price / (1 + $vat / 100);
+                $general = [
+                    'total_gross_price' => number_format($total_general_gross_price, 2, ',', '.'),
+                    'total_net_price' => number_format($total_net_price, 2, ',', '.'),
+                    'total_vat' => number_format($total_general_gross_price - $total_net_price, 2, ',', '.'),
+                    'total_gross_price_per_area' => number_format($total_general_gross_price / $intervention_area, 2, ',', '.'),
                 ];
 
                 //assign the fields to json
