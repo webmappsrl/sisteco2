@@ -216,8 +216,11 @@ class EstimateByCatalog extends Command
                 $json['maintenance'] = $maintenance;
                 $json['general'] = $general;
 
+                //formatting the estimated value
+                $estimated_value = floatval(number_format($total_general_gross_price, 2, '.', ''));
+
                 $p->catalog_estimate = $json;
-                $p->estimated_value = $total_price;
+                $p->estimated_value = $estimated_value;
                 $this->info(json_encode($json));
                 $p->save();
             } else {
