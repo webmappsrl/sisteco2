@@ -89,7 +89,7 @@ class CadastralParcel extends Model
             throw new Exception("Catalog with id $catalog_id not found");
         }
 
-        $types = $c->catalogTypes()->pluck('id', 'cod_int')->toArray();
+        $types = $c->catalogTypes()->pluck('cod_int', 'id')->toArray();
         $prices = $c->catalogTypes()->pluck('prices', 'cod_int')->toArray();
         $vat = config('sisteco.vat.value');
         $results = DB::select("
@@ -123,8 +123,9 @@ class CadastralParcel extends Model
             foreach ($results as $item) {
                 $cod_int = $types[$item->catalog_type_id];
                 $unit_price = $prices[$cod_int][$parcel_code];
-                $intervention_area += ($item->area / 10000);
-                $price = $intervention_area * $unit_price * (1 + $vat / 100); //adding the VAT to the price
+                $itemArea = $item->area / 10000;
+                $intervention_area += $itemArea;
+                $price = $itemArea * $unit_price * (1 + $vat / 100); //adding the VAT to the price
                 $intervention_price += $price;
 
                 //if $cod_int is not equal to 0 then add the item to the interventions array
@@ -253,10 +254,9 @@ class CadastralParcel extends Model
             $json['maintenance'] = $maintenance;
             $json['general'] = $general;
 
-            //formatting the estimated value
-            $estimated_value = floatval(number_format($total_general_gross_price, 2, '.', ''));
-
             return $json;
+        } else {
+            return [];
         }
     }
 }
