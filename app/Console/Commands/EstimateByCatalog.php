@@ -44,7 +44,7 @@ class EstimateByCatalog extends Command
             $p->catalog_estimate = $p->computeCatalogEstimate($this->argument('id'));
 
             //format the float number to fit the database column
-            $estimate = $p->catalog_estimate['general']['total_gross_price'];
+            $estimate = $p->catalog_estimate['general']['total_gross_price'] ?? 0;
             $estimate = str_replace(".", "", $estimate); // Remove the dots
             $estimate = str_replace(",", ".", $estimate); // Replace the comma with a dot
             //update the estimated value
