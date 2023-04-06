@@ -42,8 +42,13 @@ class EstimateByCatalog extends Command
         // Loop on particles
         foreach ($parcels as $p) {
             $p->catalog_estimate = $p->computeCatalogEstimate($this->argument('id'));
-            $p->estimated_value = $p->catalog_estimate->general->total_gross_price;
-            // $p->estimated_value = $p->catalog_estimate['general']['total_gross_price'];
+
+            //format the float number to fit the database column
+            $estimate = $p->catalog_estimate['general']['total_gross_price'];
+            $estimate = str_replace(".", "", $estimate); // Remove the dots
+            $estimate = str_replace(",", ".", $estimate); // Replace the comma with a dot
+            //update the estimated value
+            $p->estimated_value = $estimate;
             $p->save();
             $count_p++;
 

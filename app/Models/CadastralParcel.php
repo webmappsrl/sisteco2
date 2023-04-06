@@ -110,7 +110,6 @@ class CadastralParcel extends Model
 
         // SLOPE AND DISTANCE
         $parcel_code = $this->computeSlopeClass() . '.' . $this->computeTransportClass();
-        $total_price = 0;
         //define json structure
         $interventions = [];
         $maintenance = [];
@@ -121,13 +120,11 @@ class CadastralParcel extends Model
         $intervention_price = 0;
         $items = [];
         if (count($results) > 0) {
-            $count = count($results);
             foreach ($results as $item) {
                 $cod_int = $types[$item->catalog_type_id];
                 $unit_price = $prices[$cod_int][$parcel_code];
-                $price = ($item->area / 1000) * $unit_price * (1 + $vat / 100); //adding the VAT to the price
-                $total_price += $price;
-                $intervention_area += $item->area / 1000;
+                $intervention_area += ($item->area / 10000);
+                $price = $intervention_area * $unit_price * (1 + $vat / 100); //adding the VAT to the price
                 $intervention_price += $price;
 
                 //if $cod_int is not equal to 0 then add the item to the interventions array
@@ -143,15 +140,15 @@ class CadastralParcel extends Model
             //defining $interventions['items']
             $interventions['items'] = $items;
             //define the variables for the $intervention['info'] array
-            $supervision_price = $intervention_price * (1 + config('sisteco.supervision.value') / 100);
-            $overhead_price = $intervention_price * (1 + config('sisteco.overhead.value') / 100);
-            $business_profit_price = $intervention_price * (1 + config('sisteco.business_profit.value') / 100);
+            $supervision_price = $intervention_price *  (1 + (config('sisteco.supervision.value') / 100));
+            $overhead_price = $intervention_price * (1 + (config('sisteco.overhead.value') / 100));
+            $business_profit_price = $intervention_price * (1 + (config('sisteco.business_profit.value') / 100));
             $intervention_certification = config('sisteco.intervention_certification.value');
             $total_intervention_certificated_price = $intervention_price + $supervision_price + $overhead_price + $business_profit_price + $intervention_certification;
-            $team_price = config('sisteco.team.value');
-            $platform_maintenance_price = $total_intervention_certificated_price * config('sisteco.platform_maintenance.value');
+            $team_price = $total_intervention_certificated_price * (1 + (config('sisteco.team_management.value') / 100));
+            $platform_maintenance_price = $total_intervention_certificated_price * (1 + (config('sisteco.platform_maintenance.value') / 100));
             $total_intervention_gross_price = $total_intervention_certificated_price + $team_price + $platform_maintenance_price;
-            $total_intervention_net_price = $total_intervention_gross_price - ($total_intervention_gross_price * $vat / 100);
+            $total_intervention_net_price = $total_intervention_gross_price / (1 + ($vat / 100));
             $total_intervention_vat = $total_intervention_gross_price - $total_intervention_net_price;
             $intervention_gross_price_per_area = $intervention_area != 0 ? $total_intervention_gross_price / $intervention_area : $total_intervention_gross_price; //if intervention_area is 0 the default value is total_intervention_gross_price
             //create an array with all the variables above using number_format to format the numbers
