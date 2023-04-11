@@ -2,6 +2,101 @@
 
 namespace Tests\Feature;
 
+/**
+ * 
+ * Esempio con dati
+ * 
+ *{
+    "interventions" : {
+        "items":[
+            {
+                "code" : "1.B.1",
+                "area" : "7,4925",
+                "unit_price" : "13.422,00",
+                "price" : "122.688,49"
+            },
+            {
+                "code" : "2.B.1",
+                "area" : "3,3448",
+                "unit_price" : "7.041,00",
+                "price":"28.731,90"
+            },
+            {
+                "code" : "3.B.1",
+                "area" : "0,00",
+                "unit_price" : "5.464,00",
+                "price":"0,00"
+            }
+        ],
+        "intervention_area" : "10,8373",
+        "intervention_price" : "151.420,39",
+        "supervision_price" : "15.142,04",
+        "overhead_price" : "24.227,26",
+        "business_profit_price" : "15.142,04",
+        "intervention_certification" : "1.100,00",
+        "total_intervention_certificated_price" : "207.031,73",
+        "team_price" : "4.140,63",
+        "platform_maintenance_price" : "4.140,63",
+        "total_intervention_gross_price" : "215.313,00",
+        "total_intervention_net_price" : "176.486,06",
+        "total_intervention_vat" : "38.826,93",
+        "intervention_gross_price_per_area" : "19.867,77"
+        
+    },
+    "maintenance" : {
+        "items":[
+            {
+                "code" : "year_1",
+                "area" : "10,8373",
+                "unit_price" : "1.000,0",
+                "price" : "13.221,51"
+            },
+            {
+                "code" : "year_2",
+                "area" : "10,8373",
+                "unit_price" : "1.000,0",
+                "price" : "13.221,51"
+            },
+            {
+                "code" : "year_3",
+                "area" : "10,8373",
+                "unit_price" : "1.000,0",
+                "price" : "13.221,51"
+            },
+            {
+                "code" : "year_4",
+                "area" : "10,8373",
+                "unit_price" : "1.000,00",
+                "price" : "13.221,51"
+            },            
+            {
+                "code" : "year_5",
+                "area" : "10,8373",
+                "unit_price" : "1.000,00",
+                "price" : "13.221,51"
+            },
+            {
+                "code" : "certification_year_2",
+                "price" : "850,00"
+            }
+        ],
+        "total_maintenance_gross_price" : "67.807,53",
+        "total_maintenance_net_price" : "55.579,94",
+        "total_maintenance_vat" : "12.227,59",
+        "maintenance_gross_price_per_area" : "1.251,37"
+    },
+    "general" : {
+        "total_gross_price" : "283.120,53",
+        "total_net_price" : "232.066,01",
+        "total_vat" : "51.054,52",
+        "gross_price_per_area" : "4.354,11"
+    }
+}
+
+
+ * 
+ */
+
 
 use Tests\TestCase;
 use App\Models\Catalog;
