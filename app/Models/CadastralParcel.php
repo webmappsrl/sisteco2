@@ -121,12 +121,12 @@ class CadastralParcel extends Model
                 $cod_int = $types[$item->catalog_type_id];
                 $unit_price = $prices[$cod_int][$parcel_code];
                 $itemArea = $item->area / 10000;
-                $intervention_area += $itemArea;
                 $price = $itemArea * $unit_price * (1 + $vat / 100); //adding the VAT to the price
                 $intervention_price += $price;
 
                 //if $cod_int is not equal to 0 then add the item to the interventions array
                 if ($cod_int != 0) {
+                    $intervention_area += $itemArea;
                     $items[] = [
                         'code' => $cod_int . '.' . $parcel_code,
                         'area' => number_format($item->area / 10000, 4, ',', '.'),
@@ -138,13 +138,13 @@ class CadastralParcel extends Model
             //defining $interventions['items']
             $interventions['items'] = $items;
             //define the variables for the $intervention['info'] array
-            $supervision_price = $intervention_price *  (1 + (config('sisteco.supervision.value') / 100));
-            $overhead_price = $intervention_price * (1 + (config('sisteco.overhead.value') / 100));
-            $business_profit_price = $intervention_price * (1 + (config('sisteco.business_profit.value') / 100));
+            $supervision_price = $intervention_price *  ((config('sisteco.supervision.value') / 100));
+            $overhead_price = $intervention_price * ((config('sisteco.overheads.value') / 100));
+            $business_profit_price = $intervention_price * ((config('sisteco.business_profit.value') / 100));
             $intervention_certification = config('sisteco.intervention_certification.value');
             $total_intervention_certificated_price = $intervention_price + $supervision_price + $overhead_price + $business_profit_price + $intervention_certification;
-            $team_price = $total_intervention_certificated_price * (1 + (config('sisteco.team_management.value') / 100));
-            $platform_maintenance_price = $total_intervention_certificated_price * (1 + (config('sisteco.platform_maintenance.value') / 100));
+            $team_price = $total_intervention_certificated_price * ((config('sisteco.team_management.value') / 100));
+            $platform_maintenance_price = $total_intervention_certificated_price * ((config('sisteco.platform_maintenance.value') / 100));
             $total_intervention_gross_price = $total_intervention_certificated_price + $team_price + $platform_maintenance_price;
             $total_intervention_net_price = $total_intervention_gross_price / (1 + ($vat / 100));
             $total_intervention_vat = $total_intervention_gross_price - $total_intervention_net_price;
@@ -223,13 +223,13 @@ class CadastralParcel extends Model
             // total_maintenance_net_price: total_maintenance_gross_price divided by config(sisteco.vat.val)
             // total_maintenance_vat: diference gross - net
             // maintenance_gross_price_per_area: total_maintenance_gross_price / area
-            $total_maintenance_gross_price = $maintenance_item_price * 5; //price of the 5 years of maintenance plus vat
+            $total_maintenance_gross_price = ($maintenance_item_price * 5) + (config('sisteco.maintenance_certification.value') * 2); //price of the 5 years of maintenance plus vat
             $total_maintenance_net_price = $total_maintenance_gross_price / (1 + $vat / 100); //price of the 5 years of maintenance without vat
             $maintenance['summary'] = [
                 'total_maintenance_gross_price' => number_format($total_maintenance_gross_price, 2, ',', '.'),
                 'total_maintenance_net_price' => number_format($total_maintenance_net_price, 2, ',', '.'),
                 'total_maintenance_vat' => number_format($total_maintenance_gross_price - $total_maintenance_net_price, 2, ',', '.'), //vat
-                'maintenance_gross_price_per_area' => $intervention_area != 0 ? number_format($total_maintenance_gross_price / $intervention_area, 2, ',', '.') : $total_maintenance_gross_price, //if intervention_area is 0 the default value is the total_maintenance_gross_price
+                'maintenance_gross_price_per_area' => $intervention_area != 0 ? number_format($total_maintenance_gross_price / ($intervention_area * 5), 2, ',', '.') : $total_maintenance_gross_price, //if intervention_area is 0 the default value is the total_maintenance_gross_price
             ];
 
             //defining $general array
