@@ -7568,7 +7568,7 @@
         },
         {
             "name": "wm/wm-internal",
-            "version": "dev-feature/Foglio_Dei_Costi_V2",
+            "version": "dev-develop",
             "dist": {
                 "type": "path",
                 "url": "./wm-internal",
