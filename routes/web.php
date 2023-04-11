@@ -24,4 +24,4 @@ use App\Http\Controllers\CadastralParcelController;
 Route::get('/owners/export', [OwnersExportController::class, 'export']);
 
 //create route to view cadastral parcel data and catalog estimate
-Route::get('/cadastral-parcels/{id}', 'CadastralParcelController@show')->name('cadastral-parcel');
+Route::get('/cadastral-parcels/{id}', [CadastralParcelController::class, 'show'])->name('cadastral-parcel');
