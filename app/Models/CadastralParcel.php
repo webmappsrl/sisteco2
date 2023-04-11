@@ -84,10 +84,7 @@ class CadastralParcel extends Model
 
     public function computeCatalogEstimate(int $catalog_id): array
     {
-        $c = Catalog::find($catalog_id);
-        if (!$c) {
-            throw new Exception("Catalog with id $catalog_id not found");
-        }
+        $c = Catalog::findOrfail($catalog_id);
 
         $types = $c->catalogTypes()->pluck('cod_int', 'id')->toArray();
         $prices = $c->catalogTypes()->pluck('prices', 'cod_int')->toArray();
