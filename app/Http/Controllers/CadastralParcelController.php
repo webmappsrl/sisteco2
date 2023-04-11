@@ -38,6 +38,15 @@ class CadastralParcelController extends Controller
     public function show($id)
     {
         $cadastralParcel = CadastralParcel::findOrFail($id);
+        $sisteco = config('sisteco');
+
+        return view(
+            'cadastral-parcel',
+            [
+                'cadastralParcel' => $cadastralParcel,
+                'sisteco' => $sisteco,
+            ]
+        );
     }
 
     /**

@@ -4,6 +4,7 @@ use App\Exports\OwnersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OwnersExportController;
+use App\Http\Controllers\CadastralParcelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,4 @@ use App\Http\Controllers\OwnersExportController;
 Route::get('/owners/export', [OwnersExportController::class, 'export']);
 
 //create route to view cadastral parcel data and catalog estimate
-Route::get('/cadastral-parcels/{id}', [CadastralParcelController::class, 'show'])->name('cadastral-parcels.show');
+Route::get('/cadastral-parcels/{id}', 'CadastralParcelController@show')->name('cadastral-parcel');
