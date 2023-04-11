@@ -39,7 +39,7 @@ return [
     ],
     'maintenance' => [
         'label' => 'Costo manutenzione annua per ettaro',
-        'unit' => '€',
+        'unit' => '€/ettaro',
         'value' => 1000,
     ],
     'maintenance_certification' => [

@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Exception;
 use App\Models\Catalog;
 use App\Models\CadastralParcel;
+use Faker\Core\Number;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -31,71 +32,31 @@ class EstimateByCatalog extends Command
      */
     public function handle()
     {
-        // Find Catalog
-        $c = Catalog::find($this->argument('id'));
-        if (empty($c)) {
-            throw new Exception("Catalog with ID {$this->argument('id')} does not exist..", 1);
-        }
-        $types = $c->catalogTypes()->pluck('cod_int', 'id')->toArray();
-        $prices = $c->catalogTypes()->pluck('prices', 'cod_int')->toArray();
-
         $this->info('Processing');
         $ids = collect(DB::select('select distinct cadastral_parcel_id as id from cadastral_parcel_owner;'))->pluck('id')->toArray();
 
         $parcels = CadastralParcel::whereIn('id', $ids)->get();
         $tot_p = $parcels->count();
         $count_p = 1;
+
         // Loop on particles
         foreach ($parcels as $p) {
-            $this->info("($count_p/$tot_p)Processing cadastral parcel {$p->id}");
+            $p->catalog_estimate = $p->computeCatalogEstimate($this->argument('id'));
+
+            //format the float number to fit the database column
+            $estimate = $p->catalog_estimate['general']['total_gross_price'] ?? 0;
+            $estimate = str_replace(".", "", $estimate); // Remove the dots
+            $estimate = str_replace(",", ".", $estimate); // Replace the comma with a dot
+            //update the estimated value
+            $p->estimated_value = $estimate;
+            $p->save();
             $count_p++;
-            $results = DB::select("
-                        SELECT 
-                            catalog_type_id, 
-                            SUM(ST_AREA(ST_Intersection(a.geometry,p.geometry))) as area 
-                        FROM 
-                           cadastral_parcels as p, 
-                           catalog_areas as a
-                        WHERE 
-                           a.catalog_id={$this->argument('id')} AND 
-                           p.id = {$p->id} 
-                           AND ST_Intersects(a.geometry,p.geometry)
-                           
-                        GROUP BY
-                           catalog_type_id
-                           ");
-            // SLOPE AND DISTANCE
-            $parcel_code = $p->computeSlopeClass() . '.' . $p->computeTransportClass();
-            $total_price = 0;
-            $json = [];
-            if (count($results) > 0) {
-                $items = [];
-                $count = count($results);
-                $this->info("Found $count intersections");
-                foreach ($results as $item) {
-                    $cod_int = $types[$item->catalog_type_id];
-                    $unit_price = $prices[$cod_int][$parcel_code];
-                    $price = $item->area / 10000 * $unit_price;
-                    $total_price += $price;
-                    $items[] = [
-                        'code' => $cod_int . '.' . $parcel_code,
-                        'area' => number_format($item->area / 10000, 4, ',', '.'),
-                        'unit_price' => number_format($unit_price, 2, ',', '.'),
-                        'price' => number_format($price, 2, ',', '.'),
-                    ];
-                }
-                $json = [
-                    'items' => $items,
-                    'price' => number_format($total_price, 2, ',', '.')
-                ];
-                $p->catalog_estimate = $json;
-                $p->estimated_value = $total_price;
-                $this->info(json_encode($json));
-                $p->save();
-            } else {
-                $this->info("No intersection Found");
-            }
-            $this->info('---');
+
+            //print the json
+            // $this->info(json_encode($json));
+            $this->info(
+                "Processing {$count_p} of {$tot_p} particles"
+            );
         }
         return $this->info('Done!');
     }
