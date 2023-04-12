@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Resources\GeomToPointCadastralParcelResource;
+use App\Models\CadastralParcel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,3 +15,11 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+// Route::get('cadastralparcels',function() {return [];});
+Route::get('v1/geomtopoint/cadastralparcels',function() {
+    return CadastralParcel::all()->pluck('updated_at','id')->toArray();
+});
+Route::get('v1/geomtopoint/cadastralparcel/{id}',function (string $id) {
+        return new GeomToPointCadastralParcelResource(CadastralParcel::findOrFail($id));
+});
