@@ -15,14 +15,33 @@ class GeomCadastralParcelResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $geometry = DB::select("select st_asGeojson(geometry) as geom from cadastral_parcels where id=$this->id;")[0]->geom;
-        return [
-            'type' => 'Feature',
-            'properties' => [
-                'id' => $this->id,
-                'code' => $this->code,
-            ],
-            'geometry' => json_decode($geometry, true) 
+
+        // Get the geometries from the catalog
+        $catalog_geometries = $this->getCatalogGeometries(1);
+
+        // Get the geometry of the current cadastral parcel
+        $parcel_geometry = DB::select("select st_asGeojson(geometry) as geom from cadastral_parcels where id=$this->id;")[0]->geom;
+
+        // Build the output
+        $output = [
+            'type' => 'FeatureCollection',
+            'features' => [
+                [
+                    'type' => 'Feature',
+                    'geometry' => json_decode($parcel_geometry, true),
+                    'properties' => []
+                ]
+            ]
         ];
+
+        // Add the geometries from the catalog
+        foreach ($catalog_geometries['features'] as $geometry) {
+            $output['features'][] = [
+                $geometry
+            ];
+        }
+
+        // Return the output
+        return $output;
     }
 }
