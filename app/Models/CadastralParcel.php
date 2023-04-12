@@ -256,4 +256,40 @@ class CadastralParcel extends Model
             return [];
         }
     }
+
+    /**
+     * Returns array with catalog areas geometry with its cod_int
+     * 
+     * @param int $catalog_id
+     * 
+     * @return array catalog_estimate array
+
+     */
+    public function getCatalogGeometries(int $catalog_id): array
+    {
+        $geometries = [];
+        $results = DB::select("
+        SELECT 
+            a.id as id, 
+            st_asgeojson(a.geometry) as geom 
+        FROM 
+           cadastral_parcels as p, 
+           catalog_areas as a
+        WHERE 
+           a.catalog_id={$catalog_id} AND 
+           p.id = {$this->id} 
+           AND ST_Intersects(a.geometry,p.geometry)
+           ");
+
+        if (count($results) > 0) {
+            foreach ($results as $area) {
+                $geometries[] = [
+                    'id' => $area->id,
+                    'geometry' => json_decode($area->geom, TRUE)
+                ];
+            }
+        }
+
+        return $geometries;
+    }
 }
