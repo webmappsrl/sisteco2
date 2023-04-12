@@ -269,50 +269,31 @@ class CadastralParcel extends Model
     {
         $geometries = [];
         $results = DB::select("
-    SELECT 
-        a.id as id, 
-        st_asgeojson(a.geometry) as geom 
-    FROM 
-       cadastral_parcels as p, 
-       catalog_areas as a
-    WHERE 
-       a.catalog_id={$catalog_id} AND 
-       p.id = {$this->id} 
-       AND ST_Intersects(a.geometry,p.geometry)
+     SELECT 
+            a.id as id, 
+            t.cod_int as cod_int,
+            st_asgeojson(a.geometry) as geom 
+        FROM 
+           cadastral_parcels as p
+           LEFT JOIN catalog_areas as a ON ST_Intersects(a.geometry,p.geometry)
+           LEFT JOIN catalog_types as t ON t.id = a.catalog_type_id
+        WHERE 
+           p.id = {$this->id} AND
+           a.catalog_id = {$catalog_id}
        ");
 
-        // If there are intersections, add the parcel geometry as the first feature
         if (count($results) > 0) {
-            $geometries[] = [
-                'type' => 'Feature',
-                'id' => $this->id,
-                'properties' => [],
-                'geometry' => json_decode($this->geometry, true)
-            ];
-
-            // Add the catalog areas geometries
             foreach ($results as $area) {
                 $geometries[] = [
-                    'type' => 'Feature',
+                    'type' => 'Catalog Area',
                     'id' => $area->id,
+                    'cod_int' => $area->cod_int,
                     'properties' => [],
                     'geometry' => json_decode($area->geom, true)
                 ];
             }
-        } else {
-            // If there are no intersections, add only the parcel geometry
-            $geometries[] = [
-                'type' => 'Feature',
-                'id' => $this->id,
-                'properties' => [],
-                'geometry' => json_decode($this->geometry, true)
-            ];
         }
-
         // Return the FeatureCollection
-        return [
-            'type' => 'FeatureCollection',
-            'features' => $geometries
-        ];
+        return $geometries;
     }
 }
