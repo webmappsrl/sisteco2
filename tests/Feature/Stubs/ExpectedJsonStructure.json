@@ -1,0 +1,95 @@
+{
+  "interventions": {
+    "items": [
+      {
+        "code": "2.B.1",
+        "area": "2,5671",
+        "unit_price": "7.041,00",
+        "price": "220.517,96"
+      },
+      {
+        "code": "3.B.1",
+        "area": "7,4925",
+        "unit_price": "5.464,00",
+        "price": "499.457,08"
+      },
+      {
+        "code": "4.B.1",
+        "area": "3,3448",
+        "unit_price": "0,00",
+        "price": "0,00"
+      }
+    ],
+    "info": {
+      "intervention_area": "134,0445",
+      "intervention_price": "719.975,04",
+      "supervision_price": "791.972,54",
+      "overhead_price": "719.975,04",
+      "business_profit_price": "791.972,54",
+      "intervention_certification": "1.100,00",
+      "total_intervention_certificated_price": "3.024.995,17",
+      "team_price": "0,00",
+      "platform_maintenance_price": "6.049.990,34",
+      "total_intervention_gross_price": "9.074.985,51",
+      "total_intervention_net_price": "7.078.488,70",
+      "total_intervention_vat": "1.996.496,81",
+      "intervention_gross_price_per_area": "67.701,31"
+    }
+  },
+  "maintenance": {
+    "items": [
+      {
+        "code": "year_1",
+        "area": "134,0445",
+        "unit_price": "1.000,00",
+        "price": "163.534,25"
+      },
+      {
+        "code": "year_2",
+        "area": "134,0445",
+        "unit_price": "1.000,00",
+        "price": "163.534,25"
+      },
+      {
+        "code": "year_3",
+        "area": "134,0445",
+        "unit_price": "1.000,00",
+        "price": "163.534,25"
+      },
+      {
+        "code": "year_4",
+        "area": "134,0445",
+        "unit_price": "1.000,00",
+        "price": "163.534,25"
+      },
+      {
+        "code": "year_5",
+        "area": "134,0445",
+        "unit_price": "1.000,00",
+        "price": "163.534,25"
+      }
+    ],
+    "certifications": [
+      {
+        "code": "year_2",
+        "price": "850,00"
+      },
+      {
+        "code": "year_5",
+        "price": "850,00"
+      }
+    ],
+    "summary": {
+      "total_maintenance_gross_price": "817.671,23",
+      "total_maintenance_net_price": "670.222,32",
+      "total_maintenance_vat": "147.448,91",
+      "maintenance_gross_price_per_area": "6.100,00"
+    }
+  },
+  "general": {
+    "total_gross_price": "9.892.656,74",
+    "total_net_price": "8.108.735,03",
+    "total_vat": "1.783.921,71",
+    "total_gross_price_per_area": "73.801,31"
+    }
+}

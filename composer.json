@@ -16,10 +16,12 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "league/flysystem-aws-s3-v3": "^3.12",
+        "maatwebsite/excel": "^3.1",
         "spatie/db-dumper": "^3.3",
         "spatie/laravel-translatable": "^6.3",
-        "wm/wm-package": "*",
-        "wm/wm-internal": "*"
+        "wm/map-multi-polygon": "^0.0.2",
+        "wm/wm-internal": "*",
+        "wm/wm-package": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

@@ -1,6 +1,10 @@
 <?php
 
+use App\Exports\OwnersExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OwnersExportController;
+use App\Http\Controllers\CadastralParcelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+//create link to download excel file
+Route::get('/owners/export', [OwnersExportController::class, 'export']);
+
+//create route to view cadastral parcel data and catalog estimate
+Route::get('/cadastral-parcels/{id}', [CadastralParcelController::class, 'show'])->name('cadastral-parcel');
