@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Resources\GeomCadastralParcelResource;
 use App\Http\Resources\GeomToPointCadastralParcelResource;
 use App\Models\CadastralParcel;
 use Illuminate\Http\Request;
@@ -22,4 +23,7 @@ Route::get('v1/geomtopoint/cadastralparcels',function() {
 });
 Route::get('v1/geomtopoint/cadastralparcel/{id}',function (string $id) {
         return new GeomToPointCadastralParcelResource(CadastralParcel::findOrFail($id));
+});
+Route::get('v1/geom/cadastralparcel/{id}',function (string $id) {
+        return new GeomCadastralParcelResource(CadastralParcel::findOrFail($id));
 });

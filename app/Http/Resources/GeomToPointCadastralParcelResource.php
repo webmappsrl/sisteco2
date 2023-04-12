@@ -16,6 +16,7 @@ class GeomToPointCadastralParcelResource extends JsonResource
     public function toArray(Request $request): array
     {
         $geometry = DB::select("select st_asGeojson(st_centroid(geometry)) as geom from cadastral_parcels where id=$this->id;")[0]->geom;
+
         $interventions = "";
         $area = "<tr><td>Area:</td><td><strong>$this->square_meter_surface</strong>m²</td></tr>";
         $slope = "<tr><td>Classe Pendenza:</td><td><strong>$this->slope</strong></td></tr>";
@@ -36,7 +37,6 @@ class GeomToPointCadastralParcelResource extends JsonResource
         //if $municipality is an empty string return "/", else return the table
         $municipality = $municipality == "" ? "<tr><td><strong>/</strong></td></tr>" : $municipality;
 
-
         return [
             'id' => $this->id,
             'name' => [
@@ -44,7 +44,6 @@ class GeomToPointCadastralParcelResource extends JsonResource
             ],
             'description' => [
                 'it' => "<h2><strong>Interventi:</strong></h2><table><thead><tr><th>Cod.</th><th>P.Unit.</th><th>P. Tot</th></tr></thead><tbody>$interventions</tbody></table><h2><strong>Dettagli:</strong></h2><table><tbody>$area$slope$way$municipality</tbody></table>"
-
             ],
             'related_url' => [
                 'https://sisteco.maphub.it/cadastral-parcels/' . $this->id,
