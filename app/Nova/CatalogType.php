@@ -50,7 +50,7 @@ class CatalogType extends Resource
                 ->rules('json')
                 ->keyLabel('Type')
                 ->valueLabel('Price (€)')
-                ->onlyOnDetail(),
+                ->hideFromIndex(),
             Text::make('Areas #', function () {
                 return $this->catalogAreas()->count();
             }),
