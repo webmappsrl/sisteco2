@@ -35,9 +35,18 @@ class CadastralParcelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(CadastralParcel $cadastralParcel)
+    public function show($id)
     {
-        //
+        $cadastralParcel = CadastralParcel::findOrFail($id);
+        $sisteco = config('sisteco');
+
+        return view(
+            'cadastral-parcel',
+            [
+                'cadastralParcel' => $cadastralParcel,
+                'sisteco' => $sisteco,
+            ]
+        );
     }
 
     /**
