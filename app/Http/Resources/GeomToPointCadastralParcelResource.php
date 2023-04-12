@@ -16,48 +16,34 @@ class GeomToPointCadastralParcelResource extends JsonResource
     public function toArray(Request $request): array
     {
         $geometry = DB::select("select st_asGeojson(st_centroid(geometry)) as geom from cadastral_parcels where id=$this->id;")[0]->geom;
+
+        $interventions = "";
+        $area = "<tr><td>Area:</td><td><strong>$this->square_meter_surface</strong>m²</td></tr>";
+        $slope = "<tr><td>Classe Pendenza:</td><td><strong>$this->slope</strong></td></tr>";
+        $way = "<tr><td>Classe Trasporto:</td><td><strong>$this->way</strong></td></tr>";
+        $municipality = "<tr><td>Comune:</td><td><strong>$this->municipality</strong></td></tr>";
+
+        foreach ($this->catalog_estimate['interventions']['items'] as $intervention) {
+            $interventions .= "<tr><td>{$intervention['code']}</td><td>{$intervention['unit_price']}€</td><td>{$intervention['price']}€</td></tr>";
+        }
+        //if $intervention is an empty string return "nessun intervento", else return the table
+        $interventions = $interventions == "" ? "<tr><td><strong>Nessun intervento</strong></td></tr>" : $interventions;
+        //if $area is an empty string return "/", else return the table
+        $area = $area == "" ? "<tr><td><strong>/</strong></td></tr>" : $area;
+        //if $slope is an empty string return "/", else return the table
+        $slope = $slope == "" ? "<tr><td><strong>/</strong></td></tr>" : $slope;
+        //if $way is an empty string return "/", else return the table
+        $way = $way == "" ? "<tr><td><strong>/</strong></td></tr>" : $way;
+        //if $municipality is an empty string return "/", else return the table
+        $municipality = $municipality == "" ? "<tr><td><strong>/</strong></td></tr>" : $municipality;
+
         return [
             'id' => $this->id,
             'name' => [
                 'it' => $this->code,
             ],
             'description' => [
-                'it' => "<table>
-	<tbody>
-		<tr>
-			<td><strong>Area:</strong></td>
-			<td>$this->square_meter_surface</td>
-		</tr>
-		<tr>
-			<td><strong>Classe Pendenza:</strong></td>
-			<td>$this->slope</td>
-		</tr>
-		<tr>
-			<td><strong>Pendenza:</strong></td>
-			<td>$this->average_slope</td>
-		</tr>
-		<tr>
-			<td><strong>Classe Trasporto:</strong></td>
-			<td>$this->way</td>
-		</tr>
-		<tr>
-			<td><strong>Comune:</strong></td>
-			<td>$this->municipality</td>
-		</tr>
-		<tr>
-		</tr>
-	</tbody>
-    <h3>Interventi Forestali:</h3>
-<table>
-	<thead>
-		<tr>
-			<th>Codice</th>
-			<th>Costo Singolo</th>
-			<th>Costo Complessivo</th>
-		</tr>
-	</thead>
-</table>
-</table>"
+                'it' => "<h2><strong>Interventi:</strong></h2><table><thead><tr><th>Cod.</th><th>P.Unit.</th><th>P. Tot</th></tr></thead><tbody>$interventions</tbody></table><h2><strong>Dettagli:</strong></h2><table><tbody>$area$slope$way$municipality</tbody></table>"
             ],
             'related_url' => [
                 'https://sisteco.maphub.it/cadastral-parcels/' . $this->id,
