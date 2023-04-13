@@ -47,4 +47,32 @@ return [
         'unit' => '€',
         'value' => 850,
     ],
+
+    'cadastralParcelAreaStyle' => [
+        'cadastral' => [
+            'strokeColor' => '#FF0000',
+            'fillColor' => '#110000',
+            'opacity' => '10',
+        ],
+        '0' => [
+            'strokeColor' => '#FFFFFF',
+            'fillColor' => '#111111',
+            'opacity' => '80',
+        ],
+        '1' => [
+            'strokeColor' => '#00FF00',
+            'fillColor' => '#001100',
+            'opacity' => '80',
+        ],
+        '2' => [
+            'strokeColor' => '#0000FF',
+            'fillColor' => '#000011',
+            'opacity' => '80',
+        ],
+        '3' => [
+            'strokeColor' => '#FFFF00',
+            'fillColor' => '#111100',
+            'opacity' => '80',
+        ],
+    ]
 ];
