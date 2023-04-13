@@ -15,7 +15,7 @@
     <div class="parcel-details">
         <h1>Dettagli della Parcella</h1>
         <div style="position:relative;display:block;width:100%;height:200px;">
-            <app-map parcel="{{ $cadastralParcel->id }}"></app-map>
+            <app-root parcel="{{ $cadastralParcel->id }}"></app-root>
         </div>
 
         <table class="parcel-details-table">
