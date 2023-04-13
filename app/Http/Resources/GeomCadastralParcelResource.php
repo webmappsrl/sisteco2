@@ -26,10 +26,15 @@ class GeomCadastralParcelResource extends JsonResource
             'type' => 'FeatureCollection',
             'features' => [
                 [
-                    'type' => 'Cadastral Parcel',
-                    'id' => $this->id,
-                    'properties' => [],
-                    'cod_int' => $this->cod_int,
+                    'type' => 'feature',
+                    'properties' => [
+                        'id' => $this->id,
+                        'type_sisteco' => 'Cadastral Parcel',
+                        'strokeColor' => config('sisteco.cadastralParcelAreaStyle.cadastral.strokeColor'),
+                        'fillColor' => config('sisteco.cadastralParcelAreaStyle.cadastral.fillColor'),
+                        'opacity' => config('sisteco.cadastralParcelAreaStyle.cadastral.opacity'),
+
+                    ],
                     'geometry' => json_decode($parcel_geometry, true),
                 ]
             ]
@@ -38,7 +43,17 @@ class GeomCadastralParcelResource extends JsonResource
         // Add the geometries from the catalog
         foreach ($catalog_geometries as $geometry) {
             $output['features'][] = [
-                $geometry
+                'type' => 'feature',
+                'properties' => [
+                    'id' => $geometry['id'],
+                    'type_sisteco' => 'Catalog Area',
+                    'cod_int' => $geometry['cod_int'],
+                    'strokeColor' => config('sisteco.cadastralParcelAreaStyle.' . $geometry['cod_int'] . '.strokeColor'),
+                    'fillColor' => config('sisteco.cadastralParcelAreaStyle.' . $geometry['cod_int'] . '.fillColor'),
+                    'opacity' => config('sisteco.cadastralParcelAreaStyle.' . $geometry['cod_int'] . '.opacity'),
+
+                ],
+                'geometry' => $geometry['geometry'],
             ];
         }
 

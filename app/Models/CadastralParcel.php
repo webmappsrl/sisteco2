@@ -285,10 +285,8 @@ class CadastralParcel extends Model
         if (count($results) > 0) {
             foreach ($results as $area) {
                 $geometries[] = [
-                    'type' => 'Catalog Area',
                     'id' => $area->id,
                     'cod_int' => $area->cod_int,
-                    'properties' => [],
                     'geometry' => json_decode($area->geom, true)
                 ];
             }
