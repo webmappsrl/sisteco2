@@ -50,29 +50,24 @@ return [
 
     'cadastralParcelAreaStyle' => [
         'cadastral' => [
-            'strokeColor' => '#FF0000',
-            'fillColor' => '#110000',
-            'opacity' => '10',
+            'strokeColor' => 'rgba(255, 0, 0, 0.1)',
+            'fillColor' => 'rgba(17, 0, 0, 0.1)',
         ],
         '0' => [
-            'strokeColor' => '#FFFFFF',
-            'fillColor' => '#111111',
-            'opacity' => '80',
+            'strokeColor' => 'rgba(255, 255, 255, 0.8)',
+            'fillColor' => 'rgba(17, 17, 17, 0.8)',
         ],
         '1' => [
-            'strokeColor' => '#00FF00',
-            'fillColor' => '#001100',
-            'opacity' => '80',
+            'strokeColor' => 'rgba(0, 255, 0, 0.8)',
+            'fillColor' => 'rgba(0, 17, 0, 0.8)',
         ],
         '2' => [
-            'strokeColor' => '#0000FF',
-            'fillColor' => '#000011',
-            'opacity' => '80',
+            'strokeColor' => 'rgba(0, 0, 255, 0.8)',
+            'fillColor' => 'rgba(0, 0, 17, 0.8)',
         ],
         '3' => [
-            'strokeColor' => '#FFFF00',
-            'fillColor' => '#111100',
-            'opacity' => '80',
+            'strokeColor' => 'rgba(255, 255, 0, 0.8)',
+            'fillColor' => 'rgba(17, 17, 0, 0.8)',
         ],
     ]
 ];
