@@ -247,10 +247,16 @@ class CadastralParcel extends Model
             ];
 
             //assign the fields to json
-            $json['interventions'] = $interventions;
-            $json['maintenance'] = $maintenance;
-            $json['general'] = $general;
 
+
+            //if $intervention is empty or if all 'code' fields inside $intervention['items'] are 0, then $json will be empty
+            if (empty($interventions['items'])) {
+                $json = [];
+            } else {
+                $json['interventions'] = $interventions;
+                $json['maintenance'] = $maintenance;
+                $json['general'] = $general;
+            }
             return $json;
         } else {
             return [];
