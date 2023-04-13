@@ -32,8 +32,6 @@ class GeomCadastralParcelResource extends JsonResource
                         'type_sisteco' => 'Cadastral Parcel',
                         'strokeColor' => config('sisteco.cadastralParcelAreaStyle.cadastral.strokeColor'),
                         'fillColor' => config('sisteco.cadastralParcelAreaStyle.cadastral.fillColor'),
-
-
                     ],
                     'geometry' => json_decode($parcel_geometry, true),
                 ]

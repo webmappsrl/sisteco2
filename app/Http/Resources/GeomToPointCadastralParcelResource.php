@@ -16,41 +16,35 @@ class GeomToPointCadastralParcelResource extends JsonResource
     public function toArray(Request $request): array
     {
         $geometry = DB::select("select st_asGeojson(st_centroid(geometry)) as geom from cadastral_parcels where id=$this->id;")[0]->geom;
-
-        $interventions = "<h2><strong>Interventi:</strong></h2><table><thead><tr><th>Cod.</th><th>P.Unit.</th><th>P. Tot</th></tr></thead><tbody>";
-        $area = "<tr><td>Area:</td><td><strong>$this->square_meter_surface</strong>m²</td></tr>";
-        $slope = "<tr><td>Classe Pendenza:</td><td><strong>$this->slope</strong></td></tr>";
-        $way = "<tr><td>Classe Trasporto:</td><td><strong>$this->way</strong></td></tr>";
-        $municipality = "<tr><td>Comune:</td><td><strong>$this->municipality</strong></td></tr>";
+        $break = "<br>";
+        $area = number_format($this->square_meter_surface, 4, ',', '');
+        $slope = $this->computeSlopeClass();
+        $areaHTML = "<tr><td>Area:</td><td><strong>$area</strong></td></tr>";
+        $slopeHTML = "<tr><td>Classe Pendenza:</td><td><strong>$slope</strong></td></tr>";
+        $wayHTML = "<tr><td>Classe Trasporto:</td><td><strong>$this->way</strong></td></tr>";
+        $municipalityHTML = "<tr><td>Comune:</td><td><strong>$this->municipality</strong></td></tr>";
+        $detailsBlockHTML = "<h2><strong>Dettagli:</strong></h2><table><tbody>$areaHTML$slopeHTML$wayHTML$municipalityHTML</tbody></table>";
+        $costsBlockHTML = "<h2><strong>Costi:</strong></h2><table><tbody><tr><td>Costo:</td><td><strong>$this->cost</strong></td></tr></tbody></table>";
 
         //if $this->catalog_estimate is an empty array return "nessun intervento", else return the table
         if (empty($this->catalog_estimate)) {
-            $interventions = "<p><strong>Nessun intervento</strong></p>";
+            $interventionsHTML = "<h1><strong>Nessun intervento</strong></h1>";
         } else {
+            $interventionsHTML = "<h2><strong>Interventi:</strong></h2><table><thead><tr><th>Cod.</th><th>Descrizione</th><th>Area Di Intervento</th></tr></thead><tbody>";
             foreach ($this->catalog_estimate['interventions']['items'] as $intervention) {
-                $interventions .= "<tr><td>{$intervention['code']}</td><td>{$intervention['unit_price']}€</td><td>{$intervention['price']}€</td></tr>";
+                //find the name of the catalog_type that has the id equal to the first letter of $intervention['code']
+                $catalog_type_description = DB::select("select name from catalog_types where cod_int = '" . substr($intervention['code'], 0, 1) . "';")[0]->name;
+                $interventionsHTML .= "<tr><td>{$intervention['code']}</td><td>{$catalog_type_description}</td><td>{$intervention['area']}</td></tr>";
             }
-            $interventions .= "</tbody></table>";
+            $interventionsHTML .= "</tbody></table>";
         }
-
-        // //if $intervention is an empty string return "nessun intervento", else return the table
-        // $interventions = $interventions == "" ? "<tr><td><strong>Nessun intervento</strong></td></tr>" : $interventions;
-        //if $area is an empty string return "/", else return the table
-        $area = $area == "" ? "<tr><td><strong>/</strong></td></tr>" : $area;
-        //if $slope is an empty string return "/", else return the table
-        $slope = $slope == "" ? "<tr><td><strong>/</strong></td></tr>" : $slope;
-        //if $way is an empty string return "/", else return the table
-        $way = $way == "" ? "<tr><td><strong>/</strong></td></tr>" : $way;
-        //if $municipality is an empty string return "/", else return the table
-        $municipality = $municipality == "" ? "<tr><td><strong>/</strong></td></tr>" : $municipality;
-
         return [
             'id' => $this->id,
             'name' => [
                 'it' => $this->code,
             ],
             'description' => [
-                'it' => "$interventions<br><br><strong>Dettagli:</strong></h2><table><tbody>$area$slope$way$municipality</tbody></table>"
+                'it' => "$interventionsHTML$break$costsBlockHTML$break$detailsBlockHTML$break"
             ],
             'related_url' => [
                 'https://sisteco.maphub.it/cadastral-parcels/' . $this->id,
