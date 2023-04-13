@@ -54,12 +54,14 @@ class CadastralParcel extends Resource
             Text::make('Codice Catastale', 'code')
                 ->sortable(),
             Text::make('Comune', 'municipality'),
-            Currency::make('Stima', 'estimated_value')
-                ->currency('EUR')
-                ->sortable()
-                ->displayUsing(function ($value) {
-                    return number_format($value, 2, ',', '.') . ' €';
-                }),
+            //if $this->estimated_value is greather than 0, create a currency field with the value of $this->estimated_value, else create a text field that displays "Nessuna stima disponibile"
+            $this->estimated_value > 0 ? Currency::make('Valore Stimato', 'estimated_value')->currency('EUR')->displayUsing(function ($value) {
+                return number_format($value, 2, ',', '.') . ' €';
+            })->sortable() : Text::make('Valore Stimato', 'estimated_value', function ($value) {
+                return '<p style="color:red">Nessuna stima disponibile</p>';
+            })->asHtml(),
+
+
             Text::make('Area (mq)', 'square_meter_surface')
                 ->sortable()
                 ->displayUsing(function ($value) {
@@ -78,8 +80,8 @@ class CadastralParcel extends Resource
             Text::make(
                 'Interventi Forestali',
                 function () {
-                    if (is_null($this->catalog_estimate)) {
-                        return 'ND';
+                    if (empty($this->catalog_estimate)) {
+                        return '<p style="color:red">ND</p>';
                     }
                     $items = $this->catalog_estimate['interventions']['items'];
                     $info = $this->catalog_estimate['interventions']['info'];
@@ -148,8 +150,8 @@ class CadastralParcel extends Resource
                 }
             )->asHtml()->onlyOnDetail(),
             Text::make('Mantenimento', function () {
-                if (is_null($this->catalog_estimate)) {
-                    return 'ND';
+                if (empty($this->catalog_estimate)) {
+                    return '<p style="color:red">ND</p>';
                 }
 
                 $maintenanceItems = $this->catalog_estimate['maintenance']['items'];
@@ -211,8 +213,8 @@ class CadastralParcel extends Resource
                 return [$o, $u, $i];
             })->asHtml()->onlyOnDetail(),
             Text::make('Costi Generali', function () {
-                if (is_null($this->catalog_estimate)) {
-                    return 'ND';
+                if (empty($this->catalog_estimate)) {
+                    return '<p style="color:red">ND</p>';
                 }
 
                 $generals = $this->catalog_estimate['general'];
