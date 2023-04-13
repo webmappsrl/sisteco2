@@ -7,11 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/app.css">
     <title>Parcella n.{{ $cadastralParcel->id }}</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
     <div class="parcel-details">
         <h1>Dettagli della Parcella</h1>
+        <app-map parcel="{{ $cadastralParcel->id }}"></app-map>
+
         <table class="parcel-details-table">
             <thead>
                 <tr>
@@ -268,7 +271,9 @@
 
 
 
-
+    <script src="runtime.js" defer></script>
+    <script src="polyfills.js" defer></script>
+    <script src="main.js" defer></script>
 </body>
 
 </html>
