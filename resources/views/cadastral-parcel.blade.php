@@ -14,8 +14,9 @@
 <body>
     <h1>Dettagli della Particella Catastale {{ $cadastralParcel->code }}</h1>
     <div class="parcel-details">
-        <div class="map-container">
-            <app-root parcel="{{ $cadastralParcel->id }}"></app-root>
+        <h1>Dettagli della Parcella</h1>
+        <div style="position:relative;display:block;width:100%;height:200px;">
+            <app-map parcel="{{ $cadastralParcel->id }}"></app-map>
         </div>
         <table class="parcel-details-table">
             <tbody>
