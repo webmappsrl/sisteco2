@@ -14,9 +14,16 @@
 <body>
     <h1>Dettagli della Particella Catastale {{ $cadastralParcel->code }}</h1>
     <div class="parcel-details">
-        <h1>Dettagli della Parcella</h1>
-        <div style="position:relative;display:block;width:100%;height:200px;">
+        <div class="map-container">
             <app-map parcel="{{ $cadastralParcel->id }}"></app-map>
+        </div>
+        <div class="legenda">
+            <div class="color-plate">
+                <div><span style="background-color:rgba(41, 126, 209);"></span> Nessuna Lavorazione</div>
+                <div><span style="background-color:rgba(82, 229, 135);"></span> Diradamento</div>
+                <div><span style="background-color:rgba(168, 17, 215);"></span> Taglio ceduo</div>
+                <div><span style="background-color:rgba(198, 191, 80);"></span> Avviamento</div>
+            </div>
         </div>
         <table class="parcel-details-table">
             <tbody>
@@ -26,7 +33,7 @@
                 </tr>
                 <tr>
                     <th>Stima</th>
-                    <td>{{ number_format($cadastralParcel->estimated_value, 2, ',', '.') }}€</td>
+                    <td>{{ number_format($cadastralParcel->estimated_value, 2, ',', '.') }} €</td>
                 </tr>
                 <tr>
                     <th>Pendenza</th>
@@ -53,7 +60,7 @@
                     <th>Codice Intervento</th>
                     <th>Area</th>
                     <th>Costo €/Ettaro</th>
-                    <th>Totale Incl. IVA</th>
+                    <th style="text-align: right;">Totale Incl. IVA</th>
                 </tr>
             </thead>
             <tbody>
@@ -61,14 +68,14 @@
                     <tr>
                         <td>{{ $item['code'] }} ({{DB::select("select name from catalog_types where cod_int = '" . substr($item['code'], 0, 1) . "';")[0]->name;}})</td>
                         <td>{{ $item['area'] }}</td>
-                        <td>{{ $item['unit_price'] }}€</td>
-                        <td>{{ $item['price'] }}€</td>
+                        <td>{{ $item['unit_price'] }} €</td>
+                        <td style="text-align: right;">{{ $item['price'] }} €</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
         <br>
-        <table class="interventions-table">
+        <table class="interventions-table column-nd-text-right">
             <thead>
                 <tr>
                     <th>Descrizione</th>
@@ -78,58 +85,58 @@
             <tbody>
                 <tr>
                     <td>Costo Interventi (Somma costi interventi)</td>
-                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['intervention_price'] }}€</td>
+                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['intervention_price'] }} €</td>
                 </tr>
                 <tr>
                     <td>{{ $sisteco['supervision']['label'] }} ({{ $sisteco['supervision']['value'] . $sisteco['supervision']['unit'] }} di costi interventi)</td>
-                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['supervision_price'] }}€</td>
+                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['supervision_price'] }} €</td>
                 </tr>
                 <tr>
                     <td>{{ $sisteco['overheads']['label'] }} ({{ $sisteco['overheads']['value'] . $sisteco['overheads']['unit'] }} di costo interventi)</td>
-                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['overhead_price'] }}€</td>
+                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['overhead_price'] }} €</td>
                 </tr>
                 <tr>
                     <td>{{ $sisteco['business_profit']['label'] }} ({{ $sisteco['business_profit']['value'] . $sisteco['business_profit']['unit'] }} di costo interventi)</td>
-                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['business_profit_price'] }}€
+                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['business_profit_price'] }} €
                     </td>
                 </tr>
                 <tr>
                     <td>{{ $sisteco['intervention_certification']['label'] }}</td>
-                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['intervention_certification'] }}€
+                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['intervention_certification'] }} €
                     </td>
                 </tr>
                 <tr>
                     <td><strong>Totale Interventi certificati </strong></td>
-                    <td><strong>{{ $cadastralParcel->catalog_estimate['interventions']['info']['total_intervention_certificated_price'] }}€</strong>
+                    <td><strong>{{ $cadastralParcel->catalog_estimate['interventions']['info']['total_intervention_certificated_price'] }} €</strong>
                     </td>
                 </tr>
                 <tr>
                     <td>{{ $sisteco['team_management']['label'] }} ({{ $sisteco['team_management']['value'] . $sisteco['team_management']['unit'] }} di totale interventi certificati)</td>
-                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['team_price'] }}</td>
+                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['team_price'] }} €</td>
                 </tr>
                 <tr>
                     <td>{{ $sisteco['platform_maintenance']['label'] }} ({{ $sisteco['platform_maintenance']['value'] . $sisteco['platform_maintenance']['unit'] }} di totale interventi certificati)</td>
-                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['platform_maintenance_price'] }}
+                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['platform_maintenance_price'] }} €
                     </td>
                 </tr>
                 <tr>
                     <td> <strong>Totale Lordo Interventi</strong> </td>
-                    <td><strong>{{ $cadastralParcel->catalog_estimate['interventions']['info']['total_intervention_gross_price'] }}</strong>
+                    <td><strong>{{ $cadastralParcel->catalog_estimate['interventions']['info']['total_intervention_gross_price'] }} €</strong>
                     </td>
                 </tr>
                 <tr>
                     <td>{{ $sisteco['vat']['label'] }} ({{ $sisteco['vat']['value'] . $sisteco['vat']['unit'] }})</td>
-                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['total_intervention_vat'] }}
+                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['total_intervention_vat'] }} €
                     </td>
                 </tr>
                 <tr>
                     <td><strong>Totale Netto Interventi</strong></td>
-                    <td><strong>{{ $cadastralParcel->catalog_estimate['interventions']['info']['total_intervention_net_price'] }}</strong>
+                    <td><strong>{{ $cadastralParcel->catalog_estimate['interventions']['info']['total_intervention_net_price'] }} €</strong>
                     </td>
                 </tr>
                 <tr>
                     <td>Costo Lordo/Ettaro</td>
-                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['intervention_gross_price_per_area'] }}
+                    <td>{{ $cadastralParcel->catalog_estimate['interventions']['info']['intervention_gross_price_per_area'] }} €
                     </td>
                 </tr>
             </tbody>
@@ -140,9 +147,9 @@
         <p style="text-align: center;">
             Area Interventi: {{$cadastralParcel->catalog_estimate['interventions']['info']['intervention_area']}} ha
             <br>
-            Costo Manutenzione {{$sisteco['maintenance']['unit']}} {{$sisteco['maintenance']['value']}}
+            Costo Manutenzione {{$sisteco['maintenance']['unit']}} {{number_format($sisteco['maintenance']['value'],2,',','.')}}
         </p>
-        <table class="maintenance-table">
+        <table class="maintenance-table column-nd-text-right">
             <thead>
                 <tr>
                     <th>Codice Intervento</th>
@@ -152,56 +159,57 @@
             @foreach ($cadastralParcel->catalog_estimate['maintenance']['items'] as $index => $item)
                 <tr>
                     <td>Mantenimento anno {{ $index + 1 }}</td>
-                    <td>{{ $item['price'] }}€</td>
+                    <td>{{ $item['price'] }} €</td>
                 </tr>
             @endforeach
             <tr>
                 <td>Certificazione 2° anno</td>
-                <td>{{ $cadastralParcel->catalog_estimate['maintenance']['certifications'][0]['price'] }}€</td>
+                <td>{{ $cadastralParcel->catalog_estimate['maintenance']['certifications'][0]['price'] }} €</td>
             </tr>
             <tr>
                 <td>Certificazione 5° anno</td>
-                <td>{{ $cadastralParcel->catalog_estimate['maintenance']['certifications'][1]['price'] }}€</td>
+                <td>{{ $cadastralParcel->catalog_estimate['maintenance']['certifications'][1]['price'] }} €</td>
             </tr>
             <tr>
                 <td><strong>Totale Lordo Manutenzioni</strong></td>
-                <td><strong>{{ $cadastralParcel->catalog_estimate['maintenance']['summary']['total_maintenance_gross_price'] }}€</strong>
+                <td><strong>{{ $cadastralParcel->catalog_estimate['maintenance']['summary']['total_maintenance_gross_price'] }} €</strong>
                 </td>
             </tr>
             <tr>
                 <td>{{ $sisteco['vat']['label'] }}</td>
-                <td>{{ $cadastralParcel->catalog_estimate['maintenance']['summary']['total_maintenance_vat'] }}€</td>
+                <td>{{ $cadastralParcel->catalog_estimate['maintenance']['summary']['total_maintenance_vat'] }} €</td>
             </tr>
             <tr>
                 <td><strong>Totale Netto Manutenzioni</strong></td>
-                <td><strong>{{ $cadastralParcel->catalog_estimate['maintenance']['summary']['total_maintenance_net_price'] }}€</strong>
+                <td><strong>{{ $cadastralParcel->catalog_estimate['maintenance']['summary']['total_maintenance_net_price'] }} €</strong>
                 </td>
             </tr>
             <tr>
                 <td>Costo Lordo/Ettaro</td>
-                <td>{{ $cadastralParcel->catalog_estimate['maintenance']['summary']['maintenance_gross_price_per_area'] }}€
+                <td>{{ $cadastralParcel->catalog_estimate['maintenance']['summary']['maintenance_gross_price_per_area'] }} €
                 </td>
             </tr>
         </table>
         <hr>
+        <div class="pagebreak"> </div>
         <h2>Totale generale</h2>
-        <table class="total-table">
+        <table class="total-table column-nd-text-right">
             <tbody>
                 <tr>
                     <th>Totale Lordo</th>
-                    <td>{{ $cadastralParcel->catalog_estimate['general']['total_gross_price'] }}€</td>
+                    <td>{{ $cadastralParcel->catalog_estimate['general']['total_gross_price'] }} €</td>
                 </tr>
                 <tr>
                     <th>IVA 22%</th>
-                    <td>{{ $cadastralParcel->catalog_estimate['general']['total_vat'] }}</td>
+                    <td>{{ $cadastralParcel->catalog_estimate['general']['total_vat'] }} €</td>
                 </tr>
                 <tr>
                     <th>Totale Netto</th>
-                    <td>{{ $cadastralParcel->catalog_estimate['general']['total_net_price'] }}€</td>
+                    <td>{{ $cadastralParcel->catalog_estimate['general']['total_net_price'] }} €</td>
                 </tr>
                 <tr>
                     <th>Totale Lordo/Ettaro</th>
-                    <td>{{ $cadastralParcel->catalog_estimate['general']['total_gross_price_per_area'] }}€</td>
+                    <td>{{ $cadastralParcel->catalog_estimate['general']['total_gross_price_per_area'] }} €</td>
                 </tr>
             </tbody>
         @else

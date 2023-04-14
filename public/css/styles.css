@@ -4,5 +4,11 @@
         margin-bottom: 2rem;
         width: 100%;
         margin: auto;
-      }
+    }
+    .maintenance-table, .interventions-table {
+        width: 100%;
+    }
+    hr {
+        display: none;
+    }
 }
