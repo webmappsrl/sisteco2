@@ -18,7 +18,25 @@ hr {
 }
 .map-container {
   position:relative;display:block;width:100%;height:500px;
-  margin-bottom: 30px;
+}
+.legenda {
+  font-size: 14px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+.legenda .color-plate {
+  display: flex;
+  gap: 10px;
+}
+.legenda .color-plate div {
+  display: flex;
+  padding-right: 20px;
+}
+.legenda .color-plate span {
+  display: block;
+  margin-right: 5px;
+  width: 15px;
+  height: 15px;
 }
 .parcel-details{
   margin-bottom: 2rem;
@@ -30,7 +48,9 @@ hr {
     margin-bottom: 1rem;
     text-align: center;
 }
-
+.column-nd-text-right tr td:nth-child(2),.column-nd-text-right tr th:nth-child(2){
+  text-align: right;
+}
 .parcel-details-table{
   border-collapse: collapse;
   width: 100%;
