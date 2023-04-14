@@ -16,15 +16,44 @@ class GeomCadastralParcelResource extends JsonResource
     public function toArray(Request $request): array
     {
 
+        $output = [
+            'type' => 'FeatureCollection',
+            'features' => [],
+        ];
+
+
+        // First Add catalog feature
+
         // Get the geometries from the catalog
         $catalog_geometries = $this->getCatalogGeometries(1);
+
+        // Add the geometries from the catalog
+        if(count($catalog_geometries)>0) {
+            foreach ($catalog_geometries as $geometry) {
+                $output['features'][] = [
+                    'type' => 'Feature',
+                    'properties' => [
+                        'id' => $geometry['id'],
+                        'type_sisteco' => 'Catalog Area',
+                        'cod_int' => $geometry['cod_int'],
+                        'strokeColor' => config('sisteco.cadastralParcelAreaStyle.' . $geometry['cod_int'] . '.strokeColor'),
+                        'fillColor' => config('sisteco.cadastralParcelAreaStyle.' . $geometry['cod_int'] . '.fillColor'),
+    
+    
+                    ],
+                    'geometry' => $geometry['geometry'],
+                ];
+            }    
+        }
+
+        // Add cadastral parcel feature
 
         // Get the geometry of the current cadastral parcel
         $parcel_geometry = DB::select("select st_asGeojson(geometry) as geom from cadastral_parcels where id=$this->id;")[0]->geom;
 
-        $output = [
-            'type' => 'FeatureCollection',
-            'features' => [
+
+
+        $output['features'][]=
                 [
                     'type' => 'Feature',
                     'properties' => [
@@ -34,26 +63,7 @@ class GeomCadastralParcelResource extends JsonResource
                         'fillColor' => config('sisteco.cadastralParcelAreaStyle.cadastral.fillColor'),
                     ],
                     'geometry' => json_decode($parcel_geometry, true),
-                ]
-            ]
-        ];
-
-        // Add the geometries from the catalog
-        foreach ($catalog_geometries as $geometry) {
-            $output['features'][] = [
-                'type' => 'Feature',
-                'properties' => [
-                    'id' => $geometry['id'],
-                    'type_sisteco' => 'Catalog Area',
-                    'cod_int' => $geometry['cod_int'],
-                    'strokeColor' => config('sisteco.cadastralParcelAreaStyle.' . $geometry['cod_int'] . '.strokeColor'),
-                    'fillColor' => config('sisteco.cadastralParcelAreaStyle.' . $geometry['cod_int'] . '.fillColor'),
-
-
-                ],
-                'geometry' => $geometry['geometry'],
-            ];
-        }
+                ];
 
         // Return the output
         return $output;
