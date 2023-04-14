@@ -28,7 +28,7 @@ return [
         'value' => 1100,
     ],
     'team_management' => [
-        'label' => 'Perc. Gestione CDB',
+        'label' => 'Perc. Gestione',
         'unit' => '%',
         'value' => 2,
     ],
@@ -54,20 +54,20 @@ return [
             'fillColor' => 'rgba(255, 0, 0, 0)',
         ],
         '0' => [
-            'strokeColor' => 'rgba(255, 255, 255)',
-            'fillColor' => 'rgba(0, 255, 0, 0)',
+            'strokeColor' => 'rgba(41, 126, 209)',
+            'fillColor' => 'rgba(41, 126, 209, 0.4)',
         ],
         '1' => [
-            'strokeColor' => 'rgba(0, 255, 0)',
-            'fillColor' => 'rgba(0, 255, 0, 0.2)',
+            'strokeColor' => 'rgba(82, 229, 135)',
+            'fillColor' => 'rgba(82, 229, 135, 0.4)',
         ],
         '2' => [
-            'strokeColor' => 'rgba(0, 255, 0)',
-            'fillColor' => 'rgba(0, 255, 0, 0.2)',
+            'strokeColor' => 'rgba(168, 17, 215)',
+            'fillColor' => 'rgba(168, 17, 215, 0.4)',
         ],
         '3' => [
-            'strokeColor' => 'rgba(0, 255, 0)',
-            'fillColor' => 'rgba(0, 255, 0, 0.2)',
+            'strokeColor' => 'rgba(198, 191, 80)',
+            'fillColor' => 'rgba(198, 191, 80, 0.4)',
         ],
     ]
 ];
