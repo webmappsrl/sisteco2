@@ -7,15 +7,23 @@ body {
     justify-content: center;
     align-items: center;
 }
-
-hr{
-    width: 90%;
+h1 {
+  width: 100%;
+  text-align: center;
+}
+hr {
+  width: 90%;
   border: 1px solid lightgray;
   margin-bottom: 2rem;
 }
-
+.map-container {
+  position:relative;display:block;width:100%;height:500px;
+  margin-bottom: 30px;
+}
 .parcel-details{
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
+  width: 40%;
+  margin: auto;
 }
 .parcel-details h1{
     font-size: 1.5em;
@@ -25,7 +33,7 @@ hr{
 
 .parcel-details-table{
   border-collapse: collapse;
-  width: 30%;
+  width: 100%;
   margin-bottom: 1rem;
   font-size: 0.9em;
   font-family: Arial, Helvetica, sans-serif;
@@ -33,43 +41,42 @@ hr{
 }
 
 .interventions-table{
-    border-collapse: collapse;
-    width: 80%;
-    margin-bottom: 1rem;
-   
-    font-size: 0.9em;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: auto;
+  border-collapse: collapse;
+  width: 80%;
+  margin-bottom: 1rem;
+  
+  font-size: 0.9em;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: auto;
 }
-.maintenance-table{
-    border-collapse: collapse;
-    width: 80%;
-    margin-bottom: 1rem;
+.maintenance-table {
+  border-collapse: collapse;
+  width: 80%;
+  margin-bottom: 1rem;
+  font-size: 0.9em;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: auto;
+}
 
-    font-size: 0.9em;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: auto;}
-
- th,
- td {
+th,
+td {
   padding: 0.5rem;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
 
- th {
-  background-color: #f2f2f2;
+th {
+background-color: #f2f2f2;
 }
 
 tbody tr:nth-of-type(even) {
   background-color: #f9f9f9;
 }
-
 .message {
-			background-color: #dff2de;
-			border: 1px solid #ccebd1;
-			color: #42a958;
-			padding: 50px;
-			text-align: center;
-      font-size: 1.5rem;
-		}
+  background-color: #dff2de;
+  border: 1px solid #ccebd1;
+  color: #42a958;
+  padding: 50px;
+  text-align: center;
+  font-size: 1.5rem;
+}
