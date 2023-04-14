@@ -66,16 +66,40 @@ First of all install the [GEOBOX](https://github.com/webmappsrl/geobox) repo and
 Replace `${instance name}` with the instance name (APP_NAME in .env file)
 
 ```sh
-git clone git@github.com:webmappsrl/${instance name}.git
+git clone git@github.com:webmappsrl/${instance name}.git sisteco
 git flow init
 ```
 
-Important NOTE: remember to checkout the develop branch.
+*Important NOTE*: remember to checkout the develop branch.
 
 ```sh
 cd ${instance name}
 bash docker/init-docker.sh
+docker exec -u 0 -it php81_${instance name} bash
+chown -R 33 storage
+```
+
+*Important NOTE*: if you have installed XDEBUG you need to create the xdebug.log file on the docker:
+
+```bash
+docker exec -u 0 -it php81_${instance name} bash
+touch /var/log/xdebug.log
+chown -R 33 /var/log/
+```
+
+At the end run install command to for this instance
+```bash
 geobox_install ${instance name}
+```
+
+*Important NOTE*: 
+- Update your local repository of Geobox following its [Aliases instructions](https://github.com/webmappsrl/geobox#aliases) 
+- Make sure that the version of wm-package of your instance is at leaset 1.1
+
+Finally to import a fresh copy of database use Geobox restore command:
+
+```bash
+geobox_dump_restore ${instance name}
 ```
 
 ## Run web server from shell outside docker
@@ -222,9 +246,9 @@ Durante l'esecuzione degli script potrebbero verificarsi problemi di scrittura s
     NOTA: per eseguire il comando chown potrebbe essere necessario avere i privilegi di root. In questo caso si deve effettuare l'accesso al cointainer del docker utilizzando lo specifico utente root (-u 0). Questo è valido anche sbloccare la possibilità di scrivere nella cartella /var/log per il funzionamento di Xdedug
 
 -   Utilizzare il parametro `-u` per il comando `docker exec` così da specificare l'id utente, eg come utente root (utilizzare `APP_NAME` al posto di `$nomeApp`):
-    `bash
-docker exec -u 0 -it php81_$nomeApp bash scripts/deploy_dev.sh
-`
+    ```bash
+    docker exec -u 0 -it php81_$nomeApp bash
+    ```
 
 Xdebug potrebbe non trovare il file di log configurato nel .ini, quindi generare vari warnings
 
