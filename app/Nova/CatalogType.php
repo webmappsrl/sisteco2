@@ -50,7 +50,9 @@ class CatalogType extends Resource
                 ->rules('json')
                 ->keyLabel('Type')
                 ->valueLabel('Price (€)')
-                ->hideFromIndex(),
+                ->hideFromIndex()
+                //help field to show the correct number format
+                ->help('Utilizzare la seguente formattazione numerica: 10000.45'),
             Text::make('Areas #', function () {
                 return $this->catalogAreas()->count();
             }),
