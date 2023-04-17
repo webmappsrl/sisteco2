@@ -6,6 +6,7 @@ use App\Nova\User;
 use App\Nova\Owner;
 use App\Nova\Catalog;
 use Laravel\Nova\Nova;
+use App\Enums\UserRole;
 use App\Nova\CatalogArea;
 use App\Nova\CatalogType;
 use Illuminate\Http\Request;
@@ -85,11 +86,19 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function gate()
     {
-        Gate::define('viewNova', function ($user) {
-            return in_array($user->email, [
-                //
-            ]);
-        });
+        Gate::define(
+            'viewNova',
+            function ($user) {
+                $userIsAdmin = $user->hasRole(UserRole::Admin);
+                $isInDevelopment = env('APP_ENV') == 'develop';
+                $isInProduction = env('APP_ENV') == 'production';
+
+                if ($isInDevelopment || $isInProduction) {
+                    return $userIsAdmin;
+                }
+                return true;
+            }
+        );
     }
 
     /**
