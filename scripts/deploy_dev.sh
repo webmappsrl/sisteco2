@@ -8,14 +8,14 @@ echo "Deployment started ..."
 (php artisan down) || true
 
 # Pull the latest version of the app
-git pull origin develop
+# git pull origin develop
 
 # Install composer dependencies
 composer install  --no-interaction --prefer-dist --optimize-autoloader
 # php artisan nova:install
 
 # Run database migrations
-php artisan migrate:fresh --force --seed
+php artisan migrate
 
 # Clear caches
 php artisan cache:clear
@@ -36,7 +36,7 @@ php artisan optimize
 
 # Compile npm assets
 # npm run prod
-cd vendor/laravel/nova && npm install
+# cd vendor/laravel/nova && npm install
 # Exit maintenance mode
 php artisan up
 

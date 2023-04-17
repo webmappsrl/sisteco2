@@ -4,20 +4,17 @@ on:
   push:
     branches: 
       - main
-  pull_request:
-    branches: 
-      - main
 
 jobs:
   laravel-tests:
-
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgis/postgis:10-2.5
+        image: postgis/postgis:14-3.3
         env:
           POSTGRES_PASSWORD: sisteco
           POSTGRES_DB: sisteco
+          POSTGRES_USER: sisteco
         ports:
           - 5432:5432
         # needed because the postgres container does not provide a healthcheck
@@ -28,11 +25,13 @@ jobs:
         php-version: '8.1'
     - uses: actions/checkout@v3
     - name: Copy .env
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      run: cp .env-example .env
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Generate key
       run: php artisan key:generate
+    - name: Add hosts to /etc/hosts
+      run: sudo echo "127.0.0.1 db" | sudo tee -a /etc/hosts
     - name: Migrate
       run: php artisan migrate
       env:
