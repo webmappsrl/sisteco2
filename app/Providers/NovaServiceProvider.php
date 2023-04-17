@@ -15,6 +15,7 @@ use App\Nova\Dashboards\Main;
 use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Menu\MenuSection;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Blade;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
@@ -62,6 +63,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     ->icon('download')->collapsable(),
             ];
         });
+
+        $this->getFooter();
     }
 
     /**
@@ -131,5 +134,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function register()
     {
         //
+    }
+
+    //create a footer
+    private function getFooter()
+    {
+        Nova::footer(function () {
+            return Blade::render('nova/footer');
+        });
     }
 }
