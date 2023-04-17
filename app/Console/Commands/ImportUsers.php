@@ -173,12 +173,16 @@ class ImportUsers extends Command
             // get parcel geometry
             if ($parcelData['geometry']) {
                 $geojson_content = json_encode($parcelData['geometry']);
-                $sql = "SELECT ST_AsText(ST_Force2D(ST_CollectionExtract(ST_Polygonize(ST_GeomFromGeoJSON('" . $geojson_content . "')), 3))) As wkt";
+
+                if ($parcelData['geometry']['type'] === 'MultiPolygon') {
+                    $sql = "SELECT ST_AsText(ST_Force2D(ST_CollectionExtract(ST_Polygonize(ST_GeomFromGeoJSON('" . $geojson_content . "')), 3))) As wkt";
+                } else {
+                    $sql = "SELECT ST_AsText(ST_Force2D(ST_Multi(ST_GeomFromGeoJSON('" . $geojson_content . "')))) As wkt";
+                }
                 $parcelGeometry = DB::select($sql)[0]->wkt;
             } else {
                 $parcelGeometry = null;
             }
-
             // create parcel
             CadastralParcel::updateOrCreate(
                 ['sisteco_legacy_id' => $parcelData['id']],
