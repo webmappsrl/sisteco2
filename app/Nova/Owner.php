@@ -32,7 +32,7 @@ class Owner extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email', 'phone', 'address', 'city', 'state', 'zip', 'country'
+        'id', 'first_name', 'last_name', 'business_name', 'email', 'phone', 'addr:city', 'addr:province', 'addr:locality'
     ];
 
     /**

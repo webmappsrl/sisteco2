@@ -37,7 +37,7 @@ class EstimateByCatalog extends Command
 
         $parcels = CadastralParcel::whereIn('id', $ids)->get();
         $tot_p = $parcels->count();
-        $count_p = 1;
+        $count_p = 0;
 
         // Loop on particles
         foreach ($parcels as $p) {

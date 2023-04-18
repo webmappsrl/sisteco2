@@ -62,10 +62,10 @@ class CadastralParcel extends Resource
             })->asHtml(),
 
 
-            Text::make('Area (mq)', 'square_meter_surface')
+            Text::make('Area (ettari)', 'square_meter_surface')
                 ->sortable()
                 ->displayUsing(function ($value) {
-                    return number_format($value, 2, ',', '.') . ' MQ';
+                    return number_format($value / 10000, 4, ',', '.') . ' ha';
                 }),
             Text::make('Pendenza media (º)', 'average_slope', function ($slope) {
                 return str_replace('.', ',', round($slope, 2));
