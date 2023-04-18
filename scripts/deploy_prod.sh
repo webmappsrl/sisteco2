@@ -8,6 +8,8 @@ php artisan down
 composer install
 composer dump-autoload
 
+php artisan migrate --force
+
 # Clear and cache config
 php artisan config:cache
 php artisan config:clear
@@ -16,9 +18,7 @@ php artisan config:clear
 php artisan clear-compiled
 
 # TODO: Uncomment when api.favorite issue will be resolved
-# php artisan optimize
-
-php artisan migrate
+php artisan optimize
 
 php artisan up
 
