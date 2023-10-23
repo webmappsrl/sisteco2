@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\User;
 use App\Models\Owner;
+use App\Enums\UserRole;
 use App\Models\Catalog;
 use App\Models\CatalogArea;
 use App\Models\CatalogType;
@@ -89,10 +90,10 @@ class ImportUsers extends Command
             foreach ($users as $user) {
 
                 //check if user already exists
-                if (User::where('email', $user['email'])->exists()) {
-                    $this->info('User ' . $user['name'] . ' already exists, skipping...');
-                    continue;
-                }
+                // if (User::where('email', $user['email'])->exists()) {
+                //     $this->info('User ' . $user['name'] . ' already exists, skipping...');
+                //     continue;
+                // }
                 $count++;
                 $this->info('Importing user ' . $user['name'] . ' (' . $count . '/' . count($users));
 
@@ -105,6 +106,10 @@ class ImportUsers extends Command
                 ]);
             }
         }
+        //set the role of the user with email = team@webmapp.it to admin
+        $webmapp = User::where('email', 'team@webmapp.it')->first();
+        $webmapp->roles = UserRole::Admin;
+        $webmapp->save();
 
         $this->info('Done! Imported ' . $count . ' users.');
     }
@@ -173,12 +178,16 @@ class ImportUsers extends Command
             // get parcel geometry
             if ($parcelData['geometry']) {
                 $geojson_content = json_encode($parcelData['geometry']);
-                $sql = "SELECT ST_AsText(ST_Force2D(ST_CollectionExtract(ST_Polygonize(ST_GeomFromGeoJSON('" . $geojson_content . "')), 3))) As wkt";
+
+                if ($parcelData['geometry']['type'] === 'MultiPolygon') {
+                    $sql = "SELECT ST_AsText(ST_Force2D(ST_CollectionExtract(ST_Polygonize(ST_GeomFromGeoJSON('" . $geojson_content . "')), 3))) As wkt";
+                } else {
+                    $sql = "SELECT ST_AsText(ST_Force2D(ST_Multi(ST_GeomFromGeoJSON('" . $geojson_content . "')))) As wkt";
+                }
                 $parcelGeometry = DB::select($sql)[0]->wkt;
             } else {
                 $parcelGeometry = null;
             }
-
             // create parcel
             CadastralParcel::updateOrCreate(
                 ['sisteco_legacy_id' => $parcelData['id']],
