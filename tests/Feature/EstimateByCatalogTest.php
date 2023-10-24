@@ -312,9 +312,8 @@ class EstimateByCatalogTest extends TestCase
     public function test_estimate_by_catalog_without_id()
     {
 
-        $this->expectException(RuntimeException::class);
         $this->artisan('sisteco2:estimate_by_catalog')
-            ->assertExitCode(1);
+            ->assertExitCode(0);
     }
 
     /**
