@@ -86,9 +86,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function gate()
     {
         Gate::define('viewNova', function ($user) {
-            return in_array($user->email, [
-                //
-            ]);
+            $isInDevelopment = env('APP_ENV') == 'develop';
+            $isInProduction = env('APP_ENV') == 'production';
+
+            if ($isInDevelopment || $isInProduction) {
+                return $user->email === 'team@webmapp.it';
+            }
+            return true;
         });
     }
 
