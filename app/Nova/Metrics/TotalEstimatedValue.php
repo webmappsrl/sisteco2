@@ -3,6 +3,7 @@
 namespace App\Nova\Metrics;
 
 use App\Models\CadastralParcel;
+use App\Models\CatalogArea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Metrics\Value;
 
@@ -17,10 +18,10 @@ class TotalEstimatedValue extends Value
     public function calculate(NovaRequest $request)
     {
         $total = 0;
-        $cadastralParcel = CadastralParcel::all();
+        $catalogAreas = CatalogArea::all();
 
-        foreach ($cadastralParcel as $parcel) {
-            $total += $parcel->estimated_value;
+        foreach ($catalogAreas as $area) {
+            $total += $area->estimated_value;
         }
 
         return $this->result($total)->format('0.00')->prefix('€ ');
@@ -62,6 +63,6 @@ class TotalEstimatedValue extends Value
 
     public function name()
     {
-        return __('Total Estimated Parcels Value');
+        return __('Total Estimated Catalog Areas Value');
     }
 }
