@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Exception;
 use App\Models\Catalog;
 use App\Models\CadastralParcel;
+use App\Models\CatalogArea;
 use Faker\Core\Number;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -16,14 +17,13 @@ class EstimateByCatalog extends Command
      *
      * @var string
      */
-    protected $signature = 'sisteco2:estimate_by_catalog 
-                            {id : id of the catalog that must be used to estimate}';
+    protected $signature = 'sisteco2:estimate_by_catalog {id?}';
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'This command loop on all cadastral particles and compute the estimated value on a specific catalog identified by id';
+    protected $description = 'This command loop on all catalog areas and compute the estimated value. If an id is passed, it will compute only for that catalog area.';
 
     /**
      * Execute the console command.
@@ -32,32 +32,39 @@ class EstimateByCatalog extends Command
      */
     public function handle()
     {
-        $this->info('Processing');
-        $ids = collect(DB::select('select distinct cadastral_parcel_id as id from cadastral_parcel_owner;'))->pluck('id')->toArray();
 
-        $parcels = CadastralParcel::whereIn('id', $ids)->get();
-        $tot_p = $parcels->count();
-        $count_p = 1;
-
-        // Loop on particles
-        foreach ($parcels as $p) {
-            $p->catalog_estimate = $p->computeCatalogEstimate($this->argument('id'));
-
-            //format the float number to fit the database column
-            $estimate = $p->catalog_estimate['general']['total_gross_price'] ?? 0;
+        if ($this->argument('id')) {
+            $this->info('Processing only catalog area with id: ' . $this->argument('id'));
+            $catalog_area = CatalogArea::find($this->argument('id'));
+            if (!$catalog_area) {
+                throw new Exception('Catalog area not found');
+            }
+            $catalog_area->catalog_estimate =  $catalog_area->computeCatalogEstimate();
+            $estimate = $catalog_area->catalog_estimate['general']['total_gross_price'] ?? 0;
             $estimate = str_replace(".", "", $estimate); // Remove the dots
             $estimate = str_replace(",", ".", $estimate); // Replace the comma with a dot
             //update the estimated value
-            $p->estimated_value = $estimate;
-            $p->save();
-            $count_p++;
-
-            //print the json
-            // $this->info(json_encode($json));
-            $this->info(
-                "Processing {$count_p} of {$tot_p} particles"
-            );
+            $catalog_area->estimated_value = $estimate;
+            $catalog_area->save();
+        } else {
+            $catalog_areas = CatalogArea::all();
+            $tot = $catalog_areas->count();
+            $count = 1;
+            $catalogBar = $this->output->createProgressBar($tot);
+            $catalogBar->start();
+            foreach ($catalog_areas as $catalog_area) {
+                $catalog_area->catalog_estimate =  $catalog_area->computeCatalogEstimate();
+                $estimate = $catalog_area->catalog_estimate['general']['total_gross_price'] ?? 0;
+                $estimate = str_replace(".", "", $estimate); // Remove the dots
+                $estimate = str_replace(",", ".", $estimate); // Replace the comma with a dot
+                //update the estimated value
+                $catalog_area->estimated_value = $estimate;
+                $catalog_area->save();
+                $count++;
+                $catalogBar->advance();
+            }
+            $catalogBar->finish();
         }
-        return $this->info('Done!');
+        return $this->info(PHP_EOL . 'Done!');
     }
 }
