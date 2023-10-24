@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Models\CatalogArea;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -54,10 +55,6 @@ class CadastralParcel extends Resource
             Text::make('Codice Catastale', 'code')
                 ->sortable(),
             Text::make('Comune', 'municipality'),
-            //if $this->estimated_value is greather than 0, create a currency field with the value of $this->estimated_value, else create a text field that displays "Nessuna stima disponibile"
-
-
-
             Text::make('Area (mq)', 'square_meter_surface')
                 ->sortable()
                 ->displayUsing(function ($value) {
@@ -75,6 +72,20 @@ class CadastralParcel extends Resource
             Text::make('Classe Trasporto', 'way')->onlyOnDetail(),
 
             BelongsToMany::make('Proprietari', 'owners', Owner::class),
+            Text::make(
+                'Catalog Areas',
+                function () {
+                    $areas = $this->getCatalogAreasByGeometry(1);
+                    $areasString = '';
+                    if ($areas) {
+                        foreach ($areas as $area) {
+                            $catalogArea = CatalogArea::find($area);
+                            $areasString .= '<a style="color:lightblue;" href="/resources/catalog-areas/' . $catalogArea->id . '">' . $catalogArea->id . '</a>, ';
+                        }
+                        return substr($areasString, 0, -2);
+                    }
+                }
+            )->asHtml()->onlyOnDetail(),
             MapMultiPolygon::make('Geometry', 'geometry')->withMeta([
                 'center' => ['42.795977075', '10.326813853'],
                 'attribution' => '<a href="https://webmapp.it/">Webmapp</a> contributors',

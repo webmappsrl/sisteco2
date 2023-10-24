@@ -69,15 +69,15 @@ class Owner extends Resource
                 return $this->cadastralParcels()->count();
             })->hideWhenCreating()
                 ->hideWhenUpdating(),
-            Currency::make('Val TOT', function () {
-                return $this->cadastralParcels()->sum('estimated_value');
-            })
-                ->currency('EUR')
-                ->displayUsing(function ($value) {
-                    return number_format($value, 2, ',', '.') . ' €';
-                })
-                ->hideWhenCreating()
-                ->hideWhenUpdating(),
+            // Currency::make('Val TOT', function () {
+            //     return $this->cadastralParcels()->sum('estimated_value');
+            // })
+            //     ->currency('EUR')
+            //     ->displayUsing(function ($value) {
+            //         return number_format($value, 2, ',', '.') . ' €';
+            //     })
+            //     ->hideWhenCreating()
+            //     ->hideWhenUpdating(),
             Text::make('Indirizzo', function () {
                 return $this->{'addr:street'} . ' ' . $this->{'addr:housenumber'} . ', ' . $this->{'addr:city'} . ' ' . $this->{'addr:province'} . ' (' . $this->{'addr:postcode'} . ')' . ' ' . $this->{'addr:locality'};
             })

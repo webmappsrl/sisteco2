@@ -300,4 +300,33 @@ class CadastralParcel extends Model
         // Return the FeatureCollection
         return $geometries;
     }
+
+    /**
+     * Returns array with catalog areas intersected with the cadastral parcel geometry
+     * 
+     * @param int $catalog_id
+     * 
+     * @return array catalog_estimate array
+     */
+    public function getCatalogAreasByGeometry(int $catalog_id): array
+    {
+        $results = DB::select("
+        SELECT 
+            a.id as id
+        FROM
+            cadastral_parcels as p
+            LEFT JOIN catalog_areas as a ON ST_Intersects(a.geometry,p.geometry)
+        WHERE 
+            p.id = {$this->id} AND
+            a.catalog_id = {$catalog_id}
+    ");
+
+        $areas = [];
+        if (count($results) > 0) {
+            foreach ($results as $area) {
+                $areas[] = $area->id;
+            }
+        }
+        return $areas;
+    }
 }
