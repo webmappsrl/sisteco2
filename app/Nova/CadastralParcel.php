@@ -75,15 +75,6 @@ class CadastralParcel extends Resource
             Text::make('Classe Trasporto', 'way')->onlyOnDetail(),
 
             BelongsToMany::make('Proprietari', 'owners', Owner::class),
-            Text::make('Link')
-                ->resolveUsing(function ($value, $resource, $attribute) {
-                    return '<a class="link-default" target="_blank" href="' . route(
-                        'cadastral-parcel',
-                        ['id' => $resource->id]
-                    ) . '">View Parcel</a>';
-                })
-                ->asHtml()
-                ->exceptOnForms(),
             MapMultiPolygon::make('Geometry', 'geometry')->withMeta([
                 'center' => ['42.795977075', '10.326813853'],
                 'attribution' => '<a href="https://webmapp.it/">Webmapp</a> contributors',
