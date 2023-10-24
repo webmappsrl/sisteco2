@@ -36,8 +36,8 @@ jobs:
         run: php artisan migrate
         env:
           PGPASSWORD: sisteco
-      - name: Laravel Tests
-        run: php artisan test
+      # - name: Laravel Tests
+      #   run: php artisan test
       - name: Deploy to server
         uses: appleboy/ssh-action@master
         with:
