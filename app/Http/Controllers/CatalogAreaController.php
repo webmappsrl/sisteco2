@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CatalogArea;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreCatalogAreaRequest;
 use App\Http\Requests\UpdateCatalogAreaRequest;
-use App\Models\CatalogArea;
 
 class CatalogAreaController extends Controller
 {
@@ -35,9 +36,24 @@ class CatalogAreaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(CatalogArea $catalogArea)
+    public function show($id)
     {
-        //
+
+        $catalogArea = CatalogArea::findOrFail($id);
+        $area = DB::table('catalog_areas')
+            ->select(DB::raw('ST_Area(geometry) as area'))
+            ->where('id', $catalogArea->id)
+            ->value('area');
+        $sisteco = config('sisteco');
+
+        return view(
+            'catalog-area',
+            [
+                'catalogArea' => $catalogArea,
+                'sisteco' => $sisteco,
+                'area' => $area
+            ]
+        );
     }
 
     /**
