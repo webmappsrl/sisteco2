@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/app.css">
+    <link rel="stylesheet" href="{{ public_path('app.css') }}">
     <title>Area n.{{ $catalogArea->id }}</title>
     <link rel="stylesheet"
         href="https://cdn.statically.io/gh/webmappsrl/feature-collection-widget-map/8778f562/dist/styles.css">
@@ -16,16 +16,17 @@
     <h1>Dettagli dell'area {{ $catalogArea->id }}</h1>
     <div class="parcel-details">
         <div class="map-container">
-            <feature-collection-widget-map geojsonurl="{{ url('api/v1/geom/catalogarea/' . $catalogArea->id) }}">
+            <feature-collection-widget-map geojsonurl="{{ url('api/v1/geom/catalogarea/' . $catalogArea->id) }}"
+                maxZoom="16">
             </feature-collection-widget-map>
 
         </div>
         <div class="legenda">
             <div class="color-plate">
-                <div><span style="background-color:rgba(41, 126, 209);"></span> Nessuna Lavorazione</div>
-                <div><span style="background-color:rgba(82, 229, 135);"></span> Diradamento</div>
-                <div><span style="background-color:rgba(168, 17, 215);"></span> Taglio ceduo</div>
-                <div><span style="background-color:rgba(198, 191, 80);"></span> Avviamento</div>
+                <div><span class="nessuna-lavorazione"></span> Nessuna
+                    Lavorazione <span class="diradamento"></span>
+                    Diradamento <span class="taglio-ceduo"></span> Taglio
+                    ceduo <span class=" avviamento"></span> Avviamento</div>
             </div>
         </div>
         <table class="parcel-details-table">
@@ -42,7 +43,7 @@
         </table>
     </div>
     <hr>
-    <div class="pagebreak"> </div>
+    {{-- <div class="pagebreak"> </div> --}}
     @if (!empty($catalogArea->catalog_estimate))
         <h2>Interventi Forestali</h2>
         <table class="interventions-table">

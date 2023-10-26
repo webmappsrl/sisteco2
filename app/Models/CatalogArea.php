@@ -7,10 +7,12 @@ use App\Models\CatalogType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\DB;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class CatalogArea extends Model
+class CatalogArea extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, interactsWithMedia;
 
     protected $fillable = [
         'geometry',
@@ -202,5 +204,18 @@ class CatalogArea extends Model
             $json['general'] = $general;
         }
         return $json;
+    }
+
+    /**
+     * Register a spatie media collection
+     * @return void
+     * @link https://spatie.be/docs/laravel-medialibrary/v9/working-with-media-collections/defining-media-collections
+     */
+    public function registerMediaCollections(): void
+    {
+
+        $this->addMediaCollection('documents')->acceptsMimeTypes(config('services.media-library.allowed_document_formats'));
+
+        $this->addMediaCollection('images')->acceptsMimeTypes(config('services.media-library.allowed_image_formats'));
     }
 }

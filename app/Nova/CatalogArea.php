@@ -4,12 +4,14 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Currency;
+use App\Nova\Actions\PrintAreaPdf;
+use Illuminate\Support\Facades\DB;
 use Laravel\Nova\Fields\BelongsTo;
 use Wm\MapMultiPolygon\MapMultiPolygon;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
 
 class CatalogArea extends Resource
 {
@@ -64,6 +66,7 @@ class CatalogArea extends Resource
                 })
                 ->asHtml()
                 ->exceptOnForms(),
+            Files::make('Pdf', 'documents'),
             MapMultiPolygon::make('Geometry')->withMeta([
                 'center' => ['42.795977075', '10.326813853'],
                 'attribution' => '<a href="https://webmapp.it/">Webmapp</a> contributors',
@@ -281,6 +284,12 @@ class CatalogArea extends Resource
      */
     public function actions(NovaRequest $request)
     {
-        return [];
+        return [
+            (new PrintAreaPdf)->canSee(function ($request) {
+                return true;
+            })->canRun(function ($request, $model) {
+                return true;
+            })->showInline(),
+        ];
     }
 }
