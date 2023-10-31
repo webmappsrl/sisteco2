@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('catalog_types', function (Blueprint $table) {
-            $table->string('color')->nullable();
             $table->float('maintenance_price_fist_year')->nullable();
             $table->float('maintenance_price_second_year')->nullable();
             $table->float('maintenance_price_third_year')->nullable();
@@ -27,7 +26,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('catalog_types', function (Blueprint $table) {
-            $table->dropColumn('color');
             $table->dropColumn('maintenance_price_fist_year');
             $table->dropColumn('maintenance_price_second_year');
             $table->dropColumn('maintenance_price_third_year');

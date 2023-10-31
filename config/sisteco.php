@@ -69,5 +69,13 @@ return [
             'strokeColor' => 'rgba(198, 191, 80)',
             'fillColor' => 'rgba(198, 191, 80, 0.4)',
         ],
+        '4' => [
+            'strokeColor' => 'rgba(120, 78, 199)',
+            'fillColor' => 'rgba(120, 78, 199, 0.4)',
+        ],
+        '5' => [
+            'strokeColor' => 'rgba(21, 190,32)',
+            'fillColor' => 'rgba(21, 190, 32, 0.4)',
+        ],
     ]
 ];

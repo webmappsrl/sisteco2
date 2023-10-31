@@ -56,7 +56,6 @@ class CatalogType extends Resource
                 return $this->catalogAreas()->count();
             }),
             BelongsTo::make('Catalog')->readonly(),
-            Text::make('Color')->hideFromIndex(),
             Text::make('Maintenance Price Fist Year', 'maintenance_price_fist_year')->displayUsing(function ($value) {
                 return '<p style="color:green; text-align:left;">' . number_format($value, 2, ',', '.') . '€' .  '</p>';
             })->sortable()->asHtml()->hideFromIndex(),
