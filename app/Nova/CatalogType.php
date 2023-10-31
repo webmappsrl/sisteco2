@@ -42,6 +42,7 @@ class CatalogType extends Resource
      */
     public function fields(NovaRequest $request)
     {
+
         return [
             ID::make()->sortable(),
             Text::make('cod_int'),
@@ -55,6 +56,24 @@ class CatalogType extends Resource
                 return $this->catalogAreas()->count();
             }),
             BelongsTo::make('Catalog')->readonly(),
+            Text::make('Color')->hideFromIndex(),
+            Text::make('Maintenance Price Fist Year', 'maintenance_price_fist_year')->displayUsing(function ($value) {
+                return '<p style="color:green; text-align:left;">' . number_format($value, 2, ',', '.') . '€' .  '</p>';
+            })->sortable()->asHtml()->hideFromIndex(),
+            Text::make('Maintenance Price Second Year', 'maintenance_price_second_year')->displayUsing(function ($value) {
+                return '<p style="color:green; text-align:left;">' . number_format($value, 2, ',', '.') . '€' .  '</p>';
+            })->sortable()->asHtml()->hideFromIndex(),
+            Text::make('Maintenance Price Third Year', 'maintenance_price_third_year')->displayUsing(function ($value) {
+                return '<p style="color:green; text-align:left;">' . number_format($value, 2, ',', '.') . '€' .  '</p>';
+            })->sortable()->asHtml()->hideFromIndex(),
+            Text::make('Maintenance Price Fourth Year', 'maintenance_price_fourth_year')->displayUsing(function ($value) {
+                return '<p style="color:green; text-align:left;">' . number_format($value, 2, ',', '.') . '€' .  '</p>';
+            })->sortable()->asHtml()->hideFromIndex(),
+            Text::make('Maintenance Price Fifth Year', 'maintenance_price_fifth_year')->displayUsing(function ($value) {
+                return '<p style="color:green; text-align:left;">' . number_format($value, 2, ',', '.') . '€' .  '</p>';
+            })->sortable()->asHtml()->hideFromIndex(),
+
+
         ];
     }
 
