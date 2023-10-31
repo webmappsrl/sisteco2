@@ -29,8 +29,8 @@ class GeomCatalogAreaResource extends JsonResource
                     'id' => $this->id,
                     'type_sisteco' => 'Catalog Area',
                     'cod_int' => $this->catalogType->cod_int,
-                    'strokeColor' => config('sisteco.cadastralParcelAreaStyle.' . $this->catalogType->cod_int . '.strokeColor'),
-                    'fillColor' => config('sisteco.cadastralParcelAreaStyle.' . $this->catalogType->cod_int . '.fillColor'),
+                    'strokeColor' => config('sisteco.areaStyle.' . $this->catalogType->cod_int . '.strokeColor'),
+                    'fillColor' => config('sisteco.areaStyle.' . $this->catalogType->cod_int . '.fillColor'),
                 ],
                 'geometry' => $geometry,
             ];

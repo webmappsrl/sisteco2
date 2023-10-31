@@ -48,7 +48,7 @@ return [
         'value' => 850,
     ],
 
-    'cadastralParcelAreaStyle' => [
+    'areaStyle' => [
         'cadastral' => [
             'strokeColor' => 'rgba(255, 0, 0)',
             'fillColor' => 'rgba(255, 0, 0, 0)',
