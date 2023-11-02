@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\CatalogType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -20,7 +21,11 @@ class CatalogPoiResource extends JsonResource
             'features' => [],
         ];
 
-        foreach ($this->catalogAreas as $catalogArea) {
+        $filteredCatalogAreas = DB::table('catalog_areas')->whereNot('catalog_type_id', 1)->get();
+
+
+
+        foreach ($filteredCatalogAreas as $catalogArea) {
             $geometry = DB::select("select st_asText(ST_Centroid(geometry)) as baricentro from catalog_areas where id=$catalogArea->id;")[0]->baricentro;
             $geometry = [
                 'type' => 'Point',
@@ -32,6 +37,7 @@ class CatalogPoiResource extends JsonResource
             $surface = number_format($surface, 2, ',', '.');
             //format estimated_value to euros
             $estimatedValue = number_format($catalogArea->estimated_value, 2, ',', '.');
+            $catalogType = CatalogType::where('id', $catalogArea->catalog_type_id)->first();
 
 
 
@@ -39,8 +45,8 @@ class CatalogPoiResource extends JsonResource
                 'type' => 'Feature',
                 'properties' => [
                     'surface' => $surface . ' ha',
-                    'catalog_type code_int' => $catalogArea->catalogType->cod_int,
-                    'catalog_type name' => $catalogArea->catalogType->name,
+                    'catalog_type code_int' => $catalogType->code_int,
+                    'catalog_type name' => $catalogType->name,
                     'estimated_value' => $estimatedValue,
                     'public_url' => url('catalog-areas/' . $catalogArea->id),
                 ],
