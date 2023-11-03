@@ -54,28 +54,28 @@ return [
             'fillColor' => 'rgba(255, 0, 0, 0)',
         ],
         '0' => [
-            'strokeColor' => 'rgba(41, 126, 209)',
-            'fillColor' => 'rgba(41, 126, 209, 0.4)',
+            'strokeColor' => 'rgba(191, 191, 191, 1)',
+            'fillColor' => 'rgba(208, 208, 208, 0.4)',
         ],
         '1' => [
-            'strokeColor' => 'rgba(82, 229, 135)',
-            'fillColor' => 'rgba(82, 229, 135, 0.4)',
+            'strokeColor' => 'rgba(255, 221, 1, 1)',
+            'fillColor' => 'rgba(255, 221, 1, 0.4)',
         ],
         '2' => [
-            'strokeColor' => 'rgba(168, 17, 215)',
-            'fillColor' => 'rgba(168, 17, 215, 0.4)',
+            'strokeColor' => 'rgba(255, 1, 14, 1)',
+            'fillColor' => 'rgba(255, 1, 14, 0.4)',
         ],
         '3' => [
-            'strokeColor' => 'rgba(198, 191, 80)',
-            'fillColor' => 'rgba(198, 191, 80, 0.4)',
+            'strokeColor' => 'rgba(128, 86, 52, 1)',
+            'fillColor' => 'rgba(128, 86, 52, 0.4)',
         ],
         '4' => [
-            'strokeColor' => 'rgba(120, 78, 199)',
-            'fillColor' => 'rgba(120, 78, 199, 0.4)',
+            'strokeColor' => 'rgba(219, 30, 210, 1)',
+            'fillColor' => 'rgba(219, 30, 210, 0.4)',
         ],
         '5' => [
-            'strokeColor' => 'rgba(21, 190,32)',
-            'fillColor' => 'rgba(21, 190, 32, 0.4)',
+            'strokeColor' => 'rgba(128, 255, 0, 1)',
+            'fillColor' => 'rgba(128, 255, 0, 0.4)',
         ],
     ]
 ];

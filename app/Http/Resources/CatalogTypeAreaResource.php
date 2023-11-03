@@ -33,7 +33,7 @@ class CatalogTypeAreaResource extends JsonResource
                 'type' => 'Feature',
                 'properties' => [
                     'surface' => $surface . ' ha',
-                    'catalog_type cod_int' => $catalogType->cod_int,
+                    'catalog_type_cod_int' => $catalogType->cod_int,
                     'catalog_type name' => $catalogType->name,
                     'estimated_value' => $estimatedValue . '€',
                     'public_url' => url('catalog-areas/' . $catalogArea->id),
