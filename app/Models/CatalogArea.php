@@ -18,11 +18,13 @@ class CatalogArea extends Model
         'catalog_type_id',
         'catalog_id',
         'sisteco_legacy_id',
+        'slope_min',
+        'slope_max',
+        'slope_avg',
     ];
 
     protected $casts = [
         'catalog_estimate' => 'array',
-
     ];
 
     /**
@@ -207,9 +209,9 @@ class CatalogArea extends Model
 
     public function computeSlopeStats():array {
         $stats = [
-            'min_slope' => 0,
-            'max_slope' => 0,
-            'avg_slope' => 0,
+            'slope_min' => 0,
+            'slope_max' => 0,
+            'slope_avg' => 0,
         ];
         $id=$this->id;
         $sql = <<<EOF
@@ -229,9 +231,9 @@ p_stats AS (
 )
 
 SELECT id,
-    MIN(min) AS min_slope,   -- Calcola il valore minimo di pendenza
-    MAX(max) AS max_slope,   -- Calcola il valore massimo di pendenza
-    SUM(mean * count) / SUM(count) AS avg_slope  -- Calcola la media ponderata delle elevazioni
+    MIN(min) AS slope_min,   -- Calcola il valore minimo di pendenza
+    MAX(max) AS slope_max,   -- Calcola il valore massimo di pendenza
+    SUM(mean * count) / SUM(count) AS slope_avg  -- Calcola la media ponderata delle elevazioni
 FROM p_stats
 GROUP BY id  -- Raggruppa per ID del poligono
 HAVING id=$id;  -- Ordina per ID del poligono
@@ -241,11 +243,11 @@ EOF;
             $results = DB::select($sql);
             if (count($results)>0){
                 $stats = [
-                    'min_slope' => $results[0]->min_slope,
-                    'max_slope' => $results[0]->max_slope,
-                    'avg_slope' => $results[0]->avg_slope,
+                    'slope_min' => $results[0]->slope_min,
+                    'slope_max' => $results[0]->slope_max,
+                    'slope_avg' => $results[0]->slope_avg,
                 ];
-    
+   
             }
             Log::warning("WARN: computeSlopeStats for catalogArea with id $id has no results");
         } catch (\Throwable $th) {
