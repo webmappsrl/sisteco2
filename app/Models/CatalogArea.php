@@ -276,5 +276,30 @@ EOF;
         return 'C';
     }
 
+    public function computeHikingRoutes():array {
+        $hrs = [];
+        $hr_id=$this->id;
+        $sql = <<<EOF
+    SELECT
+        hr.ref AS ref,
+        ST_Length(ST_Intersection(hr.geometry, ca.geometry)) AS length
+    FROM
+        hiking_routes AS hr
+    JOIN
+        catalog_areas AS ca
+    ON
+        ST_Intersects(hr.geometry, ca.geometry)
+    WHERE
+        ca.id = $hr_id;
+EOF;
+        $results = DB::select($sql);
+        if (count($results)>0) {
+            foreach ($results as $data) {
+                $hrs[$data->ref]=$data->length;
+            }
+        }
+        return $hrs;
+    }
+
 
 }
