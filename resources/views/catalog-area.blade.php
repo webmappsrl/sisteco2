@@ -48,6 +48,14 @@
                     </td>
                 </tr>
                 <tr>
+                    <th>Trasporto (strade / sentieri / classe)</th>
+                    <td>
+                        {{number_format($catalogArea->hiking_routes_min_dist, 2, ',', '.')}} m / 
+                        X /
+                        X
+                    </td>
+                </tr>
+                <tr>
                     <th>Sentieri presenti nell'area (metri / dettaglio)</th>
                     <td>
                         {{number_format($catalogArea->hiking_routes_length, 0)}} m / 
