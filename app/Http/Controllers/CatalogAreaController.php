@@ -46,12 +46,23 @@ class CatalogAreaController extends Controller
             ->value('area');
         $sisteco = config('sisteco');
 
+        // Hiking Routes details
+        $hiking_routes_details_string = '-';
+        if(count($catalogArea->hiking_routes_details)>0) {
+            $hiking_routes_details_string = '';
+            foreach($catalogArea->hiking_routes_details as $ref=>$length) {
+                $ls = number_format($length,0);
+                $hiking_routes_details_string .= "$ref($ls m) ";
+            }
+        }
+
         return view(
             'catalog-area',
             [
                 'catalogArea' => $catalogArea,
                 'sisteco' => $sisteco,
-                'area' => $area
+                'area' => $area,
+                'hiking_routes_details_string' => $hiking_routes_details_string,
             ]
         );
     }

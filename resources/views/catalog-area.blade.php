@@ -41,10 +41,17 @@
                 <tr>
                     <th>Pendenza (min / avg / max / classe)</th>
                     <td>
-                        {{number_format($catalogArea->slope_min, 2, ',', '.')}} / 
-                        {{number_format($catalogArea->slope_avg, 2, ',', '.')}} / 
-                        {{number_format($catalogArea->slope_max, 2, ',', '.')}} /
+                        {{number_format($catalogArea->slope_min, 2, ',', '.')}} deg / 
+                        {{number_format($catalogArea->slope_avg, 2, ',', '.')}} deg / 
+                        {{number_format($catalogArea->slope_max, 2, ',', '.')}} deg /
                         {{$catalogArea->slope_class}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Sentieri presenti nell'area (metri / dettaglio)</th>
+                    <td>
+                        {{number_format($catalogArea->hiking_routes_length, 0)}} m / 
+                        {{$hiking_routes_details_string}}
                     </td>
                 </tr>
             </tbody>
