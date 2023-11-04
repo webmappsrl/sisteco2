@@ -36,7 +36,16 @@
                 </tr>
                 <tr>
                     <th>Superficie</th>
-                    <td>{{ number_format($area / 10000, 2, ',', '.') }} ha</td>
+                    <td>{{ number_format($area / 10000, 4, ',', '.') }} ha</td>
+                </tr>
+                <tr>
+                    <th>Pendenza (min / avg / max / classe)</th>
+                    <td>
+                        {{number_format($catalogArea->slope_min, 2, ',', '.')}} / 
+                        {{number_format($catalogArea->slope_avg, 2, ',', '.')}} / 
+                        {{number_format($catalogArea->slope_max, 2, ',', '.')}} /
+                        {{$catalogArea->slope_class}}
+                    </td>
                 </tr>
             </tbody>
         </table>

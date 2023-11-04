@@ -256,4 +256,21 @@ EOF;
         }
         return $stats;
     }
+
+    /**
+     * It returns the slope class:
+     * 'A' -> s < 20 deg
+     * 'B' -> 20 < s <=40 deg
+     * 'C' -> s > 40
+     *
+     * @return string
+     */
+    public function computeSlopeClass(): string
+    {
+        if ($this->slope_avg <= 20) return 'A';
+        if ($this->slope_avg <= 40) return 'B';
+        return 'C';
+    }
+
+
 }

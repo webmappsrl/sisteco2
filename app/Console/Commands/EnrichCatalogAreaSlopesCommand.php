@@ -35,6 +35,7 @@ class EnrichCatalogAreaSlopesCommand extends Command
                 $area->slope_min = $stats['slope_min'];
                 $area->slope_max = $stats['slope_max'];
                 $area->slope_avg = $stats['slope_avg'];
+                $area->slope_class = $area->computeSlopeClass();
                 $area->save();
             } catch (\Throwable $th) {
                 $this->error("An error occured while calculating stats info for catalogArea {$area->id}");
