@@ -34,8 +34,11 @@ class EnrichCatalogAreaWithHikingRouteStatsCommand extends Command
             if(count($hr_stats)>0) {
                 $area->hiking_routes_length=array_sum($hr_stats);
                 $area->hiking_routes_details=$hr_stats;
-                $area->save();
             }
+            else {
+                $area->hiking_routes_min_dist=$area->getHikingRouteMinDist();
+            }
+            $area->save();
             $bar->advance();
         }
     }
