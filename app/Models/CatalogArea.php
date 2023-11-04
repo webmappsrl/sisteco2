@@ -54,7 +54,11 @@ class CatalogArea extends Model
         $type = $this->catalogType;
         $prices = $catalog->catalogTypes()->pluck('prices', 'cod_int')->toArray();
         $vat = config('sisteco.vat.value');
-        $parcel_code = 'A.1';  //TODO get the parcel code from the cadastral parcel
+        $area_slope_class = $this->slope_class;
+        if(! in_array($area_slope_class,['A','B','C'])) {
+            $area_slope_class = 'A';
+        }
+        $parcel_code = $area_slope_class.'.1';  //TODO get the parcel code from the cadastral parcel
 
         //define json structure
         $interventions = [];
