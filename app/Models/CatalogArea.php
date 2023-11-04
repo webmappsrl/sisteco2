@@ -302,5 +302,22 @@ EOF;
         return $hrs;
     }
 
+    public function getHikingRouteMinDist():float {
+        $area_id = $this->id;
+        $dist = 0;
+        $sql = <<<EOF
+    SELECT 
+        MIN(ST_Distance(a.geometry, r.geometry)) AS dist
+      FROM 
+        catalog_areas a
+      CROSS JOIN 
+        hiking_routes r
+      WHERE 
+        a.id = $area_id;      
+EOF;
+        $dist = DB::select($sql)[0]->dist;
+        return $dist;
+    }
+
 
 }
