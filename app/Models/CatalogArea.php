@@ -7,6 +7,7 @@ use App\Models\CatalogType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class CatalogArea extends Model
 {
@@ -202,5 +203,55 @@ class CatalogArea extends Model
             $json['general'] = $general;
         }
         return $json;
+    }
+
+    public function computeSlopeStats():array {
+        $stats = [
+            'min_slope' => 0,
+            'max_slope' => 0,
+            'avg_slope' => 0,
+        ];
+        $id=$this->id;
+        $sql = <<<EOF
+WITH features AS (
+    SELECT id, ST_Transform(geometry::geometry, 3035) AS geom
+    FROM catalog_areas AS p
+),
+
+p_stats AS (
+    SELECT id, (slope_stats).*
+    FROM (
+        -- Sottoquery che calcola le statistiche di pendenza per ciascun poligono
+        SELECT id, ST_SummaryStats(ST_Slope(ST_Clip(rast, geom))) AS slope_stats
+        FROM dem
+        INNER JOIN features ON ST_Intersects(features.geom, rast)
+    ) AS foo
+)
+
+SELECT id,
+    MIN(min) AS min_slope,   -- Calcola il valore minimo di pendenza
+    MAX(max) AS max_slope,   -- Calcola il valore massimo di pendenza
+    SUM(mean * count) / SUM(count) AS avg_slope  -- Calcola la media ponderata delle elevazioni
+FROM p_stats
+GROUP BY id  -- Raggruppa per ID del poligono
+HAVING id=$id;  -- Ordina per ID del poligono
+EOF;
+
+        try {
+            $results = DB::select($sql);
+            if (count($results)>0){
+                $stats = [
+                    'min_slope' => $results[0]->min_slope,
+                    'max_slope' => $results[0]->max_slope,
+                    'avg_slope' => $results[0]->avg_slope,
+                ];
+    
+            }
+            Log::warning("WARN: computeSlopeStats for catalogArea with id $id has no results");
+        } catch (\Throwable $th) {
+            //throw $th;
+            Log::error("WARN: computeSlopeStats for catalogArea with id $id returns an error, probably the geometry is not correct");
+        }
+        return $stats;
     }
 }
