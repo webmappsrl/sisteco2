@@ -48,7 +48,7 @@ class CatalogAreaController extends Controller
 
         // Hiking Routes details
         $hiking_routes_details_string = '-';
-        if(count($catalogArea->hiking_routes_details)>0) {
+        if(!is_null($catalogArea->hiking_routes_details) && count($catalogArea->hiking_routes_details)>0) {
             $hiking_routes_details_string = '';
             foreach($catalogArea->hiking_routes_details as $ref=>$length) {
                 $ls = number_format($length,0);
