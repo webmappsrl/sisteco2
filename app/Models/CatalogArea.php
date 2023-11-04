@@ -25,6 +25,7 @@ class CatalogArea extends Model
 
     protected $casts = [
         'catalog_estimate' => 'array',
+        'hiking_routes_details' => 'array',
     ];
 
     /**
