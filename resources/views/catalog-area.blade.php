@@ -105,10 +105,11 @@
                     <td>Sentieristica</td>
                     <td style="background-color: greenyellow;">
                         {{ number_format(round($catalogArea->hiking_routes_length, 2), 2, ',', '.') }}</td>
-                    <td>{{ number_format(config('sisteco.hiking_routes_cost_per_km.value'), 2, ',', '.') }}€
+                    <td>{{ number_format($sisteco['hiking_routes_cost_per_km']['value'], 2, ',', '.') }}€
                     </td>
                     <td style="text-align: right;">
-                        {{ number_format(round($catalogArea->hiking_routes_length * config('sisteco.hiking_routes_cost_per_km.value'), 2), 2, ',', '.') }}€
+                        {{ number_format(round($catalogArea->hiking_routes_length * $sisteco['hiking_routes_cost_per_km']['value'], 2), 2, ',', '.') }}
+                        €
                     </td>
                 </tr>
             </tbody>
@@ -126,29 +127,16 @@
                     <td>Costo Interventi (Somma costi interventi)</td>
                     <td>{{ $catalogArea->catalog_estimate['interventions']['info']['intervention_price'] }} €</td>
                 </tr>
+                <td>Costi accessori:</td>
                 <tr>
-                    <td>{{ $sisteco['supervision']['label'] }}
-                        ({{ $sisteco['supervision']['value'] . $sisteco['supervision']['unit'] }} di costi interventi)
-                    </td>
-                    <td>{{ $catalogArea->catalog_estimate['interventions']['info']['supervision_price'] }} €</td>
+                <tr>
+                    <td style="text-align:center; background-color: white;">Impresa Forestale:</td>
+                    <td>{{ $forestalInterventionPrice }} €</td>
                 </tr>
-                <tr>
-                    <td>{{ $sisteco['overheads']['label'] }}
-                        ({{ $sisteco['overheads']['value'] . $sisteco['overheads']['unit'] }} di costo interventi)</td>
-                    <td>{{ $catalogArea->catalog_estimate['interventions']['info']['overhead_price'] }} €</td>
-                </tr>
-                <tr>
-                    <td>{{ $sisteco['business_profit']['label'] }}
-                        ({{ $sisteco['business_profit']['value'] . $sisteco['business_profit']['unit'] }} di costo
-                        interventi)</td>
-                    <td>{{ $catalogArea->catalog_estimate['interventions']['info']['business_profit_price'] }} €
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $sisteco['intervention_certification']['label'] }}</td>
-                    <td>{{ $catalogArea->catalog_estimate['interventions']['info']['intervention_certification'] }}
-                        €
-                    </td>
+                <td>{{ $sisteco['intervention_certification']['label'] }}</td>
+                <td>{{ $catalogArea->catalog_estimate['interventions']['info']['intervention_certification'] }}
+                    €
+                </td>
                 </tr>
                 <tr>
                     <td><strong>Totale Interventi certificati </strong></td>

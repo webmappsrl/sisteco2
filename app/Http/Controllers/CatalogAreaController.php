@@ -45,13 +45,21 @@ class CatalogAreaController extends Controller
             ->where('id', $catalogArea->id)
             ->value('area');
         $sisteco = config('sisteco');
+        $interventionPrice = $catalogArea->catalog_estimate['interventions']['info']['intervention_price'];
+        //format to number the intervention price string
+        $interventionPrice = str_replace(".", "", $interventionPrice); // Remove the dots
+        $interventionPrice = str_replace(",", ".", $interventionPrice); // Replace the comma with a dot
+        $interventionPrice = floatval($interventionPrice);
+        $forestalIntervention =
+            $sisteco['overheads']['value'] +  $sisteco['business_profit']['value'] + $sisteco['supervision']['value'];
+        $forestalInterventionPrice = number_format($interventionPrice * $forestalIntervention / 100, 2, ',', '.');
 
         // Hiking Routes details
         $hiking_routes_details_string = '-';
-        if(!is_null($catalogArea->hiking_routes_details) && count($catalogArea->hiking_routes_details)>0) {
+        if (!is_null($catalogArea->hiking_routes_details) && count($catalogArea->hiking_routes_details) > 0) {
             $hiking_routes_details_string = '';
-            foreach($catalogArea->hiking_routes_details as $ref=>$length) {
-                $ls = number_format($length,0);
+            foreach ($catalogArea->hiking_routes_details as $ref => $length) {
+                $ls = number_format($length, 0);
                 $hiking_routes_details_string .= "$ref($ls m) ";
             }
         }
@@ -63,6 +71,7 @@ class CatalogAreaController extends Controller
                 'sisteco' => $sisteco,
                 'area' => $area,
                 'hiking_routes_details_string' => $hiking_routes_details_string,
+                'forestalInterventionPrice' => $forestalInterventionPrice,
             ]
         );
     }
