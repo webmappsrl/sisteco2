@@ -75,6 +75,15 @@ class CatalogAreaController extends Controller
         $vatFunctionalUnit = round($totalNetCostFunctionalUnit * $sisteco['vat']['value'] / 100, 2);
         $totalCostFunctionalUnit = $totalNetCostFunctionalUnit + $vatFunctionalUnit;
 
+        $interventionGrossPricePerArea = $catalogArea->catalog_estimate['interventions']['info']['intervention_gross_price_per_area'];
+        $interventionGrossPricePerArea = str_replace(".", "", $interventionGrossPricePerArea);
+        $interventionGrossPricePerArea = str_replace(",", ".", $interventionGrossPricePerArea);
+        $interventionGrossPricePerArea = floatval($interventionGrossPricePerArea);
+
+        $vatHectares = $interventionGrossPricePerArea * $sisteco['vat']['value'] / 100;
+
+        $totalHectaresCost = $interventionGrossPricePerArea + $vatHectares;
+
 
         // Hiking Routes details
         $hiking_routes_details_string = '-';
@@ -102,6 +111,8 @@ class CatalogAreaController extends Controller
                 'totalNetCostFunctionalUnit' => $totalNetCostFunctionalUnit,
                 'vatFunctionalUnit' => $vatFunctionalUnit,
                 'totalCostFunctionalUnit' => $totalCostFunctionalUnit,
+                'vatHectares' => $vatHectares,
+                'totalHectaresCost' => $totalHectaresCost,
             ]
         );
     }

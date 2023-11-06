@@ -168,6 +168,19 @@
                         €
                     </td>
                 </tr>
+                <tr>
+                    <td style="font-size: 10px;">{{ $sisteco['vat']['label'] }}
+                        {{ $sisteco['vat']['value'] . $sisteco['vat']['unit'] }}</td>
+                    <td style="font-size: 10px;">{{ number_format($vatHectares, 2, ',', '.') }}
+                        €
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size: 10px;">Totale Con IVA</td>
+                    <td style="font-size: 10px;">{{ number_format($totalHectaresCost, 2, ',', '.') }}
+                        €
+                    </td>
+                </tr>
             </tbody>
         </table>
         <hr>
