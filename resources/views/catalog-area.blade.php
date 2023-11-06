@@ -22,10 +22,12 @@
         </div>
         <div class="legenda">
             <div class="color-plate">
-                <div><span style="background-color:rgba(41, 126, 209);"></span> Nessuna Lavorazione</div>
-                <div><span style="background-color:rgba(82, 229, 135);"></span> Diradamento</div>
-                <div><span style="background-color:rgba(168, 17, 215);"></span> Taglio ceduo</div>
-                <div><span style="background-color:rgba(198, 191, 80);"></span> Avviamento</div>
+                <div><span style="background-color:rgba(191, 191, 191, 1);"></span> Nessuna Lavorazione</div>
+                <div><span style="background-color:rgba(255, 221, 1, 1);"></span> Diradamento</div>
+                <div><span style="background-color:rgba(255, 1, 14, 1);"></span> Taglio ceduo</div>
+                <div><span style="background-color:rgba(128, 86, 52, 1);"></span> Avviamento</div>
+                <div><span style="background-color:rgba(219, 30, 210, 1);"></span> Recupero post Incendio</div>
+                <div><span style="background-color:rgba(128, 255, 0, 1);"></span> Selvicoltura ad Albero</div>
             </div>
         </div>
         <table class="parcel-details-table">
@@ -41,16 +43,16 @@
                 <tr>
                     <th>Pendenza (min / avg / max / classe)</th>
                     <td>
-                        {{number_format($catalogArea->slope_min, 2, ',', '.')}} deg / 
-                        {{number_format($catalogArea->slope_avg, 2, ',', '.')}} deg / 
-                        {{number_format($catalogArea->slope_max, 2, ',', '.')}} deg /
-                        {{$catalogArea->slope_class}}
+                        {{ number_format($catalogArea->slope_min, 2, ',', '.') }} deg /
+                        {{ number_format($catalogArea->slope_avg, 2, ',', '.') }} deg /
+                        {{ number_format($catalogArea->slope_max, 2, ',', '.') }} deg /
+                        {{ $catalogArea->slope_class }}
                     </td>
                 </tr>
                 <tr>
                     <th>Trasporto (strade / sentieri / classe)</th>
                     <td>
-                        {{number_format($catalogArea->hiking_routes_min_dist, 2, ',', '.')}} m / 
+                        {{ number_format($catalogArea->hiking_routes_min_dist, 2, ',', '.') }} m /
                         X /
                         X
                     </td>
@@ -58,8 +60,8 @@
                 <tr>
                     <th>Sentieri presenti nell'area (metri / dettaglio)</th>
                     <td>
-                        {{number_format($catalogArea->hiking_routes_length, 0)}} m / 
-                        {{$hiking_routes_details_string}}
+                        {{ number_format($catalogArea->hiking_routes_length, 0) }} m /
+                        {{ $hiking_routes_details_string }}
                     </td>
                 </tr>
             </tbody>
@@ -75,7 +77,7 @@
                     <th>Codice Intervento</th>
                     <th>Area</th>
                     <th>Costo €/Ettaro</th>
-                    <th style="text-align: right;">Totale Incl. IVA</th>
+                    <th style="text-align: right;">Totale IVA Esclusa</th>
                 </tr>
             </thead>
             <tbody>

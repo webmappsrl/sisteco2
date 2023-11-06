@@ -56,10 +56,10 @@ class CatalogArea extends Model
         $prices = $catalog->catalogTypes()->pluck('prices', 'cod_int')->toArray();
         $vat = config('sisteco.vat.value');
         $area_slope_class = $this->slope_class;
-        if(! in_array($area_slope_class,['A','B','C'])) {
+        if (!in_array($area_slope_class, ['A', 'B', 'C'])) {
             $area_slope_class = 'A';
         }
-        $parcel_code = $area_slope_class.'.1';  //TODO get the parcel code from the cadastral parcel
+        $parcel_code = $area_slope_class . '.1';  //TODO get the parcel code from the cadastral parcel
 
         //define json structure
         $interventions = [];
@@ -77,7 +77,7 @@ class CatalogArea extends Model
         $cod_int = $type->cod_int;
         $unit_price = $prices[$cod_int][$parcel_code];
         $intervention_area = $intervention_area / 10000; //convert to hectares
-        $price = $unit_price * $intervention_area * (1 + $vat / 100); //adding VAT
+        $price = $unit_price * $intervention_area; //adding VAT
         $intervention_price += $price;
 
         if ($cod_int != 0) {
@@ -212,13 +212,14 @@ class CatalogArea extends Model
         return $json;
     }
 
-    public function computeSlopeStats():array {
+    public function computeSlopeStats(): array
+    {
         $stats = [
             'slope_min' => 0,
             'slope_max' => 0,
             'slope_avg' => 0,
         ];
-        $id=$this->id;
+        $id = $this->id;
         $sql = <<<EOF
 WITH features AS (
     SELECT id, ST_Transform(geometry::geometry, 3035) AS geom
@@ -246,13 +247,12 @@ EOF;
 
         try {
             $results = DB::select($sql);
-            if (count($results)>0){
+            if (count($results) > 0) {
                 $stats = [
                     'slope_min' => $results[0]->slope_min,
                     'slope_max' => $results[0]->slope_max,
                     'slope_avg' => $results[0]->slope_avg,
                 ];
-   
             }
             Log::warning("WARN: computeSlopeStats for catalogArea with id $id has no results");
         } catch (\Throwable $th) {
@@ -277,9 +277,10 @@ EOF;
         return 'C';
     }
 
-    public function computeHikingRoutes():array {
+    public function computeHikingRoutes(): array
+    {
         $hrs = [];
-        $hr_id=$this->id;
+        $hr_id = $this->id;
         $sql = <<<EOF
     SELECT
         hr.ref AS ref,
@@ -294,15 +295,16 @@ EOF;
         ca.id = $hr_id;
 EOF;
         $results = DB::select($sql);
-        if (count($results)>0) {
+        if (count($results) > 0) {
             foreach ($results as $data) {
-                $hrs[$data->ref]=$data->length;
+                $hrs[$data->ref] = $data->length;
             }
         }
         return $hrs;
     }
 
-    public function getHikingRouteMinDist():float {
+    public function getHikingRouteMinDist(): float
+    {
         $area_id = $this->id;
         $dist = 0;
         $sql = <<<EOF
@@ -318,6 +320,4 @@ EOF;
         $dist = DB::select($sql)[0]->dist;
         return $dist;
     }
-
-
 }
