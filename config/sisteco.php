@@ -29,8 +29,8 @@ return [
     ],
     'team_management' => [
         'label' => 'Perc. Gestione',
-        'unit' => '%',
-        'value' => 2,
+        'unit' => '€',
+        'value' => 3000,
     ],
     'platform_maintenance' => [
         'label' => 'Perc. Mantenimento piattaforma',
