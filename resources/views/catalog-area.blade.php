@@ -108,7 +108,7 @@
                     <td>{{ number_format($sisteco['hiking_routes_cost_per_km']['value'], 2, ',', '.') }}€
                     </td>
                     <td style="text-align: right;">
-                        {{ number_format(round($catalogArea->hiking_routes_length * $sisteco['hiking_routes_cost_per_km']['value'], 2), 2, ',', '.') }}
+                        {{ number_format(round($hikingRoutesTotalCost, 2), 2, ',', '.') }}
                         €
                     </td>
                 </tr>
@@ -119,13 +119,14 @@
             <thead>
                 <tr>
                     <th>Descrizione</th>
-                    <th>Totale Incl. IVA</th>
+                    <th>Totale</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Costo Interventi (Somma costi interventi)</td>
-                    <td>{{ $catalogArea->catalog_estimate['interventions']['info']['intervention_price'] }} €</td>
+                    <td>{{ number_format($interventionPrice + $hikingRoutesTotalCost, 2, ',', '.') }}
+                        €</td>
                 </tr>
                 <td>Costi accessori:</td>
                 <tr>

@@ -46,13 +46,16 @@ class CatalogAreaController extends Controller
             ->value('area');
         $sisteco = config('sisteco');
         $interventionPrice = $catalogArea->catalog_estimate['interventions']['info']['intervention_price'];
-        //format to number the intervention price string
-        $interventionPrice = str_replace(".", "", $interventionPrice); // Remove the dots
-        $interventionPrice = str_replace(",", ".", $interventionPrice); // Replace the comma with a dot
+
+        $interventionPrice = str_replace(".", "", $interventionPrice);
+        $interventionPrice = str_replace(",", ".", $interventionPrice);
         $interventionPrice = floatval($interventionPrice);
+
+        $hikingRoutesTotalCost = $catalogArea->hiking_routes_length * $sisteco['hiking_routes_cost_per_km']['value'];
+
         $forestalIntervention =
             $sisteco['overheads']['value'] +  $sisteco['business_profit']['value'] + $sisteco['supervision']['value'];
-        $forestalInterventionPrice = number_format($interventionPrice * $forestalIntervention / 100, 2, ',', '.');
+        $forestalInterventionPrice = number_format(($interventionPrice + $hikingRoutesTotalCost) * $forestalIntervention / 100, 2, ',', '.');
 
         // Hiking Routes details
         $hiking_routes_details_string = '-';
@@ -64,6 +67,7 @@ class CatalogAreaController extends Controller
             }
         }
 
+
         return view(
             'catalog-area',
             [
@@ -72,6 +76,8 @@ class CatalogAreaController extends Controller
                 'area' => $area,
                 'hiking_routes_details_string' => $hiking_routes_details_string,
                 'forestalInterventionPrice' => $forestalInterventionPrice,
+                'hikingRoutesTotalCost' => $hikingRoutesTotalCost,
+                'interventionPrice' => $interventionPrice,
             ]
         );
     }
