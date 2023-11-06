@@ -117,3 +117,12 @@ tbody tr:nth-of-type(even) {
   text-align: center;
   font-size: 1.5rem;
 }
+
+.total-table {
+  border-collapse: collapse;
+  width: 80%;
+  margin-bottom: 1rem;
+  font-size: 0.9em;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: auto;
+}

@@ -66,6 +66,21 @@ class CatalogAreaController extends Controller
         $interventionGrossPricePerArea = str_replace(",", ".", $interventionGrossPricePerArea);
         $interventionGrossPricePerArea = floatval($interventionGrossPricePerArea);
 
+        $totalMaintenanceNetPrice = $catalogArea->catalog_estimate['maintenance']['summary']['total_maintenance_net_price'];
+        $totalMaintenanceNetPrice = str_replace(".", "", $totalMaintenanceNetPrice);
+        $totalMaintenanceNetPrice = str_replace(",", ".", $totalMaintenanceNetPrice);
+        $totalMaintenanceNetPrice = floatval($totalMaintenanceNetPrice);
+
+        $totalMaintenanceVat = $catalogArea->catalog_estimate['maintenance']['summary']['total_maintenance_vat'];
+        $totalMaintenanceVat = str_replace(".", "", $totalMaintenanceVat);
+        $totalMaintenanceVat = str_replace(",", ".", $totalMaintenanceVat);
+        $totalMaintenanceVat = floatval($totalMaintenanceVat);
+
+        $totalGrossPricePerArea = $catalogArea->catalog_estimate['general']['total_gross_price_per_area'];
+        $totalGrossPricePerArea = str_replace(".", "", $totalGrossPricePerArea);
+        $totalGrossPricePerArea = str_replace(",", ".", $totalGrossPricePerArea);
+        $totalGrossPricePerArea = floatval($totalGrossPricePerArea);
+
         $hikingRoutesTotalCost = $catalogArea->hiking_routes_length * $sisteco['hiking_routes_cost_per_km']['value'] / 1000;
 
         $forestalInterventionPercentageValue =
@@ -82,6 +97,8 @@ class CatalogAreaController extends Controller
 
         $vatHectares = $interventionGrossPricePerArea * $sisteco['vat']['value'] / 100;
         $totalHectaresCost = $interventionGrossPricePerArea + $vatHectares;
+
+        $totalGeneralInterventionAndMaintenancePrice = $totalNetCostFunctionalUnit + $totalMaintenanceNetPrice;
 
         // Hiking Routes details
         $hiking_routes_details_string = '-';
@@ -111,6 +128,10 @@ class CatalogAreaController extends Controller
                 'totalCostFunctionalUnit' => $totalCostFunctionalUnit,
                 'vatHectares' => $vatHectares,
                 'totalHectaresCost' => $totalHectaresCost,
+                'totalMaintenanceNetPrice' => $totalMaintenanceNetPrice,
+                'totalGeneralInterventionAndMaintenancePrice' => $totalGeneralInterventionAndMaintenancePrice,
+                'totalMaintenanceVat' => $totalMaintenanceVat,
+                'totalGrossPricePerArea' => $totalGrossPricePerArea,
             ]
         );
     }

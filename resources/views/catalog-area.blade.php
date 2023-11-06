@@ -202,61 +202,96 @@
             </thead>
             @foreach ($catalogArea->catalog_estimate['maintenance']['items'] as $index => $item)
                 <tr>
-                    <td>Mantenimento anno {{ $index + 1 }}</td>
+                    <td>Mantenimento anno {{ $index + 1 }} post intervento</td>
                     <td>{{ $item['price'] }} €</td>
                 </tr>
+                <tr>
+                    <td>Certificazione anno {{ $index + 1 }} post intervento</td>
+                    <td>{{ $catalogArea->catalog_estimate['maintenance']['certifications'][0]['price'] }} €</td>
+                </tr>
             @endforeach
-            <tr>
+            {{-- <tr>
                 <td>Certificazione 2° anno</td>
                 <td>{{ $catalogArea->catalog_estimate['maintenance']['certifications'][0]['price'] }} €</td>
             </tr>
             <tr>
                 <td>Certificazione 5° anno</td>
                 <td>{{ $catalogArea->catalog_estimate['maintenance']['certifications'][1]['price'] }} €</td>
-            </tr>
+            </tr> --}}
             <tr>
-                <td><strong>Totale Lordo Manutenzioni</strong></td>
-                <td><strong>{{ $catalogArea->catalog_estimate['maintenance']['summary']['total_maintenance_gross_price'] }}
+                <td style="background-color:yellow;"><strong>Totale Costo Mantenimento Certificato</strong></td>
+                <td style="background-color:yellow;">
+                    <strong>{{ number_format($totalMaintenanceNetPrice, 2, ',', '.') }}
                         €</strong>
                 </td>
             </tr>
             <tr>
-                <td>{{ $sisteco['vat']['label'] }}</td>
-                <td>{{ $catalogArea->catalog_estimate['maintenance']['summary']['total_maintenance_vat'] }} €</td>
+                <td style="font-size: 10px;">{{ $sisteco['vat']['label'] }}</td>
+                <td style="font-size: 10px;">
+                    {{ number_format($totalMaintenanceVat, 2, ',', '.') }} €</td>
             </tr>
             <tr>
-                <td><strong>Totale Netto Manutenzioni</strong></td>
-                <td><strong>{{ $catalogArea->catalog_estimate['maintenance']['summary']['total_maintenance_net_price'] }}
-                        €</strong>
+                <td style="font-size: 10px;">Totale con IVA</td>
+                <td style="font-size: 10px;">
+                    {{ number_format($totalMaintenanceNetPrice + $totalMaintenanceVat, 2, ',', '.') }} €
                 </td>
             </tr>
-            <tr>
+            {{-- <tr>
                 <td>Costo Lordo/Ettaro</td>
                 <td>{{ $catalogArea->catalog_estimate['maintenance']['summary']['maintenance_gross_price_per_area'] }}
                     €
                 </td>
-            </tr>
+            </tr> --}}
         </table>
         <hr>
         <div class="pagebreak"> </div>
         <h2>Totale generale</h2>
         <table class="total-table column-nd-text-right">
-            <tbody>
+            <tbody style="background-color: #B3C6E7;">
                 <tr>
-                    <th>Totale Lordo</th>
-                    <td>{{ $catalogArea->catalog_estimate['general']['total_gross_price'] }} €</td>
+                    <th style="background-color: #B3C6E7;">Totale Generale interventi + mantenimento</th>
+                    <td style="background-color: #B3C6E7;">
+                        {{ number_format($totalMaintenanceNetPrice + $totalNetCostFunctionalUnit, 2, ',', '.') }} €
+                    </td>
+                </tr>
+                <tr style="font-size:10px;">
+                    <th style="background-color: #B3C6E7;">IVA</th>
+                    <td style="background-color: #B3C6E7;">
+                        {{ number_format($vatFunctionalUnit + $totalMaintenanceVat, 2, ',', '.') }} €</td>
+                </tr>
+                <tr style="font-size:10px;">
+                    <th style="background-color: #B3C6E7;">Totale Generale con IVA</th>
+                    <td style="background-color: #B3C6E7;">
+                        {{ number_format($totalMaintenanceNetPrice + $totalNetCostFunctionalUnit + $vatFunctionalUnit + $totalMaintenanceVat, 2, ',', '.') }}
+                        €
+                    </td>
+                </tr>
+                <tr style="border: none; background-color:#B3C6E7;">
+                    {{-- <th>Totale Netto</th>
+                    <td>{{ $catalogArea->catalog_estimate['general']['total_net_price'] }} €</td> --}}
+                    <td style="border: none;"> </td>
+                    <td style="border: none;"></td>
                 </tr>
                 <tr>
-                    <th>IVA 22%</th>
-                    <td>{{ $catalogArea->catalog_estimate['general']['total_vat'] }} €</td>
+                    <td style="border: none;"></td>
+                    <td style="border: none;"></td>
+
                 </tr>
                 <tr>
-                    <th>Totale Netto</th>
-                    <td>{{ $catalogArea->catalog_estimate['general']['total_net_price'] }} €</td>
+                    <th style="background-color: #B3C6E7;">Costo Generale / Ettaro Interventi + Mantenimento</th>
+                    <td style="background-color: #B3C6E7;">
+                        {{ number_format(round($totalGrossPricePerArea / 1.22, 2), 2, ',', '.') }} €</td>
                 </tr>
-                <tr>
-                    <th>Totale Lordo/Ettaro</th>
-                    <td>{{ $catalogArea->catalog_estimate['general']['total_gross_price_per_area'] }} €</td>
+                <tr style="font-size:10px;">
+                    <th style="background-color: #B3C6E7;">IVA</th>
+                    <td>{{ number_format(round($totalGrossPricePerArea - $totalGrossPricePerArea / 1.22, 2), 2, ',', '.') }}
+                        €
+                    </td>
+                </tr>
+                <tr style="font-size:10px;">
+                    <th style="background-color: #B3C6E7;">Costo totale generale/ettaro con IVA</th>
+                    <td style="background-color: #B3C6E7;">{{ number_format($totalGrossPricePerArea, 2, ',', '.') }}
+                    </td>
                 </tr>
             </tbody>
         @else
