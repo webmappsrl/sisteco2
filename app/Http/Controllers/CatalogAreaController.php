@@ -61,6 +61,11 @@ class CatalogAreaController extends Controller
         $teamPrice = str_replace(",", ".", $teamPrice);
         $teamPrice = floatval($teamPrice);
 
+        $interventionGrossPricePerArea = $catalogArea->catalog_estimate['interventions']['info']['intervention_gross_price_per_area'];
+        $interventionGrossPricePerArea = str_replace(".", "", $interventionGrossPricePerArea);
+        $interventionGrossPricePerArea = str_replace(",", ".", $interventionGrossPricePerArea);
+        $interventionGrossPricePerArea = floatval($interventionGrossPricePerArea);
+
         $hikingRoutesTotalCost = $catalogArea->hiking_routes_length * $sisteco['hiking_routes_cost_per_km']['value'] / 1000;
 
         $forestalInterventionPercentageValue =
@@ -68,22 +73,15 @@ class CatalogAreaController extends Controller
 
         $forestalInterventionPrice = round(($interventionPrice + $hikingRoutesTotalCost) * $forestalInterventionPercentageValue / 100, 2);
 
-        $certificationAndManagement = $interventionCertification +  $teamPrice + ($interventionPrice + $hikingRoutesTotalCost) * $sisteco['platform_maintenance']['value'] / 100;
+        $certificationAndManagement = $interventionCertification +  $teamPrice + (($interventionPrice + $hikingRoutesTotalCost) * $sisteco['platform_maintenance']['value'] / 100);
         $certificationAndManagement = round($certificationAndManagement, 2);
 
         $totalNetCostFunctionalUnit = $forestalInterventionPrice + $certificationAndManagement + $interventionPrice + $hikingRoutesTotalCost;
         $vatFunctionalUnit = round($totalNetCostFunctionalUnit * $sisteco['vat']['value'] / 100, 2);
         $totalCostFunctionalUnit = $totalNetCostFunctionalUnit + $vatFunctionalUnit;
 
-        $interventionGrossPricePerArea = $catalogArea->catalog_estimate['interventions']['info']['intervention_gross_price_per_area'];
-        $interventionGrossPricePerArea = str_replace(".", "", $interventionGrossPricePerArea);
-        $interventionGrossPricePerArea = str_replace(",", ".", $interventionGrossPricePerArea);
-        $interventionGrossPricePerArea = floatval($interventionGrossPricePerArea);
-
         $vatHectares = $interventionGrossPricePerArea * $sisteco['vat']['value'] / 100;
-
         $totalHectaresCost = $interventionGrossPricePerArea + $vatHectares;
-
 
         // Hiking Routes details
         $hiking_routes_details_string = '-';

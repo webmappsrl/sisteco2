@@ -128,11 +128,12 @@
                     <td>{{ number_format($interventionPrice + $hikingRoutesTotalCost, 2, ',', '.') }}
                         €</td>
                 </tr>
-                <td>Costi accessori:</td>
+                <td style="background-color: white;">Costi accessori:</td>
                 <tr>
                 <tr>
                     <td style="text-align:center; background-color: white;">Impresa Forestale:</td>
-                    <td>{{ number_format($forestalInterventionPrice, 2, ',', '.') }} €</td>
+                    <td style="background-color: white;">{{ number_format($forestalInterventionPrice, 2, ',', '.') }} €
+                    </td>
                 </tr>
                 <td style="text-align:center; background-color: white;">
                     Gestione e Certificazione</td>
