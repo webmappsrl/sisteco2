@@ -132,16 +132,17 @@
                 <tr>
                 <tr>
                     <td style="text-align:center; background-color: white;">Impresa Forestale:</td>
-                    <td>{{ $forestalInterventionPrice }} €</td>
+                    <td>{{ number_format($forestalInterventionPrice, 2, ',', '.') }} €</td>
                 </tr>
-                <td>{{ $sisteco['intervention_certification']['label'] }}</td>
+                <td style="text-align:center; background-color: white;">
+                    {{ $sisteco['intervention_certification']['label'] }}</td>
                 <td>{{ $catalogArea->catalog_estimate['interventions']['info']['intervention_certification'] }}
                     €
                 </td>
                 </tr>
                 <tr>
                     <td><strong>Totale Interventi certificati </strong></td>
-                    <td><strong>{{ $catalogArea->catalog_estimate['interventions']['info']['total_intervention_certificated_price'] }}
+                    <td><strong>{{ number_format($forestalInterventionPrice + $interventionCertification, 2, ',', '.') }}
                             €</strong>
                     </td>
                 </tr>

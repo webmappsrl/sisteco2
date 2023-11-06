@@ -98,7 +98,7 @@ class CatalogArea extends Model
         $business_profit_price = $intervention_price * ((config('sisteco.business_profit.value') / 100));
         $intervention_certification = config('sisteco.intervention_certification.value');
         $total_intervention_certificated_price = $intervention_price + $supervision_price + $overhead_price + $business_profit_price + $intervention_certification;
-        $team_price = $total_intervention_certificated_price * ((config('sisteco.team_management.value') / 100));
+        $team_price = 3000;
         $platform_maintenance_price = $total_intervention_certificated_price * ((config('sisteco.platform_maintenance.value') / 100));
         $total_intervention_gross_price = $total_intervention_certificated_price + $team_price + $platform_maintenance_price;
         $total_intervention_net_price = $total_intervention_gross_price / (1 + ($vat / 100));

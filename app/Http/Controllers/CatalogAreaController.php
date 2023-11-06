@@ -45,17 +45,24 @@ class CatalogAreaController extends Controller
             ->where('id', $catalogArea->id)
             ->value('area');
         $sisteco = config('sisteco');
-        $interventionPrice = $catalogArea->catalog_estimate['interventions']['info']['intervention_price'];
 
+        $interventionPrice = $catalogArea->catalog_estimate['interventions']['info']['intervention_price'];
         $interventionPrice = str_replace(".", "", $interventionPrice);
         $interventionPrice = str_replace(",", ".", $interventionPrice);
         $interventionPrice = floatval($interventionPrice);
 
+        $interventionCertification = $catalogArea->catalog_estimate['interventions']['info']['intervention_certification'];
+        $interventionCertification = str_replace(".", "", $interventionCertification);
+        $interventionCertification = str_replace(",", ".", $interventionCertification);
+        $interventionCertification = floatval($interventionCertification);
+
         $hikingRoutesTotalCost = $catalogArea->hiking_routes_length * $sisteco['hiking_routes_cost_per_km']['value'];
 
-        $forestalIntervention =
+        $forestalInterventionPercentageValue =
             $sisteco['overheads']['value'] +  $sisteco['business_profit']['value'] + $sisteco['supervision']['value'];
-        $forestalInterventionPrice = number_format(($interventionPrice + $hikingRoutesTotalCost) * $forestalIntervention / 100, 2, ',', '.');
+
+        $forestalInterventionPrice = round(($interventionPrice + $hikingRoutesTotalCost) * $forestalInterventionPercentageValue / 100, 2);
+
 
         // Hiking Routes details
         $hiking_routes_details_string = '-';
@@ -78,6 +85,7 @@ class CatalogAreaController extends Controller
                 'forestalInterventionPrice' => $forestalInterventionPrice,
                 'hikingRoutesTotalCost' => $hikingRoutesTotalCost,
                 'interventionPrice' => $interventionPrice,
+                'interventionCertification' => $interventionCertification,
             ]
         );
     }
