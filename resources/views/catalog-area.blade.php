@@ -77,7 +77,7 @@
                     <th>Codice Intervento</th>
                     <th>Area</th>
                     <th>Costo €/Ettaro</th>
-                    <th style="text-align: right;">Totale IVA Esclusa</th>
+                    <th style="text-align: right;">Totale</th>
                 </tr>
             </thead>
             <tbody>
@@ -91,6 +91,26 @@
                         <td style="text-align: right;">{{ $item['price'] }} €</td>
                     </tr>
                 @endforeach
+            </tbody>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Km</th>
+                    <th>Costo €/Km</th>
+                    <th style="text-align: right;">Totale</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sentieristica</td>
+                    <td style="background-color: greenyellow;">
+                        {{ number_format(round($catalogArea->hiking_routes_length, 2), 2, ',', '.') }}</td>
+                    <td>{{ number_format(config('sisteco.hiking_routes_cost_per_km.value'), 2, ',', '.') }}€
+                    </td>
+                    <td style="text-align: right;">
+                        {{ number_format(round($catalogArea->hiking_routes_length * config('sisteco.hiking_routes_cost_per_km.value'), 2), 2, ',', '.') }}€
+                    </td>
+                </tr>
             </tbody>
         </table>
         <br>
