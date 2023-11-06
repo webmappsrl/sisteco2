@@ -56,12 +56,24 @@ class CatalogAreaController extends Controller
         $interventionCertification = str_replace(",", ".", $interventionCertification);
         $interventionCertification = floatval($interventionCertification);
 
-        $hikingRoutesTotalCost = $catalogArea->hiking_routes_length * $sisteco['hiking_routes_cost_per_km']['value'];
+        $teamPrice = $catalogArea->catalog_estimate['interventions']['info']['team_price'];
+        $teamPrice = str_replace(".", "", $teamPrice);
+        $teamPrice = str_replace(",", ".", $teamPrice);
+        $teamPrice = floatval($teamPrice);
+
+        $hikingRoutesTotalCost = $catalogArea->hiking_routes_length * $sisteco['hiking_routes_cost_per_km']['value'] / 1000;
 
         $forestalInterventionPercentageValue =
             $sisteco['overheads']['value'] +  $sisteco['business_profit']['value'] + $sisteco['supervision']['value'];
 
         $forestalInterventionPrice = round(($interventionPrice + $hikingRoutesTotalCost) * $forestalInterventionPercentageValue / 100, 2);
+
+        $certificationAndManagement = $interventionCertification +  $teamPrice + ($interventionPrice + $hikingRoutesTotalCost) * $sisteco['platform_maintenance']['value'] / 100;
+        $certificationAndManagement = round($certificationAndManagement, 2);
+
+        $totalNetCostFunctionalUnit = $forestalInterventionPrice + $certificationAndManagement + $interventionPrice + $hikingRoutesTotalCost;
+        $vatFunctionalUnit = round($totalNetCostFunctionalUnit * $sisteco['vat']['value'] / 100, 2);
+        $totalCostFunctionalUnit = $totalNetCostFunctionalUnit + $vatFunctionalUnit;
 
 
         // Hiking Routes details
@@ -86,6 +98,10 @@ class CatalogAreaController extends Controller
                 'hikingRoutesTotalCost' => $hikingRoutesTotalCost,
                 'interventionPrice' => $interventionPrice,
                 'interventionCertification' => $interventionCertification,
+                'certificationAndManagement' => $certificationAndManagement,
+                'totalNetCostFunctionalUnit' => $totalNetCostFunctionalUnit,
+                'vatFunctionalUnit' => $vatFunctionalUnit,
+                'totalCostFunctionalUnit' => $totalCostFunctionalUnit,
             ]
         );
     }

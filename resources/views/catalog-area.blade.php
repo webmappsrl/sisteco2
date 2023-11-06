@@ -104,7 +104,7 @@
                 <tr>
                     <td>Sentieristica</td>
                     <td style="background-color: greenyellow;">
-                        {{ number_format(round($catalogArea->hiking_routes_length, 2), 2, ',', '.') }}</td>
+                        {{ number_format(round($catalogArea->hiking_routes_length, 2) / 1000, 2, ',', '.') }}</td>
                     <td>{{ number_format($sisteco['hiking_routes_cost_per_km']['value'], 2, ',', '.') }}€
                     </td>
                     <td style="text-align: right;">
@@ -135,51 +135,36 @@
                     <td>{{ number_format($forestalInterventionPrice, 2, ',', '.') }} €</td>
                 </tr>
                 <td style="text-align:center; background-color: white;">
-                    {{ $sisteco['intervention_certification']['label'] }}</td>
-                <td>{{ $catalogArea->catalog_estimate['interventions']['info']['intervention_certification'] }}
-                    €
-                </td>
+                    Gestione e Certificazione</td>
+                <td>{{ number_format($certificationAndManagement, 2, ',', '.') }} €</td>
                 </tr>
                 <tr>
-                    <td><strong>Totale Interventi certificati </strong></td>
-                    <td><strong>{{ number_format($forestalInterventionPrice + $interventionCertification, 2, ',', '.') }}
+                    <td style="background-color:yellow;"><strong>Totale Costo Interventi Certificati Unità Funzionale
+                        </strong></td>
+                    <td style="background-color:yellow;">
+                        <strong>{{ number_format($totalNetCostFunctionalUnit, 2, ',', '.') }}
                             €</strong>
                     </td>
                 </tr>
-                <tr>
-                    <td>{{ $sisteco['team_management']['label'] }}
-                        ({{ $sisteco['team_management']['value'] . $sisteco['team_management']['unit'] }} di totale
-                        interventi certificati)</td>
-                    <td>{{ $catalogArea->catalog_estimate['interventions']['info']['team_price'] }} €</td>
+
                 </tr>
                 <tr>
-                    <td>{{ $sisteco['platform_maintenance']['label'] }}
-                        ({{ $sisteco['platform_maintenance']['value'] . $sisteco['platform_maintenance']['unit'] }} di
-                        totale interventi certificati)</td>
-                    <td>{{ $catalogArea->catalog_estimate['interventions']['info']['platform_maintenance_price'] }}
+                    <td style="font-size: 10px;">{{ $sisteco['vat']['label'] }}
+                        {{ $sisteco['vat']['value'] . $sisteco['vat']['unit'] }}</td>
+                    <td style="font-size: 10px;">{{ number_format($vatFunctionalUnit, 2, ',', '.') }}
                         €
                     </td>
                 </tr>
                 <tr>
-                    <td> <strong>Totale Lordo Interventi</strong> </td>
-                    <td><strong>{{ $catalogArea->catalog_estimate['interventions']['info']['total_intervention_gross_price'] }}
-                            €</strong>
+                    <td style="font-size: 10px;">Totale Con IVA</td>
+                    <td style="font-size: 10px;">{{ number_format($totalCostFunctionalUnit, 2, ',', '.') }}
+                        €
                     </td>
                 </tr>
                 <tr>
-                    <td>{{ $sisteco['vat']['label'] }} ({{ $sisteco['vat']['value'] . $sisteco['vat']['unit'] }})</td>
-                    <td>{{ $catalogArea->catalog_estimate['interventions']['info']['total_intervention_vat'] }} €
-                    </td>
-                </tr>
-                <tr>
-                    <td><strong>Totale Netto Interventi</strong></td>
-                    <td><strong>{{ $catalogArea->catalog_estimate['interventions']['info']['total_intervention_net_price'] }}
-                            €</strong>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Costo Lordo/Ettaro</td>
-                    <td>{{ $catalogArea->catalog_estimate['interventions']['info']['intervention_gross_price_per_area'] }}
+                    <td style="background-color:yellow;">Costo / Ettaro Interventi Certificati</td>
+                    <td style="background-color:yellow;">
+                        {{ $catalogArea->catalog_estimate['interventions']['info']['intervention_gross_price_per_area'] }}
                         €
                     </td>
                 </tr>

@@ -77,7 +77,7 @@ class CatalogArea extends Model
         $cod_int = $type->cod_int;
         $unit_price = $prices[$cod_int][$parcel_code];
         $intervention_area = $intervention_area / 10000; //convert to hectares
-        $price = $unit_price * $intervention_area; //adding VAT
+        $price = $unit_price * $intervention_area;
         $intervention_price += $price;
 
         if ($cod_int != 0) {
