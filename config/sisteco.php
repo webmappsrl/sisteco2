@@ -47,6 +47,11 @@ return [
         'unit' => '€',
         'value' => 850,
     ],
+    'hiking_routes_cost_per_km' => [
+        'label' => 'Costo per km di sentiero',
+        'unit' => '€/km',
+        'value' => 3072.06,
+    ],
 
     'areaStyle' => [
         'cadastral' => [
