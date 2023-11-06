@@ -126,3 +126,16 @@ tbody tr:nth-of-type(even) {
   font-family: Arial, Helvetica, sans-serif;
   margin: auto;
 }
+
+@media print {
+  .parcel-details {
+    margin-bottom: 2rem;
+    width: 100%;
+    margin: auto;
+  }
+
+  .pagebreak {
+    page-break-after: always;
+  }
+
+}
