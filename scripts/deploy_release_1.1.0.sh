@@ -14,6 +14,7 @@
 set -e
 # DOWNLOAD DATA
 cat storage/geodata/montepisano25x25_3035.sql | docker exec -i postgres_sisteco psql -U sisteco sisteco
+cat storage/geodata/montepisano_street.sql | docker exec -i postgres_sisteco psql -U sisteco sisteco
 docker exec -i php81_sisteco php artisan sisteco:sync-cai
 
 # ENRICH CATALOG AREA with SLOPES AND HIKING ROUTES INFO
