@@ -52,9 +52,9 @@
                 <tr>
                     <th>Trasporto (strade / sentieri / classe)</th>
                     <td>
+                        {{ number_format($catalogArea->streets_min_dist, 2, ',', '.') }} m /
                         {{ number_format($catalogArea->hiking_routes_min_dist, 2, ',', '.') }} m /
-                        X /
-                        X
+                        {{ $catalogArea->computeTransportClass() }}
                     </td>
                 </tr>
                 <tr>
