@@ -59,8 +59,8 @@ class CatalogArea extends Model
         if (!in_array($area_slope_class, ['A', 'B', 'C'])) {
             $area_slope_class = 'A';
         }
-        $parcel_code = $area_slope_class . '.1';  //TODO get the parcel code from the cadastral parcel
-
+        $parcel_code = $area_slope_class . '.' .$this->computeTransportClass();  
+        
         //define json structure
         $interventions = [];
         $maintenance = [];
