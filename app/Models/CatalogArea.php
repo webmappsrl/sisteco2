@@ -338,4 +338,20 @@ EOF;
         $dist = DB::select($sql)[0]->dist;
         return $dist;
     }
+
+    /**
+     * It returns the transport class
+     * '1' -> d <= 500
+     * '2' -> 500 < d <=1000
+     * '3' -> 1000 >= 1000
+     *
+     * @return string
+     */
+    public function computeTransportClass(): string
+    {
+        if (min($this->hiking_routes_min_dist,$this->streets_min_dist) <= 500) return '1';
+        if (min($this->hiking_routes_min_dist,$this->streets_min_dist) <= 1000) return '2';
+        return '3';
+    }
+
 }
