@@ -20,6 +20,7 @@ docker exec -i php81_sisteco php artisan sisteco:sync-cai
 # ENRICH CATALOG AREA with SLOPES AND HIKING ROUTES INFO
 docker exec -i php81_sisteco php artisan sisteco:area-slopes
 docker exec -i php81_sisteco php artisan sisteco:hiking-routes
+docker exec -i php81_sisteco php artisan sisteco:enrich-streets
 
 # MAKE PES ESTIMATE
 docker exec -i php81_sisteco php artisan sisteco2:estimate_by_catalog

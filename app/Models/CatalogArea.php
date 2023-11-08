@@ -320,4 +320,22 @@ EOF;
         $dist = DB::select($sql)[0]->dist;
         return $dist;
     }
+
+    public function getStreetsMinDist(): float
+    {
+        $area_id = $this->id;
+        $dist = 0;
+        $sql = <<<EOF
+    SELECT 
+        MIN(ST_Distance(ST_transform(a.geometry::geometry,3857), s.geom)) AS dist
+      FROM 
+        catalog_areas a
+      CROSS JOIN 
+        streets s
+      WHERE 
+        a.id = $area_id;      
+EOF;
+        $dist = DB::select($sql)[0]->dist;
+        return $dist;
+    }
 }
