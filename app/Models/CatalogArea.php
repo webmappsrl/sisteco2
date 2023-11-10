@@ -80,17 +80,13 @@ class CatalogArea extends Model
         $price = $unit_price * $intervention_area;
         $intervention_price += $price;
 
-        if ($cod_int != 0) {
-            $items[] = [
-                'code' => $cod_int . '.' . $parcel_code,
-                'area' => number_format($intervention_area, 4, ',', '.'),
-                'unit_price' => number_format($unit_price, 2, ',', '.'),
-                'price' => number_format($price, 2, ',', '.')
-            ];
-            $interventions['items'] = $items;
-        } else {
-            $interventions['items'] = [];
-        }
+        $items[] = [
+            'code' => $cod_int . '.' . $parcel_code,
+            'area' => number_format($intervention_area, 4, ',', '.'),
+            'unit_price' => number_format($unit_price, 2, ',', '.'),
+            'price' => number_format($price, 2, ',', '.')
+        ];
+        $interventions['items'] = $items;
 
         //define the variables for the $intervention['info'] array
         $supervision_price = $intervention_price *  ((config('sisteco.supervision.value') / 100));
@@ -106,6 +102,9 @@ class CatalogArea extends Model
         $intervention_gross_price_per_area = $intervention_area != 0 ? $total_intervention_gross_price / $intervention_area : $total_intervention_gross_price; //if intervention_area is 0 the default value is total_intervention_gross_price
         //create an array with all the variables above using number_format to format the numbers
         $interventions['info'] = [
+            'name' => $type->name,
+            'excerpt' => $type->excerpt,
+            'description' => $type->description,
             'intervention_area' => number_format($intervention_area, 4, ',', '.'),
             'intervention_price' => number_format($intervention_price, 2, ',', '.'),
             'supervision_price' => number_format($supervision_price, 2, ',', '.'),

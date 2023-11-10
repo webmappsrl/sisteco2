@@ -14,21 +14,25 @@
 
 <body>
     <h1>Dettagli dell'area {{ $catalogArea->id }}</h1>
+    <h2>Tipo intervento forestale: {{ $catalogArea->catalog_estimate['interventions']['info']['name'] }}</h2>
     <div class="parcel-details">
         <div class="map-container">
             <feature-collection-widget-map geojsonurl="{{ url('api/v1/geom/catalogarea/' . $catalogArea->id) }}">
             </feature-collection-widget-map>
-
         </div>
         <div class="legenda">
             <div class="color-plate">
                 <div><span style="background-color:rgba(191, 191, 191, 1);"></span> Nessuna Lavorazione</div>
                 <div><span style="background-color:rgba(255, 221, 1, 1);"></span> Diradamento</div>
                 <div><span style="background-color:rgba(255, 1, 14, 1);"></span> Taglio ceduo</div>
-                <div><span style="background-color:rgba(128, 86, 52, 1);"></span> Avviamento</div>
+                <div><span style="background-color:rgba(128, 86, 52, 1);"></span> Avviamento ad alto fusto</div>
                 <div><span style="background-color:rgba(219, 30, 210, 1);"></span> Recupero post Incendio</div>
                 <div><span style="background-color:rgba(128, 255, 0, 1);"></span> Selvicoltura ad Albero</div>
             </div>
+        </div>
+        <div>
+            <h3>{{ $catalogArea->catalog_estimate['interventions']['info']['excerpt'] }}</h3>
+            <p>{{ $catalogArea->catalog_estimate['interventions']['info']['description'] }}</p>
         </div>
         <table class="parcel-details-table">
             <tbody>
