@@ -38,11 +38,13 @@
             <tbody>
                 <tr>
                     <th>Stima</th>
-                    <td>{{ number_format($catalogArea->estimated_value, 2, ',', '.') }} €</td>
+                    <td><strong>
+                        {{ number_format($catalogArea->estimated_value, 2, ',', '.') }} €
+                    </strong></td>
                 </tr>
                 <tr>
                     <th>Superficie</th>
-                    <td>{{ number_format($area / 10000, 4, ',', '.') }} ha</td>
+                    <td>{{ number_format($area_ha, 4, ',', '.') }} ha</td>
                 </tr>
                 <tr>
                     <th>Pendenza (min / avg / max / classe)</th>
@@ -65,7 +67,7 @@
                     <th>Sentieri presenti nell'area (metri / dettaglio)</th>
                     <td>
                         {{ number_format($catalogArea->hiking_routes_length, 0) }} m /
-                        {{ $hiking_routes_details_string }}
+                        {{ $i['info']['hiking_routes_details'] }}
                     </td>
                 </tr>
             </tbody>
@@ -92,7 +94,7 @@
                         </td>
                         <td>{{ $item['area'] }}</td>
                         <td>{{ $item['unit_price'] }} €</td>
-                        <td style="text-align: right;">{{ $item['price'] }} €</td>
+                        <td style="text-align: right;">{{ number_format($item['price'],2,',','.') }} €</td>
                     </tr>
                 @endforeach
             </tbody>
@@ -112,7 +114,7 @@
                     <td>{{ number_format($sisteco['hiking_routes_cost_per_km']['value'], 2, ',', '.') }}€
                     </td>
                     <td style="text-align: right;">
-                        {{ number_format(round($hikingRoutesTotalCost, 2), 2, ',', '.') }}
+                        {{ number_format($i['info']['hiking_routes_total_cost'], 2, ',', '.') }}
                         €
                     </td>
                 </tr>
@@ -129,25 +131,25 @@
             <tbody>
                 <tr>
                     <td>Costo Interventi (Somma costi interventi)</td>
-                    <td>{{ number_format($interventionPrice + $hikingRoutesTotalCost, 2, ',', '.') }}
+                    <td>{{ number_format($i['info']['price'], 2, ',', '.') }}
                         €</td>
                 </tr>
                 <td style="background-color: white;">Costi accessori:</td>
                 <tr>
                 <tr>
                     <td style="text-align:center; background-color: white;">Impresa Forestale:</td>
-                    <td style="background-color: white;">{{ number_format($forestalInterventionPrice, 2, ',', '.') }} €
+                    <td style="background-color: white;">{{ number_format($i['info']['company_price'], 2, ',', '.') }} €
                     </td>
                 </tr>
                 <td style="text-align:center; background-color: white;">
                     Gestione e Certificazione</td>
-                <td>{{ number_format($certificationAndManagement, 2, ',', '.') }} €</td>
+                <td> {{ number_format($i['info']['certification_and_management_price'], 2, ',', '.') }} €</td>
                 </tr>
                 <tr>
                     <td style="background-color:yellow;"><strong>Totale Costo Interventi Certificati Unità Funzionale
                         </strong></td>
                     <td style="background-color:yellow;">
-                        <strong>{{ number_format($totalNetCostFunctionalUnit, 2, ',', '.') }}
+                        <strong>{{ number_format($i['info']['total_net_price'], 2, ',', '.') }}
                             €</strong>
                     </td>
                 </tr>
@@ -156,33 +158,33 @@
                 <tr>
                     <td style="font-size: 10px;">{{ $sisteco['vat']['label'] }}
                         {{ $sisteco['vat']['value'] . $sisteco['vat']['unit'] }}</td>
-                    <td style="font-size: 10px;">{{ number_format($vatFunctionalUnit, 2, ',', '.') }}
+                    <td style="font-size: 10px;">{{ number_format($i['info']['total_vat_price'], 2, ',', '.') }}
                         €
                     </td>
                 </tr>
                 <tr>
                     <td style="font-size: 10px;">Totale Con IVA</td>
-                    <td style="font-size: 10px;">{{ number_format($totalCostFunctionalUnit, 2, ',', '.') }}
+                    <td style="font-size: 10px;">{{ number_format($i['info']['total_gross_price'], 2, ',', '.') }}
                         €
                     </td>
                 </tr>
                 <tr>
                     <td style="background-color:yellow;">Costo / Ettaro Interventi Certificati</td>
                     <td style="background-color:yellow;">
-                        {{ $catalogArea->catalog_estimate['interventions']['info']['intervention_gross_price_per_area'] }}
+                        {{ number_format($i['info']['total_net_price_per_area'],2,',','.') }}
                         €
                     </td>
                 </tr>
                 <tr>
                     <td style="font-size: 10px;">{{ $sisteco['vat']['label'] }}
                         {{ $sisteco['vat']['value'] . $sisteco['vat']['unit'] }}</td>
-                    <td style="font-size: 10px;">{{ number_format($vatHectares, 2, ',', '.') }}
+                    <td style="font-size: 10px;">{{ number_format($i['info']['total_vat_price_per_area'],2,',','.') }}
                         €
                     </td>
                 </tr>
                 <tr>
                     <td style="font-size: 10px;">Totale Con IVA</td>
-                    <td style="font-size: 10px;">{{ number_format($totalHectaresCost, 2, ',', '.') }}
+                    <td style="font-size: 10px;">{{ number_format($i['info']['total_gross_price_per_area'],2,',','.') }}
                         €
                     </td>
                 </tr>
@@ -190,62 +192,53 @@
         </table>
         <hr>
         <div class="pagebreak"> </div>
-        <h2>Mantenimento</h2>
-        <p style="text-align: center;">
-            Area Interventi: {{ $catalogArea->catalog_estimate['interventions']['info']['intervention_area'] }} ha
-            <br>
-            Costo Manutenzione {{ $sisteco['maintenance']['unit'] }}
-            {{ number_format($sisteco['maintenance']['value'], 2, ',', '.') }}
-        </p>
+        <h2>Manutenzione</h2>
         <table class="maintenance-table column-nd-text-right">
             <thead>
                 <tr>
-                    <th>Codice Intervento</th>
-                    <th>Totale Incl. IVA</th>
+                    <th></th>
+                    <th>Costo interventi</th>
                 </tr>
             </thead>
-            @foreach ($catalogArea->catalog_estimate['maintenance']['items'] as $index => $item)
+            @foreach ($catalogArea->catalog_estimate['maintenance']['years'] as $index => $item)
                 <tr>
-                    <td>Mantenimento anno {{ $index + 1 }} post intervento</td>
-                    <td>{{ $item['price'] }} €</td>
-                </tr>
-                <tr>
-                    <td>Certificazione anno {{ $index + 1 }} post intervento</td>
-                    <td>{{ $catalogArea->catalog_estimate['maintenance']['certifications'][0]['price'] }} €</td>
+                    <td>Anno {{ $index + 1 }}</td>
+                    <td>{{ number_format($item['intervention_total_price'],2,',','.') }} €</td>
                 </tr>
             @endforeach
-            {{-- <tr>
-                <td>Certificazione 2° anno</td>
-                <td>{{ $catalogArea->catalog_estimate['maintenance']['certifications'][0]['price'] }} €</td>
+            <tr>
+                <th>Descrizione</th>
+                <th>Totale</th>
             </tr>
             <tr>
-                <td>Certificazione 5° anno</td>
-                <td>{{ $catalogArea->catalog_estimate['maintenance']['certifications'][1]['price'] }} €</td>
-            </tr> --}}
+                <td>Totale Interventi</td>
+                <td>{{ number_format($m['summary']['intervention_total_price'],2,',','.')}} €</td>
+            </tr>
+            <tr>
+                <td>Impresa forestale</td>
+                <td>{{ number_format($m['summary']['company_price'],2,',','.')}} €</td>
+            </tr>
+            <tr>
+                <td>Gestione e certificazioni</td>
+                <td>{{ number_format($m['summary']['certification_and_management_price'],2,',','.')}} €</td>
+            </tr>
             <tr>
                 <td style="background-color:yellow;"><strong>Totale Costo Mantenimento Certificato</strong></td>
                 <td style="background-color:yellow;">
-                    <strong>{{ number_format($totalMaintenanceNetPrice, 2, ',', '.') }}
+                    <strong>{{ number_format($catalogArea->catalog_estimate['maintenance']['summary']['total_net_price'],2,',','.') }}
                         €</strong>
                 </td>
             </tr>
             <tr>
                 <td style="font-size: 10px;">{{ $sisteco['vat']['label'] }}</td>
                 <td style="font-size: 10px;">
-                    {{ number_format($totalMaintenanceVat, 2, ',', '.') }} €</td>
+                    {{ number_format($catalogArea->catalog_estimate['maintenance']['summary']['total_vat'],2,',','.') }}                    €</td>
             </tr>
             <tr>
                 <td style="font-size: 10px;">Totale con IVA</td>
                 <td style="font-size: 10px;">
-                    {{ number_format($totalMaintenanceNetPrice + $totalMaintenanceVat, 2, ',', '.') }} €
-                </td>
+                    {{ number_format($catalogArea->catalog_estimate['maintenance']['summary']['total_gross_price'],2,',','.') }}                    € </td>
             </tr>
-            {{-- <tr>
-                <td>Costo Lordo/Ettaro</td>
-                <td>{{ $catalogArea->catalog_estimate['maintenance']['summary']['maintenance_gross_price_per_area'] }}
-                    €
-                </td>
-            </tr> --}}
         </table>
         <hr>
         <div class="pagebreak"> </div>
@@ -255,18 +248,18 @@
                 <tr>
                     <th style="background-color: #B3C6E7;">Totale Generale interventi + mantenimento</th>
                     <td style="background-color: #B3C6E7;">
-                        {{ number_format($totalMaintenanceNetPrice + $totalNetCostFunctionalUnit, 2, ',', '.') }} €
-                    </td>
+                        <strong>{{ number_format($g['total_net_price'],2,',','.') }}</strong>
+                        € </td>
                 </tr>
                 <tr style="font-size:10px;">
                     <th style="background-color: #B3C6E7;">IVA</th>
                     <td style="background-color: #B3C6E7;">
-                        {{ number_format($vatFunctionalUnit + $totalMaintenanceVat, 2, ',', '.') }} €</td>
+                        {{ number_format($g['total_vat_price'],2,',','.') }}  
                 </tr>
                 <tr style="font-size:10px;">
                     <th style="background-color: #B3C6E7;">Totale Generale con IVA</th>
                     <td style="background-color: #B3C6E7;">
-                        {{ number_format($totalMaintenanceNetPrice + $totalNetCostFunctionalUnit + $vatFunctionalUnit + $totalMaintenanceVat, 2, ',', '.') }}
+                        {{ number_format($g['total_gross_price'],2,',','.') }}   
                         €
                     </td>
                 </tr>
@@ -284,17 +277,17 @@
                 <tr>
                     <th style="background-color: #B3C6E7;">Costo Generale / Ettaro Interventi + Mantenimento</th>
                     <td style="background-color: #B3C6E7;">
-                        {{ number_format(round($totalGrossPricePerArea / 1.22, 2), 2, ',', '.') }} €</td>
+                        {{ number_format($g['total_net_price_per_area'], 2, ',', '.') }} €</td>
                 </tr>
                 <tr style="font-size:10px;">
                     <th style="background-color: #B3C6E7;">IVA</th>
-                    <td>{{ number_format(round($totalGrossPricePerArea - $totalGrossPricePerArea / 1.22, 2), 2, ',', '.') }}
+                    <td>{{ number_format($g['total_vat_price_per_area'], 2, ',', '.') }} 
                         €
                     </td>
                 </tr>
                 <tr style="font-size:10px;">
                     <th style="background-color: #B3C6E7;">Costo totale generale/ettaro con IVA</th>
-                    <td style="background-color: #B3C6E7;">{{ number_format($totalGrossPricePerArea, 2, ',', '.') }}
+                    <td style="background-color: #B3C6E7;">{{ number_format($g['total_gross_price_per_area'], 2, ',', '.') }} 
                     </td>
                 </tr>
             </tbody>
