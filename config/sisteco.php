@@ -28,7 +28,7 @@ return [
         'value' => 1100,
     ],
     'team_management' => [
-        'label' => 'Perc. Gestione',
+        'label' => 'Costi amministrativi',
         'unit' => '€',
         'value' => 3000,
     ],
