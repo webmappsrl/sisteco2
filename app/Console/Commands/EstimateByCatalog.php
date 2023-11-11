@@ -40,10 +40,7 @@ class EstimateByCatalog extends Command
                 throw new Exception('Catalog area not found');
             }
             $catalog_area->catalog_estimate =  $catalog_area->computeCatalogEstimate();
-            $estimate = $catalog_area->catalog_estimate['general']['total_gross_price'] ?? 0;
-            $estimate = str_replace(".", "", $estimate); // Remove the dots
-            $estimate = str_replace(",", ".", $estimate); // Replace the comma with a dot
-            //update the estimated value
+            $estimate = $catalog_area->catalog_estimate['general']['total_net_price'] ?? 0;
             $catalog_area->estimated_value = $estimate;
             $catalog_area->save();
         } else {
@@ -54,9 +51,7 @@ class EstimateByCatalog extends Command
             $catalogBar->start();
             foreach ($catalog_areas as $catalog_area) {
                 $catalog_area->catalog_estimate =  $catalog_area->computeCatalogEstimate();
-                $estimate = $catalog_area->catalog_estimate['general']['total_gross_price'] ?? 0;
-                $estimate = str_replace(".", "", $estimate); // Remove the dots
-                $estimate = str_replace(",", ".", $estimate); // Replace the comma with a dot
+                $estimate = $catalog_area->catalog_estimate['general']['total_net_price'] ?? 0;
                 //update the estimated value
                 $catalog_area->estimated_value = $estimate;
                 $catalog_area->save();

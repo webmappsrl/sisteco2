@@ -80,124 +80,190 @@ class CatalogArea extends Model
         $price = $unit_price * $intervention_area;
         $intervention_price += $price;
 
+        // Hiking Routes details
+        $hiking_routes_details_string = '-';
+        if (!is_null($this->hiking_routes_details) && count($this->hiking_routes_details) > 0) {
+            $hiking_routes_details_string = '';
+            foreach ($this->hiking_routes_details as $ref => $length) {
+                $ls = number_format($length, 0);
+                $hiking_routes_details_string .= "$ref($ls m) ";
+            }
+        }
+        $hiking_routes_total_cost = $this->hiking_routes_length * config('sisteco.hiking_routes_cost_per_km.value') / 1000;
+
         $items[] = [
             'code' => $cod_int . '.' . $parcel_code,
             'area' => number_format($intervention_area, 4, ',', '.'),
             'unit_price' => number_format($unit_price, 2, ',', '.'),
-            'price' => number_format($price, 2, ',', '.')
+            'price' => $price,
         ];
         $interventions['items'] = $items;
 
         //define the variables for the $intervention['info'] array
+        $intervention_forestal_price = $items[0]['price'];
+        $intervention_price = $intervention_forestal_price + $hiking_routes_total_cost;
+
         $supervision_price = $intervention_price *  ((config('sisteco.supervision.value') / 100));
         $overhead_price = $intervention_price * ((config('sisteco.overheads.value') / 100));
         $business_profit_price = $intervention_price * ((config('sisteco.business_profit.value') / 100));
+        $intervention_company_price = $supervision_price + $overhead_price + $business_profit_price;
         $intervention_certification = config('sisteco.intervention_certification.value');
         $total_intervention_certificated_price = $intervention_price + $supervision_price + $overhead_price + $business_profit_price + $intervention_certification;
-        $team_price = 3000;
-        $platform_maintenance_price = $total_intervention_certificated_price * ((config('sisteco.platform_maintenance.value') / 100));
-        $total_intervention_gross_price = $total_intervention_certificated_price + $team_price + $platform_maintenance_price;
-        $total_intervention_net_price = $total_intervention_gross_price / (1 + ($vat / 100));
-        $total_intervention_vat = $total_intervention_gross_price - $total_intervention_net_price;
-        $intervention_gross_price_per_area = $intervention_area != 0 ? $total_intervention_gross_price / $intervention_area : $total_intervention_gross_price; //if intervention_area is 0 the default value is total_intervention_gross_price
-        //create an array with all the variables above using number_format to format the numbers
+        $total_intervention_net_price = $total_intervention_certificated_price + $hiking_routes_total_cost;
+        $team_price = config('sisteco.team_management.value');
+        $platform_maintenance_price = $intervention_price * ((config('sisteco.platform_maintenance.value') / 100));
+        $intervention_certification_and_management_price = $team_price + $platform_maintenance_price + $intervention_certification;
+        $intervention_total_net_price = $intervention_certification_and_management_price + $intervention_price + $intervention_company_price;
+        $intervention_total_vat_price = $intervention_total_net_price * config('sisteco.vat.value') / 100;
+        $intervention_total_gross_price = $intervention_total_net_price + $intervention_total_vat_price;
+
+        $intervention_total_net_price_per_area = $intervention_total_net_price / $intervention_area;
+        $intervention_total_vat_price_per_area = $intervention_total_net_price_per_area * config('sisteco.vat.value') / 100;
+        $intervention_total_gross_price_per_area = $intervention_total_net_price_per_area + $intervention_total_vat_price_per_area;
+
         $interventions['info'] = [
             'name' => $type->name,
             'excerpt' => $type->excerpt,
             'description' => $type->description,
-            'intervention_area' => number_format($intervention_area, 4, ',', '.'),
-            'intervention_price' => number_format($intervention_price, 2, ',', '.'),
-            'supervision_price' => number_format($supervision_price, 2, ',', '.'),
-            'overhead_price' => number_format($overhead_price, 2, ',', '.'),
-            'business_profit_price' => number_format($business_profit_price, 2, ',', '.'),
+            'intervention_area' => $intervention_area,
+            'forestal_price' => $intervention_forestal_price,
+            'price' => $intervention_price,
+            'supervision_price' => $supervision_price,
+            'overhead_price' => $overhead_price,
+            'business_profit_price' => $business_profit_price,
+            'company_price' => $intervention_company_price,
+            'certification_and_management_price' => $intervention_certification_and_management_price,
+
             'intervention_certification' => number_format($intervention_certification, 2, ',', '.'),
             'total_intervention_certificated_price' => number_format($total_intervention_certificated_price, 2, ',', '.'),
             'team_price' => number_format($team_price, 2, ',', '.'),
             'platform_maintenance_price' => number_format($platform_maintenance_price, 2, ',', '.'),
-            'total_intervention_gross_price' => number_format($total_intervention_gross_price, 2, ',', '.'),
-            'total_intervention_net_price' => number_format($total_intervention_net_price, 2, ',', '.'),
-            'total_intervention_vat' => number_format($total_intervention_vat, 2, ',', '.'),
-            'intervention_gross_price_per_area' => number_format($intervention_gross_price_per_area, 2, ',', '.'),
+            'total_net_price' => $intervention_total_net_price,
+            'total_vat_price' => $intervention_total_vat_price,
+            'total_gross_price' => $intervention_total_gross_price,
+            'total_net_price_per_area' => $intervention_total_net_price_per_area, 
+            'total_vat_price_per_area' => $intervention_total_vat_price_per_area, 
+            'total_gross_price_per_area' => $intervention_total_gross_price_per_area, 
+
+            'hiking_routes_details' => $hiking_routes_details_string,
+            'hiking_routes_total_cost' => $hiking_routes_total_cost,
         ];
 
-        //defining $maintenance['items'] 
-        // items maintenace (5 elements, one for year)
-        // item.[].code this value indicates the year of the maintenance( year_1, year_2, year_3, year_4, year_5)
-        // items.[].area data taken from the intervention area
-        // items..[].unit_price: config('sisteco.maintenance.val')
-        // items.[].price: product from area * unit_price * config('sisteco.vat.val')
         $maintenance_item_price = $intervention_area * config('sisteco.maintenance.value') * (1 + $vat / 100);
-        $maintenance['items'] = [
-            [
-                'code' => 'year_1',
-                'area' => number_format($intervention_area, 4, ',', '.'),
-                'unit_price' => number_format(config('sisteco.maintenance.value'), 2, ',', '.'),
-                'price' => number_format($maintenance_item_price, 2, ',', '.'),
-            ],
-            [
-                'code' => 'year_2',
-                'area' => number_format($intervention_area, 4, ',', '.'),
-                'unit_price' => number_format(config('sisteco.maintenance.value'), 2, ',', '.'),
-                'price' => number_format($maintenance_item_price, 2, ',', '.'),
-            ],
-            [
-                'code' => 'year_3',
-                'area' => number_format($intervention_area, 4, ',', '.'),
-                'unit_price' => number_format(config('sisteco.maintenance.value'), 2, ',', '.'),
-                'price' => number_format($maintenance_item_price, 2, ',', '.'),
-            ],
-            [
-                'code' => 'year_4',
-                'area' => number_format($intervention_area, 4, ',', '.'),
-                'unit_price' => number_format(config('sisteco.maintenance.value'), 2, ',', '.'),
-                'price' => number_format($maintenance_item_price, 2, ',', '.'),
-            ],
-            [
-                'code' => 'year_5',
-                'area' => number_format($intervention_area, 4, ',', '.'),
-                'unit_price' => number_format(config('sisteco.maintenance.value'), 2, ',', '.'),
-                'price' => number_format($maintenance_item_price, 2, ',', '.'),
-            ],
+
+        // Per ciascun anno devono essere presi in considerazione: 
+        // costi di manutenzioni per interventi forestali
+        // costi di manutenzione della sentieristica
+        // costi di certificazione (da mostrare solo nel totale)
+        // costi di gestione della piattaforma (da mostrare solo nel totale)
+        $maintenance['years'] = [];
+        $maintenance_certification_total_price = 0;
+        $maintenance_platform_total_price = 0;
+        $maintenance_intervention_total_price = 0;
+        $hr_price = $this->hiking_routes_length*config('sisteco.hiking_routes_cost_per_km.value')/1000;
+
+        $price = $type->maintenance_price_fist_year;
+        $maintenance_year = [
+                'intervention_forest_price' => $intervention_area*$price,
+                'intervention_hiking_route_price' => $hr_price,
+                'intervention_total_price'=> $intervention_area*$price + $hr_price,
+                'certification_price' => $price > 0 ? config('sisteco.maintenance_certification.value') : 0,
+                'platform_price' => ((config('sisteco.platform_maintenance.value') / 100)) * ($intervention_area*$price + $hr_price)
         ];
-        //defining $maintenance['certifications'] array
-        //certifications code: 2 elements, year_2 and year_5
-        //certifications price: config(sisteco.maintenance_certification.val)
-        $maintenance['certifications'] = [
-            [
-                'code' => 'year_2',
-                'price' => number_format(config('sisteco.maintenance_certification.value'), 2, ',', '.'),
-            ],
-            [
-                'code' => 'year_5',
-                'price' => number_format(config('sisteco.maintenance_certification.value'), 2, ',', '.'),
-            ],
+        $maintenance_certification_total_price += $maintenance_year['certification_price'];
+        $maintenance_platform_total_price += $maintenance_year['platform_price'];
+        $maintenance_intervention_total_price += $maintenance_year['intervention_total_price'];
+        $maintenance['years'][]=$maintenance_year;
+
+        $price = $type->maintenance_price_second_year;
+        $maintenance_year = [
+            'intervention_forest_price' => $intervention_area*$price,
+            'intervention_hiking_route_price' => $hr_price,
+            'intervention_total_price'=> $intervention_area*$price + $hr_price,
+            'certification_price' => $price > 0 ? config('sisteco.maintenance_certification.value') : 0,
+            'platform_price' => ((config('sisteco.platform_maintenance.value') / 100)) * ($intervention_area*$price + $hr_price)
         ];
-        //defining $maintenance['summary'] array
-        //  total_maintenance_gross_price: calculated from the sum of all the price of the items in the maintenance['items'] array
-        // total_maintenance_net_price: total_maintenance_gross_price divided by config(sisteco.vat.val)
-        // total_maintenance_vat: diference gross - net
-        // maintenance_gross_price_per_area: total_maintenance_gross_price / area
-        $total_maintenance_gross_price = ($maintenance_item_price * 5) + (config('sisteco.maintenance_certification.value') * 2); //price of the 5 years of maintenance plus vat
-        $total_maintenance_net_price = $total_maintenance_gross_price / (1 + $vat / 100); //price of the 5 years of maintenance without vat
+        $maintenance_certification_total_price += $maintenance_year['certification_price'];
+        $maintenance_platform_total_price += $maintenance_year['platform_price'];
+        $maintenance_intervention_total_price += $maintenance_year['intervention_total_price'];
+        $maintenance['years'][]=$maintenance_year;
+
+        $price = $type->maintenance_price_third_year;
+        $maintenance_year = [
+            'intervention_forest_price' => $intervention_area*$price,
+            'intervention_hiking_route_price' => $hr_price,
+            'intervention_total_price'=> $intervention_area*$price + $hr_price,
+            'certification_price' => $price > 0 ? config('sisteco.maintenance_certification.value') : 0,
+            'platform_price' => ((config('sisteco.platform_maintenance.value') / 100)) * ($intervention_area*$price + $hr_price)
+        ];
+        $maintenance_certification_total_price += $maintenance_year['certification_price'];
+        $maintenance_platform_total_price += $maintenance_year['platform_price'];
+        $maintenance_intervention_total_price += $maintenance_year['intervention_total_price'];
+        $maintenance['years'][]=$maintenance_year;
+
+        $price = $type->maintenance_price_fourth_year;
+        $maintenance_year = [
+            'intervention_forest_price' => $intervention_area*$price,
+            'intervention_hiking_route_price' => $hr_price,
+            'intervention_total_price'=> $intervention_area*$price + $hr_price,
+            'certification_price' => $price > 0 ? config('sisteco.maintenance_certification.value') : 0,
+            'platform_price' => ((config('sisteco.platform_maintenance.value') / 100)) * ($intervention_area*$price + $hr_price)
+        ];
+        $maintenance_certification_total_price += $maintenance_year['certification_price'];
+        $maintenance_platform_total_price += $maintenance_year['platform_price'];
+        $maintenance_intervention_total_price += $maintenance_year['intervention_total_price'];
+        $maintenance['years'][]=$maintenance_year;
+
+        $price = $type->maintenance_price_fifth_year;
+        $maintenance_year = [
+            'intervention_forest_price' => $intervention_area*$price,
+            'intervention_hiking_route_price' => $hr_price,
+            'intervention_total_price'=> $intervention_area*$price + $hr_price,
+            'certification_price' => $price > 0 ? config('sisteco.maintenance_certification.value') : 0,
+            'platform_price' => ((config('sisteco.platform_maintenance.value') / 100)) * ($intervention_area*$price + $hr_price)
+        ];
+        $maintenance_certification_total_price += $maintenance_year['certification_price'];
+        $maintenance_platform_total_price += $maintenance_year['platform_price'];
+        $maintenance_intervention_total_price += $maintenance_year['intervention_total_price'];
+        $maintenance['years'][]=$maintenance_year;
+
+        $maintenance_company_price = $maintenance_intervention_total_price *
+            (
+                config('sisteco.supervision.value')/100 + 
+                config('sisteco.overheads.value')/100 + 
+                config('sisteco.business_profit.value')/100  
+            );
+        $maintenance_certification_and_management_price = $maintenance_certification_total_price + $maintenance_platform_total_price;
+        $total_maintenance_net_price = $maintenance_intervention_total_price + $maintenance_company_price +  $maintenance_certification_and_management_price;
+
         $maintenance['summary'] = [
-            'total_maintenance_gross_price' => number_format($total_maintenance_gross_price, 2, ',', '.'),
-            'total_maintenance_net_price' => number_format($total_maintenance_net_price, 2, ',', '.'),
-            'total_maintenance_vat' => number_format($total_maintenance_gross_price - $total_maintenance_net_price, 2, ',', '.'), //vat
-            'maintenance_gross_price_per_area' => $intervention_area != 0 ? number_format($total_maintenance_gross_price / ($intervention_area * 5), 2, ',', '.') : $total_maintenance_gross_price, //if intervention_area is 0 the default value is the total_maintenance_gross_price
+            'intervention_total_price' => $maintenance_intervention_total_price,
+            'company_price' => $maintenance_company_price,
+            'certification_and_management_price' => $maintenance_certification_and_management_price,
+            'total_net_price' => $total_maintenance_net_price,
+            'total_vat' => $total_maintenance_net_price * $vat/100,
+            'total_gross_price' => $total_maintenance_net_price * (1+$vat/100),
+            'maintenance_gross_price_per_area' => 0,
         ];
 
         //defining $general array
-        //total_gross_price: sum of total_intervention_gross_price and total_maintenance_gross_price
-        //total_net_price: total_gross_price divided by config(sisteco.vat.val)
-        //total_vat: diference gross - net
-        //total_gross_price_per_area: total_gross_price / area
-        $total_general_gross_price = $total_intervention_gross_price + $total_maintenance_gross_price;
-        $total_net_price = $total_general_gross_price / (1 + $vat / 100);
+
+        $total_net_price = $maintenance['summary']['total_net_price'] + $interventions['info']['total_net_price'];
+        $total_vat_price = $total_net_price * config('sisteco.vat.value') / 100;
+        $total_gross_price = $total_net_price + $total_vat_price;
+
+        $total_net_price_per_area = $total_net_price / $intervention_area;
+        $total_vat_price_per_area = $total_vat_price / $intervention_area;
+        $total_gross_price_per_area = $total_gross_price / $intervention_area;
+
+
         $general = [
-            'total_gross_price' => number_format($total_general_gross_price, 2, ',', '.'),
-            'total_net_price' => number_format($total_net_price, 2, ',', '.'),
-            'total_vat' => number_format($total_general_gross_price - $total_net_price, 2, ',', '.'),
-            'total_gross_price_per_area' => $intervention_area != 0 ? number_format($total_general_gross_price / $intervention_area, 2, ',', '.') : $total_general_gross_price, //if intervention_area is 0 the default value is the total_general_gross_price  
+            'total_net_price' => $total_net_price,
+            'total_vat_price' => $total_vat_price,
+            'total_gross_price' => $total_gross_price,
+            'total_net_price_per_area' => $total_net_price_per_area, 
+            'total_vat_price_per_area' => $total_vat_price_per_area, 
+            'total_gross_price_per_area' => $total_gross_price_per_area, 
         ];
 
         //if $intervention is empty or if all 'code' fields inside $intervention['items'] are 0, then $json will be empty
