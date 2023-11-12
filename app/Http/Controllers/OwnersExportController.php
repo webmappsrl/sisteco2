@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Exports\OwnersExport;
 use Maatwebsite\Excel\Facades\Excel;
 
