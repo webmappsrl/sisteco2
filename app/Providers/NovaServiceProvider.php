@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\CatalogArea as ModelsCatalogArea;
 use App\Nova\User;
 use App\Nova\Owner;
 use App\Nova\Catalog;
@@ -56,7 +57,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                         ->canSee(function (Request $request) {
                             //Check if the user has permission to view the Owners resource.
                             return $request->user()->can('viewAny', Owner::newModel());
-                        })
+                        }),
+                    MenuItem::externalLink('Areas.xlsx', '/catalog-areas/export')
+                    ->openInNewTab()
+                    ->canSee(function (Request $request) {
+                        //Check if the user has permission to view the Owners resource.
+                        return $request->user()->can('viewAny', CatalogArea::newModel());
+                    })
                 ])
                     ->icon('download')->collapsable(),
             ];

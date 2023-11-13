@@ -107,11 +107,10 @@ class CatalogArea extends Model
         $overhead_price = $intervention_price * ((config('sisteco.overheads.value') / 100));
         $business_profit_price = $intervention_price * ((config('sisteco.business_profit.value') / 100));
         $intervention_company_price = $supervision_price + $overhead_price + $business_profit_price;
-        $intervention_certification = config('sisteco.intervention_certification.value');
+        $intervention_certification = $intervention_price > 0 ? config('sisteco.intervention_certification.value') : 0;
         $total_intervention_certificated_price = $intervention_price + $supervision_price + $overhead_price + $business_profit_price + $intervention_certification;
-        $total_intervention_net_price = $total_intervention_certificated_price + $hiking_routes_total_cost;
-        $team_price = config('sisteco.team_management.value');
-        $platform_maintenance_price = $intervention_price * ((config('sisteco.platform_maintenance.value') / 100));
+        $team_price = $intervention_price > 0 ? config('sisteco.team_management.value') : 0 ;
+        $platform_maintenance_price = $intervention_price > 0 ? $intervention_price * ((config('sisteco.platform_maintenance.value') / 100)) : 0;
         $intervention_certification_and_management_price = $team_price + $platform_maintenance_price + $intervention_certification;
         $intervention_total_net_price = $intervention_certification_and_management_price + $intervention_price + $intervention_company_price;
         $intervention_total_vat_price = $intervention_total_net_price * config('sisteco.vat.value') / 100;
@@ -137,7 +136,7 @@ class CatalogArea extends Model
             'intervention_certification' => number_format($intervention_certification, 2, ',', '.'),
             'total_intervention_certificated_price' => number_format($total_intervention_certificated_price, 2, ',', '.'),
             'team_price' => number_format($team_price, 2, ',', '.'),
-            'platform_maintenance_price' => number_format($platform_maintenance_price, 2, ',', '.'),
+            'platform_maintenance_price' => $platform_maintenance_price,
             'total_net_price' => $intervention_total_net_price,
             'total_vat_price' => $intervention_total_vat_price,
             'total_gross_price' => $intervention_total_gross_price,
@@ -239,6 +238,7 @@ class CatalogArea extends Model
         $maintenance['summary'] = [
             'intervention_total_price' => $maintenance_intervention_total_price,
             'company_price' => $maintenance_company_price,
+            'platform_total_price' => $maintenance_platform_total_price,
             'certification_and_management_price' => $maintenance_certification_and_management_price,
             'total_net_price' => $total_maintenance_net_price,
             'total_vat' => $total_maintenance_net_price * $vat/100,
@@ -261,6 +261,7 @@ class CatalogArea extends Model
             'total_net_price' => $total_net_price,
             'total_vat_price' => $total_vat_price,
             'total_gross_price' => $total_gross_price,
+            'platform_net_price' => $interventions['info']['platform_maintenance_price'] + $maintenance['summary']['platform_total_price'],
             'total_net_price_per_area' => $total_net_price_per_area, 
             'total_vat_price_per_area' => $total_vat_price_per_area, 
             'total_gross_price_per_area' => $total_gross_price_per_area, 
