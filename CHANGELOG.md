@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.0](https://github.com/webmappsrl/sisteco2/compare/v2.0.1...v2.1.0) (2023-11-13)
+
+
+### Features
+
+* Add surface area calculation and additional fields to CatalogAreaExport ([f2d200c](https://github.com/webmappsrl/sisteco2/commit/f2d200c9c6af1d8225c4a3c1323cf3735a32a70b))
+* added Release-Please tag to version number ([7062b14](https://github.com/webmappsrl/sisteco2/commit/7062b1410f79caae494e97c1286fac52cc0fb504))
+
 ## [2.0.1](https://github.com/webmappsrl/sisteco2/compare/v2.0.0...v2.0.1) (2023-11-13)
 
 

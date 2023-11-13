@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'version' => 'sisteco.1.2.0', //x-release-please-version
+    'version' => 'sisteco.2.1.0', //x-release-please-version
 
     /*
     |--------------------------------------------------------------------------
