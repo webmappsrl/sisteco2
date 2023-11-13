@@ -17,22 +17,22 @@ composer install  --no-interaction --prefer-dist --optimize-autoloader
 # Run database migrations
 php artisan migrate
 
-# Clear caches
-php artisan cache:clear
+# # Clear caches
+# php artisan cache:clear
 
-# Clear and cache routes
-php artisan route:clear
-php artisan route:cache
+# # Clear and cache routes
+# php artisan route:clear
+# php artisan route:cache
 
-# Clear and cache config
-php artisan config:clear
-php artisan config:cache
+# # Clear and cache config
+# php artisan config:clear
+# php artisan config:cache
 
-# Clear the old cache
-php artisan clear-compiled
+# # Clear the old cache
+# php artisan clear-compiled
 
-composer dump-autoload
-php artisan optimize
+# composer dump-autoload
+php artisan optimize:clear
 
 # Compile npm assets
 # npm run prod

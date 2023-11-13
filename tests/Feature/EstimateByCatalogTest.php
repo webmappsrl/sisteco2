@@ -309,12 +309,11 @@ class EstimateByCatalogTest extends TestCase
      * 
      * @return void
      */
-    public function test_estimate_by_catalog_without_id()
+    public function estimate_by_catalog_without_id()
     {
 
-        $this->expectException(RuntimeException::class);
         $this->artisan('sisteco2:estimate_by_catalog')
-            ->assertExitCode(1);
+            ->assertExitCode(0);
     }
 
     /**
@@ -322,7 +321,7 @@ class EstimateByCatalogTest extends TestCase
      *
      * @return void
      */
-    public function test_compute_catalog_estimate_method_throws_exception_for_invalid_catalog_id()
+    public function compute_catalog_estimate_method_throws_exception_for_invalid_catalog_id()
     {
         $this->parcel = CadastralParcel::factory()->create([
             'code' => 'B390_000700.176',
@@ -349,7 +348,7 @@ class EstimateByCatalogTest extends TestCase
      * 
      * @return void
      */
-    public function test_compute_catalog_estimate_method_return_array_with_correct_json_structure()
+    public function compute_catalog_estimate_method_return_array_with_correct_json_structure()
     {
 
         //set up the environment

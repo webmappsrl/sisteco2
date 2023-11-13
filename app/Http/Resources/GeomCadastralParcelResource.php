@@ -28,7 +28,7 @@ class GeomCadastralParcelResource extends JsonResource
         $catalog_geometries = $this->getCatalogGeometries(1);
 
         // Add the geometries from the catalog
-        if(count($catalog_geometries)>0) {
+        if (count($catalog_geometries) > 0) {
             foreach ($catalog_geometries as $geometry) {
                 $output['features'][] = [
                     'type' => 'Feature',
@@ -36,14 +36,14 @@ class GeomCadastralParcelResource extends JsonResource
                         'id' => $geometry['id'],
                         'type_sisteco' => 'Catalog Area',
                         'cod_int' => $geometry['cod_int'],
-                        'strokeColor' => config('sisteco.cadastralParcelAreaStyle.' . $geometry['cod_int'] . '.strokeColor'),
-                        'fillColor' => config('sisteco.cadastralParcelAreaStyle.' . $geometry['cod_int'] . '.fillColor'),
-    
-    
+                        'strokeColor' => config('sisteco.areaStyle.' . $geometry['cod_int'] . '.strokeColor'),
+                        'fillColor' => config('sisteco.areaStyle.' . $geometry['cod_int'] . '.fillColor'),
+
+
                     ],
                     'geometry' => $geometry['geometry'],
                 ];
-            }    
+            }
         }
 
         // Add cadastral parcel feature
@@ -53,17 +53,17 @@ class GeomCadastralParcelResource extends JsonResource
 
 
 
-        $output['features'][]=
-                [
-                    'type' => 'Feature',
-                    'properties' => [
-                        'id' => $this->id,
-                        'type_sisteco' => 'Cadastral Parcel',
-                        'strokeColor' => config('sisteco.cadastralParcelAreaStyle.cadastral.strokeColor'),
-                        'fillColor' => config('sisteco.cadastralParcelAreaStyle.cadastral.fillColor'),
-                    ],
-                    'geometry' => json_decode($parcel_geometry, true),
-                ];
+        $output['features'][] =
+            [
+                'type' => 'Feature',
+                'properties' => [
+                    'id' => $this->id,
+                    'type_sisteco' => 'Cadastral Parcel',
+                    'strokeColor' => config('sisteco.areaStyle.cadastral.strokeColor'),
+                    'fillColor' => config('sisteco.areaStyle.cadastral.fillColor'),
+                ],
+                'geometry' => json_decode($parcel_geometry, true),
+            ];
 
         // Return the output
         return $output;

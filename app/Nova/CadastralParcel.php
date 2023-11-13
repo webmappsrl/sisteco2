@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Models\CatalogArea;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -54,14 +55,6 @@ class CadastralParcel extends Resource
             Text::make('Codice Catastale', 'code')
                 ->sortable(),
             Text::make('Comune', 'municipality'),
-            //if $this->estimated_value is greather than 0, create a currency field with the value of $this->estimated_value, else create a text field that displays "Nessuna stima disponibile"
-            $this->estimated_value > 0 ? Currency::make('Valore Stimato', 'estimated_value')->currency('EUR')->displayUsing(function ($value) {
-                return number_format($value, 2, ',', '.') . ' €';
-            })->sortable() : Text::make('Valore Stimato', 'estimated_value', function ($value) {
-                return '<p style="color:red">Nessuna stima disponibile</p>';
-            })->asHtml(),
-
-
             Text::make('Area (mq)', 'square_meter_surface')
                 ->sortable()
                 ->displayUsing(function ($value) {
@@ -77,175 +70,22 @@ class CadastralParcel extends Resource
                 return intval($distance) . ' m';
             })->onlyOnDetail(),
             Text::make('Classe Trasporto', 'way')->onlyOnDetail(),
+
+            BelongsToMany::make('Proprietari', 'owners', Owner::class),
             Text::make(
-                'Interventi Forestali',
+                'Catalog Areas',
                 function () {
-                    if (empty($this->catalog_estimate)) {
-                        return '<p style="color:red">ND</p>';
-                    }
-                    $items = $this->catalog_estimate['interventions']['items'];
-                    $info = $this->catalog_estimate['interventions']['info'];
-
-                    $o = '<style> table, th, td { border: 1px solid black; padding: 5px;}</style>';
-                    $o .= '<table border="1">';
-                    $o .= "<tr>";
-                    $o .= "<th>Codice Intervento</th>";
-                    $o .= "<th>Area</th>";
-                    $o .= "<th>€/Ettaro</th>";
-                    $o .= "<th>Totale (€)</th>";
-                    $o .= "</tr>";
-
-                    //create headings for interventions info table: Area(ettari) e Totale(€). Insert only intervention_area value in the column Area
-                    $i = '<style> table, th, td { border: 1px solid black; padding: 5px;}</style>';
-                    $i .= '<table border="1">';
-                    $i .= "<tr>";
-                    $i .= "<th colspan='3'>Info</th>";
-                    $i .= "<th colspan='1'>Area</th>";
-                    $i .= "<th>€</th>";
-                    $i .= "</tr>";
-
-                    //if $items is empty display a row with ND
-                    if (empty($items)) {
-                        $o .= "<tr>";
-                        $o .= "<td>ND</td>";
-                        $o .= "<td>ND</td>";
-                        $o .= "<td>ND</td>";
-                        $o .= "<td>ND</td>";
-                        $o .= "</tr>";
-                    }
-
-                    //if $info is empty display a row with ND
-                    if (empty($info)) {
-                        $i .= "<tr>";
-                        $i .= "<td colspan='4'>ND</td>";
-                        $i .= "</tr>";
-                    }
-
-                    foreach ($items as $item) {
-                        $o .= "<tr>";
-                        $o .= $item['code'] ? "<td>{$item['code']}</td>" : "<td>ND</td>";
-                        $o .= $item['area'] ? "<td>{$item['area']}</td>" : "<td>ND</td>";
-                        $o .= $item['unit_price'] ? "<td>{$item['unit_price']}</td>" : "<td>ND</td>";
-                        $o .= $item['price'] ? "<td>{$item['price']}</td>" : "<td>ND</td>";
-                        $o .= "</tr>";
-                    }
-
-                    foreach ($info as $key => $value) {
-                        $i .= "<tr>";
-                        $i .= "<td colspan='3'>{$key}</td>";
-                        //only if $key == intervention_area insert the value in the column Area and not in the column €
-                        if ($key == 'intervention_area') {
-                            $i .= "<td>{$value}</td>";
-                            $i .= "<td>ND</td>";
-                        } else {
-                            $i .= "<td>ND</td>";
-                            $i .= "<td>{$value}</td>";
+                    $areas = $this->getCatalogAreasByGeometry(1);
+                    $areasString = '';
+                    if ($areas) {
+                        foreach ($areas as $area) {
+                            $catalogArea = CatalogArea::find($area);
+                            $areasString .= '<a style="color:lightblue;" href="/resources/catalog-areas/' . $catalogArea->id . '">' . $catalogArea->id . '</a>, ';
                         }
-                        $i .= "</tr>";
+                        return substr($areasString, 0, -2);
                     }
-
-                    $o .= "</table>";
-                    $i .= "</table>";
-                    return [$o, $i];
                 }
             )->asHtml()->onlyOnDetail(),
-            Text::make('Mantenimento', function () {
-                if (empty($this->catalog_estimate)) {
-                    return '<p style="color:red">ND</p>';
-                }
-
-                $maintenanceItems = $this->catalog_estimate['maintenance']['items'];
-                $maintenanceSummary = $this->catalog_estimate['maintenance']['summary'];
-                $maintenanceCertifications = $this->catalog_estimate['maintenance']['certifications'];
-
-                //create headings for maintenance items table
-                $o = '<style> table, th, td { border: 1px solid black; padding: 5px;}</style>';
-                $o .= '<table border="1">';
-                $o .= "<tr>";
-                $o .= "<th>Codice Intervento</th>";
-                $o .= "<th>Area</th>";
-                $o .= "<th>€/Ettaro</th>";
-                $o .= "<th>Totale(€)</th>";
-                $o .= "</tr>";
-
-                //create headings for maintenance summary table
-                $i = '<style> table, th, td { border: 1px solid black; padding: 5px;}</style>';
-                $i .= '<table border="1">';
-                $i .= "<tr>";
-                $i .= "<th colspan='3'>Summary</th>";
-                $i .= "<th colspan='3'>€</th>";
-                $i .= "</tr>";
-
-                //create headings for maintenance certifications table
-                $u = '<style> table, th, td { border: 1px solid black; padding: 5px;}</style>';
-                $u .= '<table border="1">';
-                $u .= "<tr>";
-                $u .= "<th>Certifications</th>";
-                $u .= "<th>€</th>";
-                $u .= "</tr>";
-
-
-                foreach ($maintenanceItems as $item) {
-                    $o .= "<tr>";
-                    $o .= $item['code'] ? "<td>{$item['code']}</td>" : "<td>ND</td>";
-                    $o .= $item['area'] ? "<td>{$item['area']}</td>" : "<td>ND</td>";
-                    $o .= $item['unit_price'] ? "<td>{$item['unit_price']}</td>" : "<td>ND</td>";
-                    $o .= $item['price'] ? "<td>{$item['price']}</td>" : "<td>ND</td>";
-                    $o .= "</tr>";
-                }
-
-                foreach ($maintenanceCertifications as $certification) {
-                    $u .= "<tr>";
-                    $u .= $certification['code'] ? "<td>{$certification['code']}</td>" : "<td>ND</td>";
-                    $u .= $certification['price'] ? "<td>{$certification['price']}</td>" : "<td>ND</td>";
-                    $u .= "</tr>";
-                }
-
-                foreach ($maintenanceSummary as $key => $value) {
-                    $i .= "<tr>";
-                    $i .= "<td colspan='3'>{$key}</td>";
-                    $i .= "<td>{$value}</td>";
-                    $i .= "</tr>";
-                }
-                $o .= "</table>";
-                $i .= "</table>";
-                $u .= "</table>";
-                return [$o, $u, $i];
-            })->asHtml()->onlyOnDetail(),
-            Text::make('Costi Generali', function () {
-                if (empty($this->catalog_estimate)) {
-                    return '<p style="color:red">ND</p>';
-                }
-
-                $generals = $this->catalog_estimate['general'];
-
-                $o = '<style> table, th, td { border: 1px solid black; padding: 5px;}</style>';
-                $o .= '<table border="1">';
-                $o .= "<tr>";
-                $o .= "<th>Costi Generali</th>";
-                $o .= "<th>€</th>";
-                $o .= "</tr>";
-
-                foreach ($generals as $key => $value) {
-                    $o .= "<tr>";
-                    $o .= "<td>{$key}</td>";
-                    $o .= "<td>{$value}</td>";
-                    $o .= "</tr>";
-                }
-
-                $o .= "</table>";
-                return $o;
-            })->asHtml()->onlyOnDetail(),
-            BelongsToMany::make('Proprietari', 'owners', Owner::class),
-            Text::make('Link')
-                ->resolveUsing(function ($value, $resource, $attribute) {
-                    return '<a class="link-default" target="_blank" href="' . route(
-                        'cadastral-parcel',
-                        ['id' => $resource->id]
-                    ) . '">View Parcel</a>';
-                })
-                ->asHtml()
-                ->exceptOnForms(),
             MapMultiPolygon::make('Geometry', 'geometry')->withMeta([
                 'center' => ['42.795977075', '10.326813853'],
                 'attribution' => '<a href="https://webmapp.it/">Webmapp</a> contributors',
