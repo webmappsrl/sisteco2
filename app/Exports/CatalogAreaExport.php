@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\CatalogArea;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -25,8 +26,21 @@ class CatalogAreaExport implements FromCollection, ShouldAutoSize, WithHeadings,
      */
     public function map($area): array
     {
+
+        $surface = DB::table('catalog_areas')
+        ->select(DB::raw('ST_Area(geometry) as area'))
+        ->where('id', $area->id)
+        ->value('area');
+        $surface_ha = $surface / 10000;
+
         return [
             $area->id,
+            $area->catalogType->name,
+            $area->catalogType->cod_int,
+            $surface_ha,
+            $area->hiking_routes_length,
+            $area->estimated_value,
+            $area->catalog_estimate['general']['platform_net_price'],
         ];
     }
 
@@ -35,6 +49,12 @@ class CatalogAreaExport implements FromCollection, ShouldAutoSize, WithHeadings,
         //create an heading for each column of the model renaming the columns
         return [
             'ID',
+            'Intervento',
+            'Codice Intervento',
+            'Superficie (ha)',
+            'Sentieri (m)',
+            'Stima (€)',
+            'Piattaforma (€)'
         ];
     }
 
