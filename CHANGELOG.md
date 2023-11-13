@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/webmappsrl/sisteco2/compare/v2.0.0...v2.0.1) (2023-11-13)
+
+
+### Bug Fixes
+
+* Update prod_deploy.yml for Laravel deployment ([969b923](https://github.com/webmappsrl/sisteco2/commit/969b923bba4cd1987768f598538dfdc8f786c875))
+
 ## [2.0.0](https://github.com/webmappsrl/sisteco2/compare/v1.2.0...v2.0.0) (2023-11-13)
 
 
