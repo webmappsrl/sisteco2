@@ -32,8 +32,15 @@
             </div>
         </div>
         <div>
-            <h3>{{ $catalogArea->catalog_estimate['interventions']['info']['excerpt'] }}</h3>
-            <p>{{ $catalogArea->catalog_estimate['interventions']['info']['description'] }}</p>
+            @if ($catalogArea->catalog_estimate['interventions']['info']['excerpt'])
+                <h3>{{ $catalogArea->catalog_estimate['interventions']['info']['excerpt'] }}</h3>
+                <p>{{ $catalogArea->catalog_estimate['interventions']['info']['description'] }}</p>
+            @endif
+            @if ($catalogArea->catalogType->generated_ecosystem_servicesal)
+                <h3>Servizi Ecosistemici Generati</h3>
+                <p>{{ $catalogArea->catalogType->generated_ecosystem_servicesal }}</p>
+            @endif
+            <p style="font-style: italic">Per tutti i dettagli si rimanda al Piano di Gestione Forestale</p>
         </div>
         <table class="parcel-details-table">
             <tbody>
@@ -200,7 +207,7 @@
         <div class="pagebreak"> </div>
         <h2>Gestione forestale attiva e responsabile boschi del Monte Pisano</h2>
 
-        <h2>Manutenzione</h2>
+        <h2>Mantenimento</h2>
         <table class="maintenance-table column-nd-text-right">
             <thead>
                 <tr>
