@@ -10,9 +10,71 @@
     <link rel="stylesheet"
         href="https://cdn.statically.io/gh/webmappsrl/feature-collection-widget-map/8778f562/dist/styles.css">
     <base href="/catalog-areas/{{ $catalogArea->id }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#supportProjectModal">
+        Sostieni il progetto
+    </button>
+    <div class="modal fade" id="supportProjectModal" tabindex="-1" aria-labelledby="supportProjectModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="supportProjectModalLabel">BOSCHI, BENE COMUNE: CONTRIBUISCI ALLA TUTELA
+                        E ALLA GESTIONE DEL PATRIMONIO NATURALE DEL MONTE PISANO</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="fst-italic fw-light ">Boschi mantenuti secondo le regole di una corretta gestione
+                        forestale, attiva
+                        e
+                        responsabile,
+                        favoriscono il miglioramento della qualità dell’aria, contribuiscono alla stabilizzazione dei
+                        versanti, alla riduzione del rischio idrogeologico e del rischio incendi, concorrono alla
+                        mitigazione dei cambiamenti climatici.</p>
+
+                    <p class="fst-italic fw-light "> Benefici ecosistemici dei quali l’intera collettività trae
+                        vantaggio e del
+                        cui
+                        raggiungimento la
+                        stessa collettività deve darsi carico.</p>
+                    <form>
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome*</label>
+                            <input type="text" class="form-control" id="nome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cognome" class="form-label">Cognome*</label>
+                            <input type="text" class="form-control" id="cognome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="azienda" class="form-label">Azienda*</label>
+                            <input type="text" class="form-control" id="azienda" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Telefono</label>
+                            <input type="tel" class="form-control" id="telefono">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email*</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div>
+                            <p class=" fw-lighter text-danger ">I campi contrassegnati con (*) sono obbligatori</p>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                    <button type="submit" class="btn btn-success">Invia</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <h2>Gestione forestale attiva e responsabile boschi del Monte Pisano</h2>
     <h1>Dettagli dell'area {{ $catalogArea->id }}</h1>
     <h2>Tipo intervento forestale: {{ $catalogArea->catalog_estimate['interventions']['info']['name'] }}</h2>
@@ -324,6 +386,9 @@
     <script src="https://cdn.statically.io/gh/webmappsrl/feature-collection-widget-map/8778f562/dist/polyfills.js" defer>
     </script>
     <script src="https://cdn.statically.io/gh/webmappsrl/feature-collection-widget-map/8778f562/dist/main.js" defer>
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
 </body>
 
