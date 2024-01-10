@@ -76,6 +76,8 @@
     </div>
     <hr>
     <div class="pagebreak"> </div>
+    <h2>Gestione forestale attiva e responsabile boschi del Monte Pisano</h2>
+
     @if (!empty($catalogArea->catalog_estimate))
         <h2>Interventi Forestali</h2>
         <table class="interventions-table">
@@ -180,7 +182,8 @@
                 <tr>
                     <td style="font-size: 10px;">{{ $sisteco['vat']['label'] }}
                         {{ $sisteco['vat']['value'] . $sisteco['vat']['unit'] }}</td>
-                    <td style="font-size: 10px;">{{ number_format($i['info']['total_vat_price_per_area'], 2, ',', '.') }}
+                    <td style="font-size: 10px;">
+                        {{ number_format($i['info']['total_vat_price_per_area'], 2, ',', '.') }}
                         €
                     </td>
                 </tr>
@@ -195,6 +198,8 @@
         </table>
         <hr>
         <div class="pagebreak"> </div>
+        <h2>Gestione forestale attiva e responsabile boschi del Monte Pisano</h2>
+
         <h2>Manutenzione</h2>
         <table class="maintenance-table column-nd-text-right">
             <thead>
@@ -247,6 +252,8 @@
         </table>
         <hr>
         <div class="pagebreak"> </div>
+        <h2>Gestione forestale attiva e responsabile boschi del Monte Pisano</h2>
+
         <h2>Totale generale</h2>
         <table class="total-table column-nd-text-right">
             <tbody style="background-color: #B3C6E7;">
