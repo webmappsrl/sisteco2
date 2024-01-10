@@ -15,16 +15,25 @@ class SupportProjectController extends Controller
     {
         $data = $request->all();
 
+        $messages = [
+            'nome.required' => 'Il campo Nome è obbligatorio.',
+            'cognome.required' => 'Il campo Cognome è obbligatorio.',
+            'email.required' => 'Il campo Email è obbligatorio.',
+            'email.email' => 'Il campo Email deve essere un indirizzo email valido.',
+            'telefono.numeric' => 'Il campo Telefono deve contenere solo numeri.',
+        ];
+
         $validator = Validator::make($data, [
             'nome' => 'required',
             'cognome' => 'required',
             'azienda' => 'nullable',
             'email' => 'required|email',
+            'telefono' => 'nullable|numeric',
             'note' => 'nullable|string'
-        ]);
+        ], $messages);
 
         if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
+            return back()->with('Error', 'Errore: ' . $validator->errors()->first());
         }
 
         $catalog = Catalog::find($data['catalog-id']);
