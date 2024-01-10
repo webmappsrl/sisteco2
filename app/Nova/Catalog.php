@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Resource; // Add the missing import statement
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\HasMany;
@@ -46,6 +47,16 @@ class Catalog extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Name'),
+            Text::make('Map Url', 'map_url')
+                ->hideFromDetail()
+                ->hideFromIndex()
+                ->rules('url:http,https')
+                ->help('Must be a valid URL'),
+            Text::make('Map Url', function () {
+                $url = $this->map_url;
+                $string = '<a target="_blank" style="color: #2697bc" href="' . $url . '">' . $url . '</a>';
+                return $string;
+            })->asHtml()->showOnDetail()->showOnUpdating()->showOnCreating(),
             Number::make('Areas', function () {
                 return $this->catalogAreas()->count();
             })->onlyOnIndex(),
