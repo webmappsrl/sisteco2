@@ -32,7 +32,7 @@ class SupportProjectController extends Controller
 
         try {
             Mail::to($data['email'])
-                ->bcc($emails)
+                ->cc($emails)
                 ->send(new SupportProjectMail($data));
 
             return back()->with('Success', 'La tua richiesta è stata inviata con successo.');
