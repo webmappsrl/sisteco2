@@ -49,7 +49,7 @@ class Catalog extends Resource
             Text::make('Map Url', 'map_url')
                 ->hideFromDetail()
                 ->hideFromIndex()
-                ->rules('url:http,https')
+                ->rules('nullable|url:http,https')
                 ->help('Must be a valid URL'),
             Text::make('Map Url', function () {
                 $url = $this->map_url;
