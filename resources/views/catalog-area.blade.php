@@ -15,9 +15,11 @@
 </head>
 
 <body>
-    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#supportProjectModal">
-        Sostieni il progetto
-    </button>
+    <div class="header d-flex justify-content-center align-items-center bg-light text-white py-3 fixed-top mb-4 ">
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#supportProjectModal">
+            Sostieni il progetto
+        </button>
+    </div>
     <div class="modal fade" id="supportProjectModal" tabindex="-1" aria-labelledby="supportProjectModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -75,7 +77,7 @@
             </div>
         </div>
     </div>
-    <h2>Gestione forestale attiva e responsabile boschi del Monte Pisano</h2>
+    <h2 class=" mt-5 ">Gestione forestale attiva e responsabile boschi del Monte Pisano</h2>
     <h1>Dettagli dell'area {{ $catalogArea->id }}</h1>
     <h2>Tipo intervento forestale: {{ $catalogArea->catalog_estimate['interventions']['info']['name'] }}</h2>
     <div class="parcel-details">
