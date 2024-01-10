@@ -43,37 +43,43 @@
                         cui
                         raggiungimento la
                         stessa collettività deve darsi carico.</p>
-                    <form>
+                    <form method="POST" action="{{ route('support.project') }}">
+                        @csrf
                         <div class="mb-3">
+                            <input type="hidden" name="catalog-id" id="catalog-id"
+                                value="{{ $catalogArea->catalog->id }}">
+                            <input type="hidden" name="catalogArea-id" id="catalogArea-id"
+                                value="{{ $catalogArea->id }}">
                             <label for="nome" class="form-label">Nome*</label>
-                            <input type="text" class="form-control" id="nome" required>
+                            <input type="text" class="form-control" name="nome" id="nome" required>
                         </div>
                         <div class="mb-3">
                             <label for="cognome" class="form-label">Cognome*</label>
-                            <input type="text" class="form-control" id="cognome" required>
+                            <input type="text" class="form-control" name="cognome" id="cognome" required>
                         </div>
                         <div class="mb-3">
                             <label for="azienda" class="form-label">Azienda*</label>
-                            <input type="text" class="form-control" id="azienda" required>
+                            <input type="text" class="form-control" name="azienda" id="azienda" required>
                         </div>
                         <div class="mb-3">
                             <label for="telefono" class="form-label">Telefono</label>
-                            <input type="tel" class="form-control" id="telefono">
+                            <input type="tel" class="form-control" name="telefono" id="telefono">
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email*</label>
-                            <input type="email" class="form-control" id="email" required>
+                            <input type="email" class="form-control" name="email" id="email" required>
                         </div>
                         <div>
                             <p class=" fw-lighter text-danger ">I campi contrassegnati con (*) sono obbligatori</p>
                         </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                            <button type="submit" class="btn btn-success">Invia</button>
+                        </div>
                     </form>
                 </div>
-                <div class="modal-footer">
 
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                    <button type="submit" class="btn btn-success">Invia</button>
-                </div>
             </div>
         </div>
     </div>
