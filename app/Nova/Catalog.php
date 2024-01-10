@@ -2,12 +2,12 @@
 
 namespace App\Nova;
 
-
-use Illuminate\Http\Request;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Resource;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\HasMany;
+use Illuminate\Support\Facades\Validator;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Catalog extends Resource
@@ -46,6 +46,35 @@ class Catalog extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Name'),
+            Text::make('Map Url', 'map_url')
+                ->hideFromDetail()
+                ->hideFromIndex()
+                ->rules('nullable', 'url:http,https')
+                ->help('Must be a valid URL'),
+            Text::make('Map Url', function () {
+                $url = $this->map_url;
+                $string = '<a target="_blank" style="color: #2697bc" href="' . $url . '">' . $url . '</a>';
+                return $string;
+            })->asHtml()->showOnDetail()->showOnUpdating()->showOnCreating(),
+            Text::make('Designer Emails')
+                ->hideFromIndex()
+                ->help("Comma separated emails (eg. email@example.com,test@example.com)")
+                ->rules('nullable', function ($attribute, $value, $fail) {
+                    $emails = array_map('trim', explode(',', $value));
+
+                    foreach ($emails as $email) {
+                        if (strlen($email) < 1) {
+                            $fail('No Email address provided after the comma. Please modify accordingly.');
+                            return;
+                        }
+                        $validator = Validator::make(['email' => $email], ['email' => 'email']);
+
+                        if ($validator->fails()) {
+                            $fail('The ' . $attribute . ' must contain valid email addresses separated by comma.');
+                            return;
+                        }
+                    }
+                }),
             Number::make('Areas', function () {
                 return $this->catalogAreas()->count();
             })->onlyOnIndex(),

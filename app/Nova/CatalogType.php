@@ -74,6 +74,8 @@ class CatalogType extends Resource
             Text::make('Maintenance Price Fifth Year', 'maintenance_price_fifth_year')->displayUsing(function ($value) {
                 return '<p style="color:green; text-align:left;">' . number_format($value, 2, ',', '.') . '€' .  '</p>';
             })->sortable()->asHtml()->hideFromIndex(),
+            Textarea::make('Servizi Ecosistemici Generati', 'generated_ecosystem_servicesal')
+                ->hideFromIndex(),
 
 
         ];

@@ -138,4 +138,12 @@ tbody tr:nth-of-type(even) {
     page-break-after: always;
   }
 
+  button.btn {
+    display: none;
+  }
+
+  div.header {
+    visibility: hidden;
+  }
+
 }
