@@ -30,7 +30,7 @@ class SupportProjectMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: ' Interesse sostegno progetto per area ' . $data['catalogArea-id'],
+            subject: ' Interesse sostegno progetto per area ' . $this->data['catalogArea-id'],
         );
     }
 
@@ -40,7 +40,10 @@ class SupportProjectMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'mails.support-project'
+            markdown: 'mails.support-project',
+            with: [
+                'data' => $this->data
+            ]
         );
     }
 

@@ -25,7 +25,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="supportProjectModalLabel">BOSCHI, BENE COMUNE: CONTRIBUISCI ALLA TUTELA
+                    <h5 class="modal-title" id="supportProjectModalLabel">BOSCHI, BENE COMUNE: CONTRIBUISCI ALLA
+                        TUTELA
                         E ALLA GESTIONE DEL PATRIMONIO NATURALE DEL MONTE PISANO</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -34,7 +35,8 @@
                         forestale, attiva
                         e
                         responsabile,
-                        favoriscono il miglioramento della qualità dell’aria, contribuiscono alla stabilizzazione dei
+                        favoriscono il miglioramento della qualità dell’aria, contribuiscono alla stabilizzazione
+                        dei
                         versanti, alla riduzione del rischio idrogeologico e del rischio incendi, concorrono alla
                         mitigazione dei cambiamenti climatici.</p>
 
@@ -69,6 +71,10 @@
                             <label for="email" class="form-label">Email*</label>
                             <input type="email" class="form-control" name="email" id="email" required>
                         </div>
+                        <div class="mb-3">
+                            <p>Note</p>
+                            <textarea name="note" id="note" cols="52" rows="5"></textarea>
+                        </div>
                         <div>
                             <p class=" fw-lighter text-danger ">I campi contrassegnati con (*) sono obbligatori</p>
                         </div>
@@ -83,6 +89,17 @@
             </div>
         </div>
     </div>
+    @if (session()->has('Success'))
+        <div class="alert alert-success mt-5 " id="success-alert">
+            {{ session()->get('Success') }}
+        </div>
+    @endif
+
+    @if (session()->has('Error'))
+        <div class="alert alert-danger mt-5 " id="error-alert">
+            {{ session()->get('Error') }}
+        </div>
+    @endif
     <h2 class=" mt-5 ">Gestione forestale attiva e responsabile boschi del Monte Pisano</h2>
     <h1>Dettagli dell'area {{ $catalogArea->id }}</h1>
     <h2>Tipo intervento forestale: {{ $catalogArea->catalog_estimate['interventions']['info']['name'] }}</h2>
@@ -218,7 +235,8 @@
                 <tr>
                 <tr>
                     <td style="text-align:center; background-color: white;">Impresa Forestale:</td>
-                    <td style="background-color: white;">{{ number_format($i['info']['company_price'], 2, ',', '.') }}
+                    <td style="background-color: white;">
+                        {{ number_format($i['info']['company_price'], 2, ',', '.') }}
                         €
                     </td>
                 </tr>
@@ -227,7 +245,8 @@
                 <td> {{ number_format($i['info']['certification_and_management_price'], 2, ',', '.') }} €</td>
                 </tr>
                 <tr>
-                    <td style="background-color:yellow;"><strong>Totale Costo Interventi Certificati Unità Funzionale
+                    <td style="background-color:yellow;"><strong>Totale Costo Interventi Certificati Unità
+                            Funzionale
                         </strong></td>
                     <td style="background-color:yellow;">
                         <strong>{{ number_format($i['info']['total_net_price'], 2, ',', '.') }}
@@ -397,6 +416,17 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        window.setTimeout(function() {
+            $("#success-alert").fadeTo(500, 0).slideUp(500, function() {
+                $(this).remove();
+            });
+            $("#error-alert").fadeTo(500, 0).slideUp(500, function() {
+                $(this).remove();
+            });
+        }, 3000);
     </script>
 </body>
 
