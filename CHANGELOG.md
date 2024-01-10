@@ -1,5 +1,30 @@
 # Changelog
 
+## [2.2.0](https://github.com/webmappsrl/sisteco2/compare/v2.1.0...v2.2.0) (2024-01-10)
+
+
+### Features
+
+* add_serviziecosistemici_generati on catalog-area view ([2e0d5ce](https://github.com/webmappsrl/sisteco2/commit/2e0d5ce8502abd479ebc954d8b80d47e653b4c90))
+* added designer emails to catalog ([36b1c00](https://github.com/webmappsrl/sisteco2/commit/36b1c005c2266de56bbf8365f81e68176b34b1b6))
+* added error handling in submission form ([085c31a](https://github.com/webmappsrl/sisteco2/commit/085c31ad6ede4af535a2ba5624bc1be54e3462fc))
+* added fields to modal ([33e333f](https://github.com/webmappsrl/sisteco2/commit/33e333f1185c6a6b09e7338b9dce3a6fa3d93b7f))
+* added generated_ecosystem_servicesal to catalog type ([66d91d3](https://github.com/webmappsrl/sisteco2/commit/66d91d334da1e5b607171480fc9dffcec5c5bf89))
+* added map_url field to catalog ([b992e26](https://github.com/webmappsrl/sisteco2/commit/b992e26e20079522cd7f32f0a6b03169398f2e06))
+* added markdown mailable and configured mailtrap for mail testing ([b551e77](https://github.com/webmappsrl/sisteco2/commit/b551e77c4623531a63fb68d928781491b13d8562))
+* added modal to catalog-area blade ([c3e388a](https://github.com/webmappsrl/sisteco2/commit/c3e388a671ea32b2735ada599be022b170541bca))
+* added title to catalog area view ([ac6ba0a](https://github.com/webmappsrl/sisteco2/commit/ac6ba0ab853e45d39f2f28dafa048fce01fcf9ef))
+* create mailable for support project ([27a0d4f](https://github.com/webmappsrl/sisteco2/commit/27a0d4f3d755f019f05a83e5dde29782b10fe7f0))
+
+
+### Bug Fixes
+
+* fixed cc in mail sending ([78a6251](https://github.com/webmappsrl/sisteco2/commit/78a6251a687cede7c830ed4779578a7087cf66e6))
+* fixed header in pdf ([8e6a8f8](https://github.com/webmappsrl/sisteco2/commit/8e6a8f88b32b4eff15c8bf9adff7e584e3ebe992))
+* fixed map url validation for catalog ([6ff7bf2](https://github.com/webmappsrl/sisteco2/commit/6ff7bf2f9a67c96246712a4fb2b4127381754d80))
+* typo ([ce506f1](https://github.com/webmappsrl/sisteco2/commit/ce506f12e0c384936be7dbfe4b7badacc7cd4ec6))
+* Update prod_deploy.yml for Laravel deployment ([bb98a3e](https://github.com/webmappsrl/sisteco2/commit/bb98a3ebae5dcbcb030e6cdd436549253948fcc4))
+
 ## [2.1.0](https://github.com/webmappsrl/sisteco2/compare/v2.0.1...v2.1.0) (2023-11-13)
 
 
