@@ -44,7 +44,7 @@
                         vantaggio e del
                         cui
                         raggiungimento la
-                        stessa collettività deve darsi carico.</p>
+                        stessa collettività deve farsi carico.</p>
                     <form method="POST" action="{{ route('support.project') }}">
                         @csrf
                         <div class="mb-3">
