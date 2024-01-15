@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/webmappsrl/sisteco2/compare/v2.2.0...v2.2.1) (2024-01-15)
+
+
+### Bug Fixes
+
+* typo ([8d94051](https://github.com/webmappsrl/sisteco2/commit/8d94051d4481452f820eb1511d68de53d1555ccb))
+
 ## [2.2.0](https://github.com/webmappsrl/sisteco2/compare/v2.1.0...v2.2.0) (2024-01-10)
 
 
