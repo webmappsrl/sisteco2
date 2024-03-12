@@ -60,8 +60,8 @@ return [
         ],
         // Nessun intervento
         '0' => [
-            'strokeColor' => 'rgba(191, 191, 191, 1)',
-            'fillColor' => 'rgba(208, 208, 208, 0.4)',
+            'strokeColor' => 'rgba(125, 125, 125, 1)',
+            'fillColor' => 'rgba(125, 125, 125, 0.5)',
         ],
         // Diradamento
         '1' => [

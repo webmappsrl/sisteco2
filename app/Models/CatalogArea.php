@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class CatalogArea extends Model
+class CatalogArea extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
         'geometry',
@@ -21,11 +23,14 @@ class CatalogArea extends Model
         'slope_min',
         'slope_max',
         'slope_avg',
+        'work_start_date',
+        'owners',
     ];
 
     protected $casts = [
         'catalog_estimate' => 'array',
         'hiking_routes_details' => 'array',
+        'owners' => 'array',
     ];
 
     /**
@@ -42,6 +47,21 @@ class CatalogArea extends Model
     public function catalog()
     {
         return $this->belongsTo(Catalog::class);
+    }
+
+    /**
+     * Registering media collections for spaties media library
+     * @return void
+     *
+     * @see https://spatie.be/docs/laravel-medialibrary/v10/working-with-media-collections/defining-media-collections
+     */
+    public function registerMediaCollections(): void
+    {
+        $acceptedMimeTypes = ['image/jpeg', 'image/png', 'image/jpg','image/webp'];
+
+        $this->addMediaCollection('featured-image')
+            ->singleFile()
+            ->acceptsMimeTypes($acceptedMimeTypes);
     }
 
     /**

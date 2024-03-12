@@ -147,3 +147,7 @@ tbody tr:nth-of-type(even) {
   }
 
 }
+.feature-image {
+  width: 100%;
+  padding-bottom: 20px;
+}

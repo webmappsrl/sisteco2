@@ -1,3 +1,7 @@
+@php
+    $featuredImage = $catalogArea->getFirstMedia('featured-image');
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -100,9 +104,20 @@
             {{ session()->get('Error') }}
         </div>
     @endif
+    
     <h2 class=" mt-5 ">Gestione forestale attiva e responsabile boschi del Monte Pisano</h2>
     <h1>Dettagli dell'area {{ $catalogArea->id }}</h1>
     <h2>Tipo intervento forestale: {{ $catalogArea->catalog_estimate['interventions']['info']['name'] }}</h2>
+    @if ($catalogArea->work_start_date)
+        <p>Anno inizio lavoro: <strong>{{$catalogArea->work_start_date}}</strong></p>
+    @endif
+    @if ($featuredImage)
+        <div class="parcel-details">
+            <a href="{{ $featuredImage->getUrl() }}" target="_blank">
+                {{ $featuredImage->img()->attributes(['class' => 'feature-image']) }}
+            </a>
+        </div>
+    @endif
     <div class="parcel-details">
         <div class="map-container">
             <feature-collection-widget-map geojsonurl="{{ url('api/v1/geom/catalogarea/' . $catalogArea->id) }}">
@@ -234,13 +249,13 @@
                 <td style="background-color: white;">Costi accessori:</td>
                 <tr>
                 <tr>
-                    <td style="text-align:center; background-color: white;">Impresa Forestale:</td>
+                    <td style="text-align:left; background-color: white;">Oneri accessori impresa forestale:</td>
                     <td style="background-color: white;">
                         {{ number_format($i['info']['company_price'], 2, ',', '.') }}
                         €
                     </td>
                 </tr>
-                <td style="text-align:center; background-color: white;">
+                <td style="text-align:left; background-color: white;">
                     Gestione e Certificazione</td>
                 <td> {{ number_format($i['info']['certification_and_management_price'], 2, ',', '.') }} €</td>
                 </tr>
@@ -319,7 +334,7 @@
                 <td>{{ number_format($m['summary']['intervention_total_price'], 2, ',', '.') }} €</td>
             </tr>
             <tr>
-                <td>Impresa forestale</td>
+                <td>Oneri accessori impresa forestale</td>
                 <td>{{ number_format($m['summary']['company_price'], 2, ',', '.') }} €</td>
             </tr>
             <tr>

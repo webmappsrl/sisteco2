@@ -33,6 +33,12 @@ class CadastralParcel extends Model
 
     ];
 
+    protected static function booted()
+    {
+        static::saved(function ($parcel) {
+            $parcel->saveOwnersToCatalogAreas($parcel);
+        });
+    }
 
     /**
      * Get the owners that own the CadastralParcel.
@@ -328,5 +334,26 @@ class CadastralParcel extends Model
             }
         }
         return $areas;
+    }
+
+    public function saveOwnersToCatalogAreas($parcel) {
+        $areas = $parcel->getCatalogAreasByGeometry(1);
+            if ($areas) {
+                foreach ($areas as $area) {
+                    $catalogArea = CatalogArea::find($area);
+                    if ($catalogArea) {
+                        $owners = [];
+                        foreach ($parcel->owners as $owner) {
+                            $owners[] = $owner->first_name;
+                            $owners[] = $owner->last_name;
+                            $owners[] = $owner->email;
+                            $owners[] = $owner->fiscal_code;
+                            $owners[] = $owner->phone;
+                        }
+                        $catalogArea->owners = $owners;
+                        $catalogArea->save();
+                    }
+                }
+            }
     }
 }
