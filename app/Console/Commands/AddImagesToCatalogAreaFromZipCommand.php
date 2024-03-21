@@ -76,6 +76,12 @@ class AddImagesToCatalogAreaFromZipCommand extends Command
     private function getGPSFromImage($imageFile)
     {
         $allowedExtensions = ['png', 'jpeg', 'jpg', 'webp'];
+
+        // Exclude files from __MACOSX directories
+        if (strpos($imageFile, '__MACOSX') !== false) {
+            return null;
+        }
+
         $fileExtension = strtolower(pathinfo($imageFile, PATHINFO_EXTENSION));
 
         if (!in_array($fileExtension, $allowedExtensions)) {
