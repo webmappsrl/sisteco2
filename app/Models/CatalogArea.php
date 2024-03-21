@@ -13,7 +13,8 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class CatalogArea extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia;
+    use HasFactory;
+    use InteractsWithMedia;
 
     protected $fillable = [
         'geometry',
@@ -59,14 +60,14 @@ class CatalogArea extends Model implements HasMedia
     {
         $acceptedMimeTypes = ['image/jpeg', 'image/png', 'image/jpg','image/webp'];
 
-        $this->addMediaCollection('featured-image')
-            ->singleFile()
-            ->acceptsMimeTypes($acceptedMimeTypes);
+        $this->addMediaCollection('gallery')
+            ->acceptsMimeTypes($acceptedMimeTypes)
+            ->useDisk('ecmedia');
     }
 
     /**
      * Calculate the estimated catalog value based on the catalog id
-     * 
+     *
      */
 
     public function computeCatalogEstimate()
@@ -79,8 +80,8 @@ class CatalogArea extends Model implements HasMedia
         if (!in_array($area_slope_class, ['A', 'B', 'C'])) {
             $area_slope_class = 'A';
         }
-        $parcel_code = $area_slope_class . '.' .$this->computeTransportClass();  
-        
+        $parcel_code = $area_slope_class . '.' .$this->computeTransportClass();
+
         //define json structure
         $interventions = [];
         $maintenance = [];
@@ -160,9 +161,9 @@ class CatalogArea extends Model implements HasMedia
             'total_net_price' => $intervention_total_net_price,
             'total_vat_price' => $intervention_total_vat_price,
             'total_gross_price' => $intervention_total_gross_price,
-            'total_net_price_per_area' => $intervention_total_net_price_per_area, 
-            'total_vat_price_per_area' => $intervention_total_vat_price_per_area, 
-            'total_gross_price_per_area' => $intervention_total_gross_price_per_area, 
+            'total_net_price_per_area' => $intervention_total_net_price_per_area,
+            'total_vat_price_per_area' => $intervention_total_vat_price_per_area,
+            'total_gross_price_per_area' => $intervention_total_gross_price_per_area,
 
             'hiking_routes_details' => $hiking_routes_details_string,
             'hiking_routes_total_cost' => $hiking_routes_total_cost,
@@ -170,7 +171,7 @@ class CatalogArea extends Model implements HasMedia
 
         $maintenance_item_price = $intervention_area * config('sisteco.maintenance.value') * (1 + $vat / 100);
 
-        // Per ciascun anno devono essere presi in considerazione: 
+        // Per ciascun anno devono essere presi in considerazione:
         // costi di manutenzioni per interventi forestali
         // costi di manutenzione della sentieristica
         // costi di certificazione (da mostrare solo nel totale)
@@ -179,78 +180,78 @@ class CatalogArea extends Model implements HasMedia
         $maintenance_certification_total_price = 0;
         $maintenance_platform_total_price = 0;
         $maintenance_intervention_total_price = 0;
-        $hr_price = $this->hiking_routes_length*config('sisteco.hiking_routes_cost_per_km.value')/1000;
+        $hr_price = $this->hiking_routes_length * config('sisteco.hiking_routes_cost_per_km.value') / 1000;
 
         $price = $type->maintenance_price_fist_year;
         $maintenance_year = [
-                'intervention_forest_price' => $intervention_area*$price,
+                'intervention_forest_price' => $intervention_area * $price,
                 'intervention_hiking_route_price' => $hr_price,
-                'intervention_total_price'=> $intervention_area*$price + $hr_price,
+                'intervention_total_price' => $intervention_area * $price + $hr_price,
                 'certification_price' => $price > 0 ? config('sisteco.maintenance_certification.value') : 0,
-                'platform_price' => ((config('sisteco.platform_maintenance.value') / 100)) * ($intervention_area*$price + $hr_price)
+                'platform_price' => ((config('sisteco.platform_maintenance.value') / 100)) * ($intervention_area * $price + $hr_price)
         ];
         $maintenance_certification_total_price += $maintenance_year['certification_price'];
         $maintenance_platform_total_price += $maintenance_year['platform_price'];
         $maintenance_intervention_total_price += $maintenance_year['intervention_total_price'];
-        $maintenance['years'][]=$maintenance_year;
+        $maintenance['years'][] = $maintenance_year;
 
         $price = $type->maintenance_price_second_year;
         $maintenance_year = [
-            'intervention_forest_price' => $intervention_area*$price,
+            'intervention_forest_price' => $intervention_area * $price,
             'intervention_hiking_route_price' => $hr_price,
-            'intervention_total_price'=> $intervention_area*$price + $hr_price,
+            'intervention_total_price' => $intervention_area * $price + $hr_price,
             'certification_price' => $price > 0 ? config('sisteco.maintenance_certification.value') : 0,
-            'platform_price' => ((config('sisteco.platform_maintenance.value') / 100)) * ($intervention_area*$price + $hr_price)
+            'platform_price' => ((config('sisteco.platform_maintenance.value') / 100)) * ($intervention_area * $price + $hr_price)
         ];
         $maintenance_certification_total_price += $maintenance_year['certification_price'];
         $maintenance_platform_total_price += $maintenance_year['platform_price'];
         $maintenance_intervention_total_price += $maintenance_year['intervention_total_price'];
-        $maintenance['years'][]=$maintenance_year;
+        $maintenance['years'][] = $maintenance_year;
 
         $price = $type->maintenance_price_third_year;
         $maintenance_year = [
-            'intervention_forest_price' => $intervention_area*$price,
+            'intervention_forest_price' => $intervention_area * $price,
             'intervention_hiking_route_price' => $hr_price,
-            'intervention_total_price'=> $intervention_area*$price + $hr_price,
+            'intervention_total_price' => $intervention_area * $price + $hr_price,
             'certification_price' => $price > 0 ? config('sisteco.maintenance_certification.value') : 0,
-            'platform_price' => ((config('sisteco.platform_maintenance.value') / 100)) * ($intervention_area*$price + $hr_price)
+            'platform_price' => ((config('sisteco.platform_maintenance.value') / 100)) * ($intervention_area * $price + $hr_price)
         ];
         $maintenance_certification_total_price += $maintenance_year['certification_price'];
         $maintenance_platform_total_price += $maintenance_year['platform_price'];
         $maintenance_intervention_total_price += $maintenance_year['intervention_total_price'];
-        $maintenance['years'][]=$maintenance_year;
+        $maintenance['years'][] = $maintenance_year;
 
         $price = $type->maintenance_price_fourth_year;
         $maintenance_year = [
-            'intervention_forest_price' => $intervention_area*$price,
+            'intervention_forest_price' => $intervention_area * $price,
             'intervention_hiking_route_price' => $hr_price,
-            'intervention_total_price'=> $intervention_area*$price + $hr_price,
+            'intervention_total_price' => $intervention_area * $price + $hr_price,
             'certification_price' => $price > 0 ? config('sisteco.maintenance_certification.value') : 0,
-            'platform_price' => ((config('sisteco.platform_maintenance.value') / 100)) * ($intervention_area*$price + $hr_price)
+            'platform_price' => ((config('sisteco.platform_maintenance.value') / 100)) * ($intervention_area * $price + $hr_price)
         ];
         $maintenance_certification_total_price += $maintenance_year['certification_price'];
         $maintenance_platform_total_price += $maintenance_year['platform_price'];
         $maintenance_intervention_total_price += $maintenance_year['intervention_total_price'];
-        $maintenance['years'][]=$maintenance_year;
+        $maintenance['years'][] = $maintenance_year;
 
         $price = $type->maintenance_price_fifth_year;
         $maintenance_year = [
-            'intervention_forest_price' => $intervention_area*$price,
+            'intervention_forest_price' => $intervention_area * $price,
             'intervention_hiking_route_price' => $hr_price,
-            'intervention_total_price'=> $intervention_area*$price + $hr_price,
+            'intervention_total_price' => $intervention_area * $price + $hr_price,
             'certification_price' => $price > 0 ? config('sisteco.maintenance_certification.value') : 0,
-            'platform_price' => ((config('sisteco.platform_maintenance.value') / 100)) * ($intervention_area*$price + $hr_price)
+            'platform_price' => ((config('sisteco.platform_maintenance.value') / 100)) * ($intervention_area * $price + $hr_price)
         ];
         $maintenance_certification_total_price += $maintenance_year['certification_price'];
         $maintenance_platform_total_price += $maintenance_year['platform_price'];
         $maintenance_intervention_total_price += $maintenance_year['intervention_total_price'];
-        $maintenance['years'][]=$maintenance_year;
+        $maintenance['years'][] = $maintenance_year;
 
         $maintenance_company_price = $maintenance_intervention_total_price *
             (
-                config('sisteco.supervision.value')/100 + 
-                config('sisteco.overheads.value')/100 + 
-                config('sisteco.business_profit.value')/100  
+                config('sisteco.supervision.value') / 100 +
+                config('sisteco.overheads.value') / 100 +
+                config('sisteco.business_profit.value') / 100
             );
         $maintenance_certification_and_management_price = $maintenance_certification_total_price + $maintenance_platform_total_price;
         $total_maintenance_net_price = $maintenance_intervention_total_price + $maintenance_company_price +  $maintenance_certification_and_management_price;
@@ -261,8 +262,8 @@ class CatalogArea extends Model implements HasMedia
             'platform_total_price' => $maintenance_platform_total_price,
             'certification_and_management_price' => $maintenance_certification_and_management_price,
             'total_net_price' => $total_maintenance_net_price,
-            'total_vat' => $total_maintenance_net_price * $vat/100,
-            'total_gross_price' => $total_maintenance_net_price * (1+$vat/100),
+            'total_vat' => $total_maintenance_net_price * $vat / 100,
+            'total_gross_price' => $total_maintenance_net_price * (1 + $vat / 100),
             'maintenance_gross_price_per_area' => 0,
         ];
 
@@ -282,9 +283,9 @@ class CatalogArea extends Model implements HasMedia
             'total_vat_price' => $total_vat_price,
             'total_gross_price' => $total_gross_price,
             'platform_net_price' => $interventions['info']['platform_maintenance_price'] + $maintenance['summary']['platform_total_price'],
-            'total_net_price_per_area' => $total_net_price_per_area, 
-            'total_vat_price_per_area' => $total_vat_price_per_area, 
-            'total_gross_price_per_area' => $total_gross_price_per_area, 
+            'total_net_price_per_area' => $total_net_price_per_area,
+            'total_vat_price_per_area' => $total_vat_price_per_area,
+            'total_gross_price_per_area' => $total_gross_price_per_area,
         ];
 
         //if $intervention is empty or if all 'code' fields inside $intervention['items'] are 0, then $json will be empty
@@ -358,8 +359,12 @@ EOF;
      */
     public function computeSlopeClass(): string
     {
-        if ($this->slope_avg <= 20) return 'A';
-        if ($this->slope_avg <= 40) return 'B';
+        if ($this->slope_avg <= 20) {
+            return 'A';
+        }
+        if ($this->slope_avg <= 40) {
+            return 'B';
+        }
         return 'C';
     }
 
@@ -435,8 +440,12 @@ EOF;
      */
     public function computeTransportClass(): string
     {
-        if (min($this->hiking_routes_min_dist,$this->streets_min_dist) <= 500) return '1';
-        if (min($this->hiking_routes_min_dist,$this->streets_min_dist) <= 1000) return '2';
+        if (min($this->hiking_routes_min_dist, $this->streets_min_dist) <= 500) {
+            return '1';
+        }
+        if (min($this->hiking_routes_min_dist, $this->streets_min_dist) <= 1000) {
+            return '2';
+        }
         return '3';
     }
 

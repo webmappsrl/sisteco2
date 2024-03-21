@@ -29,7 +29,7 @@ class CustomPathGenerator implements PathGenerator
         $prefix = config('media-library.prefix', 'media');
 
         $modelType = $media->model_type;
-        $prefix = $prefix.'/'.class_basename($modelType);
+        $prefix = $prefix;
         $model = App::make($modelType)->find($media->model_id);
         if ($model->name) {
             $folder = $model->name;

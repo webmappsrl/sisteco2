@@ -8075,7 +8075,7 @@
         },
         {
             "name": "wm/wm-internal",
-            "version": "dev-main",
+            "version": "dev-feature/march_updates_24",
             "dist": {
                 "type": "path",
                 "url": "./wm-internal",

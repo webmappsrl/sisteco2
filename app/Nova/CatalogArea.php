@@ -258,7 +258,7 @@ class CatalogArea extends Resource
                 $o .= "</table>";
                 return $o;
             })->asHtml()->onlyOnDetail(),
-            Images::make('Featured Image', 'featured-image')
+            Images::make('Gallery', 'gallery')
                 ->hideFromIndex()
                 ->croppable(false)
                 ->customPropertiesFields([Text::make('Caption')]),

@@ -1,5 +1,5 @@
 @php
-    $featuredImage = $catalogArea->getFirstMedia('featured-image');
+    $featuredImage = $catalogArea->getFirstMedia('gallery');
 @endphp
 
 <!DOCTYPE html>
