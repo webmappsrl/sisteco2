@@ -51,6 +51,10 @@ class AddImagesToCatalogAreaFromZipCommand extends Command
             $imageFile = storage_path('app/'.$imageFile);
             $gps = $this->getGPSFromImage($imageFile);
 
+            if (!$gps) {
+                $this->info('No GPS coordinates found for image: '.$imageFile);
+                continue;
+            }
             // Find CatalogArea model based on GPS coordinates
             $catalogArea = DB::select("SELECT * FROM catalog_areas WHERE ST_Contains(geometry(geometry), ST_SetSRID(ST_MakePoint(".$gps['longitude'].", ".$gps['latitude']."), 4326)::geometry)");
 
