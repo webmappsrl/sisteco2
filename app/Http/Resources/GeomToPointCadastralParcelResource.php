@@ -75,7 +75,7 @@ class GeomToPointCadastralParcelResource extends JsonResource
                 'it' => "$interventionsBlockHTML$break$costsBlockHTML$break$detailsBlockHTML$break$button"
             ],
             'related_url' => [
-                'https://sisteco.maphub.it/cadastral-parcels/' . $this->id,
+                ' https://sis-te.com/cadastral-parcels/' . $this->id,
             ],
             'geometry' => json_decode($geometry, true),
 
