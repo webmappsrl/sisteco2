@@ -75,6 +75,9 @@ class AddImagesToCatalogAreaFromZipCommand extends Command
 
     private function getGPSFromImage($imageFile)
     {
+        if (strpos($imageFile, 'gpkg') !== false) {
+            return null;
+        }
         // Get exif data from the image
         $exif = exif_read_data($imageFile);
 
