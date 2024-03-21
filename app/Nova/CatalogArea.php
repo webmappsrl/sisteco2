@@ -10,6 +10,8 @@ use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\BelongsTo;
 use Wm\MapMultiPolygon\MapMultiPolygon;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
+use Laravel\Nova\Fields\Date;
 
 class CatalogArea extends Resource
 {
@@ -33,7 +35,7 @@ class CatalogArea extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'owners'
     ];
 
     /**
@@ -64,6 +66,7 @@ class CatalogArea extends Resource
                 })
                 ->asHtml()
                 ->exceptOnForms(),
+            Text::make('Data Inizio Lavori', 'work_start_date')->sortable(),
             MapMultiPolygon::make('Geometry')->withMeta([
                 'center' => ['42.795977075', '10.326813853'],
                 'attribution' => '<a href="https://webmapp.it/">Webmapp</a> contributors',
@@ -154,63 +157,81 @@ class CatalogArea extends Resource
                 if (empty($this->catalog_estimate)) {
                     return '<p style="color:red">ND</p>';
                 }
+                $o = $u = $i = '';
 
-                $maintenanceItems = $this->catalog_estimate['maintenance']['items'];
-                $maintenanceSummary = $this->catalog_estimate['maintenance']['summary'];
-                $maintenanceCertifications = $this->catalog_estimate['maintenance']['certifications'];
+                $maintenanceItems = (isset($this->catalog_estimate['maintenance']['items']) && !empty($this->catalog_estimate['maintenance']['items'])) ? $this->catalog_estimate['maintenance']['items'] : '';
+                $maintenanceSummary = (isset($this->catalog_estimate['maintenance']['summary']) && !empty($this->catalog_estimate['maintenance']['summary'])) ? $this->catalog_estimate['maintenance']['summary'] : '';
+                $maintenanceCertifications = (isset($this->catalog_estimate['maintenance']['certifications']) && !empty($this->catalog_estimate['maintenance']['certifications'])) ? $this->catalog_estimate['maintenance']['certifications'] : '';
 
-                //create headings for maintenance items table
-                $o = '<style> table, th, td { border: 1px solid black; padding: 5px;}</style>';
-                $o .= '<table border="1">';
-                $o .= "<tr>";
-                $o .= "<th>Codice Intervento</th>";
-                $o .= "<th>Area</th>";
-                $o .= "<th>€/Ettaro</th>";
-                $o .= "<th>Totale(€)</th>";
-                $o .= "</tr>";
-
-                //create headings for maintenance summary table
-                $i = '<style> table, th, td { border: 1px solid black; padding: 5px;}</style>';
-                $i .= '<table border="1">';
-                $i .= "<tr>";
-                $i .= "<th colspan='3'>Summary</th>";
-                $i .= "<th colspan='3'>€</th>";
-                $i .= "</tr>";
-
-                //create headings for maintenance certifications table
-                $u = '<style> table, th, td { border: 1px solid black; padding: 5px;}</style>';
-                $u .= '<table border="1">';
-                $u .= "<tr>";
-                $u .= "<th>Certifications</th>";
-                $u .= "<th>€</th>";
-                $u .= "</tr>";
-
-
-                foreach ($maintenanceItems as $item) {
+                if ($maintenanceItems) {
+                    //create headings for maintenance items table
+                    $o = '<style> table, th, td { border: 1px solid black; padding: 5px;}</style>';
+                    $o .= '<table border="1">';
                     $o .= "<tr>";
-                    $o .= $item['code'] ? "<td>{$item['code']}</td>" : "<td>ND</td>";
-                    $o .= $item['area'] ? "<td>{$item['area']}</td>" : "<td>ND</td>";
-                    $o .= $item['unit_price'] ? "<td>{$item['unit_price']}</td>" : "<td>ND</td>";
-                    $o .= $item['price'] ? "<td>{$item['price']}</td>" : "<td>ND</td>";
+                    $o .= "<th>Codice Intervento</th>";
+                    $o .= "<th>Area</th>";
+                    $o .= "<th>€/Ettaro</th>";
+                    $o .= "<th>Totale(€)</th>";
                     $o .= "</tr>";
                 }
 
-                foreach ($maintenanceCertifications as $certification) {
+                if ($maintenanceCertifications) {
+                    //create headings for maintenance certifications table
+                    $u = '<style> table, th, td { border: 1px solid black; padding: 5px;}</style>';
+                    $u .= '<table border="1">';
                     $u .= "<tr>";
-                    $u .= $certification['code'] ? "<td>{$certification['code']}</td>" : "<td>ND</td>";
-                    $u .= $certification['price'] ? "<td>{$certification['price']}</td>" : "<td>ND</td>";
+                    $u .= "<th>Certifications</th>";
+                    $u .= "<th>€</th>";
                     $u .= "</tr>";
                 }
-
-                foreach ($maintenanceSummary as $key => $value) {
+                if ($maintenanceSummary) {
+                    //create headings for maintenance summary table
+                    $i = '<style> table, th, td { border: 1px solid black; padding: 5px;}</style>';
+                    $i .= '<table border="1">';
                     $i .= "<tr>";
-                    $i .= "<td colspan='3'>{$key}</td>";
-                    $i .= "<td>{$value}</td>";
+                    $i .= "<th colspan='3'>Summary</th>";
+                    $i .= "<th colspan='3'>€</th>";
                     $i .= "</tr>";
                 }
-                $o .= "</table>";
-                $i .= "</table>";
-                $u .= "</table>";
+
+                if ($maintenanceItems) {
+                    foreach ($maintenanceItems as $item) {
+                        $o .= "<tr>";
+                        $o .= $item['code'] ? "<td>{$item['code']}</td>" : "<td>ND</td>";
+                        $o .= $item['area'] ? "<td>{$item['area']}</td>" : "<td>ND</td>";
+                        $o .= $item['unit_price'] ? "<td>{$item['unit_price']}</td>" : "<td>ND</td>";
+                        $o .= $item['price'] ? "<td>{$item['price']}</td>" : "<td>ND</td>";
+                        $o .= "</tr>";
+                    }
+                }
+
+                if ($maintenanceCertifications) {
+                    foreach ($maintenanceCertifications as $certification) {
+                        $u .= "<tr>";
+                        $u .= $certification['code'] ? "<td>{$certification['code']}</td>" : "<td>ND</td>";
+                        $u .= $certification['price'] ? "<td>{$certification['price']}</td>" : "<td>ND</td>";
+                        $u .= "</tr>";
+                    }
+                }
+
+                if ($maintenanceSummary) {
+                    foreach ($maintenanceSummary as $key => $value) {
+                        $i .= "<tr>";
+                        $i .= "<td colspan='3'>{$key}</td>";
+                        $i .= "<td>{$value}</td>";
+                        $i .= "</tr>";
+                    }
+                }
+
+                if ($maintenanceItems) {
+                    $o .= "</table>";
+                }
+                if ($maintenanceCertifications) {
+                    $u .= "</table>";
+                }
+                if ($maintenanceSummary) {
+                    $i .= "</table>";
+                }
                 return [$o, $u, $i];
             })->asHtml()->onlyOnDetail(),
             Text::make('Costi Generali', function () {
@@ -237,6 +258,10 @@ class CatalogArea extends Resource
                 $o .= "</table>";
                 return $o;
             })->asHtml()->onlyOnDetail(),
+            Images::make('Gallery', 'gallery')
+                ->hideFromIndex()
+                ->croppable(false)
+                ->customPropertiesFields([Text::make('Caption')]),
         ];
     }
 
