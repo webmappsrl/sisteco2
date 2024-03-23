@@ -342,15 +342,18 @@ class CadastralParcel extends Model
                 foreach ($areas as $area) {
                     $catalogArea = CatalogArea::find($area);
                     if ($catalogArea) {
-                        $owners = [];
+                        $owners = implode(',',$catalogArea->owners);
+                        $data[] = $parcel->code;
                         foreach ($parcel->owners as $owner) {
-                            $owners[] = $owner->first_name;
-                            $owners[] = $owner->last_name;
-                            $owners[] = $owner->email;
-                            $owners[] = $owner->fiscal_code;
-                            $owners[] = $owner->phone;
+                            $data[] = $owner->first_name;
+                            $data[] = $owner->last_name;
+                            $data[] = $owner->email;
+                            $data[] = $owner->fiscal_code;
+                            $data[] = $owner->phone;
                         }
-                        $catalogArea->owners = $owners;
+                        $datas = implode(',', $data);
+                        $all = $owners . ',' . $datas;
+                        $catalogArea->owners = array_unique(explode(',', $all));
                         $catalogArea->save();
                     }
                 }
