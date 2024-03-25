@@ -62,7 +62,7 @@ class CatalogArea extends Model implements HasMedia
 
         $this->addMediaCollection('gallery')
             ->acceptsMimeTypes($acceptedMimeTypes)
-            ->useDisk('ecmedia');
+            ->useDisk('public');
     }
 
     /**
