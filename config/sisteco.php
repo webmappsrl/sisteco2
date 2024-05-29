@@ -35,7 +35,7 @@ return [
     'platform_maintenance' => [
         'label' => 'Perc. Mantenimento piattaforma',
         'unit' => '%',
-        'value' => 2,
+        'value' => 10,
     ],
     'maintenance' => [
         'label' => 'Costo manutenzione annua per ettaro',
@@ -50,7 +50,7 @@ return [
     'hiking_routes_cost_per_km' => [
         'label' => 'Costo per km di sentiero',
         'unit' => '€/km',
-        'value' => 3072.06,
+        'value' => 3643.30,
     ],
 
     'areaStyle' => [
