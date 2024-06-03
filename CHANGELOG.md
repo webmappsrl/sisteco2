@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.3](https://github.com/webmappsrl/sisteco2/compare/v2.2.2...v2.2.3) (2024-06-03)
+
+
+### Bug Fixes
+
+* fixed popup style ([acdbd88](https://github.com/webmappsrl/sisteco2/commit/acdbd88d8ece33148611381251a771fb6fb83a55))
+
 ## [2.2.2](https://github.com/webmappsrl/sisteco2/compare/v2.2.1...v2.2.2) (2024-05-29)
 
 
