@@ -1,5 +1,10 @@
 @php
     $featuredImage = $catalogArea->getFirstMedia('gallery');
+    // Convertire i dettagli dei sentieri in un array utilizzando uno spazio come delimitatore
+    $hiking_routes_details = explode(' ', trim($i['info']['hiking_routes_details']));
+
+    // Filtrare gli elementi vuoti dall'array
+    $hiking_routes_details = array_filter($hiking_routes_details);
 @endphp
 
 <!DOCTYPE html>
@@ -104,12 +109,12 @@
             {{ session()->get('Error') }}
         </div>
     @endif
-    
+
     <h2 class=" mt-5 ">Gestione forestale attiva e responsabile boschi del Monte Pisano</h2>
     <h1>Dettagli dell'area {{ $catalogArea->id }}</h1>
     <h2>Tipo intervento forestale: {{ $catalogArea->catalog_estimate['interventions']['info']['name'] }}</h2>
     @if ($catalogArea->work_start_date)
-        <p>Anno inizio lavoro: <strong>{{$catalogArea->work_start_date}}</strong></p>
+        <p>Anno inizio lavoro: <strong>{{ $catalogArea->work_start_date }}</strong></p>
     @endif
     @if ($featuredImage)
         <div class="parcel-details">
@@ -149,39 +154,61 @@
                 <tr>
                     <th>Stima</th>
                     <td><strong>
-                            {{ number_format($catalogArea->estimated_value, 2, ',', '.') }} €
+                            {{ number_format((float) $catalogArea->estimated_value, 2, ',', '.') }} €
                         </strong></td>
                 </tr>
                 <tr>
                     <th>Superficie</th>
-                    <td>{{ number_format($area_ha, 4, ',', '.') }} ha</td>
+                    <td>{{ number_format((float) $area_ha, 4, ',', '.') }} ha</td>
                 </tr>
                 <tr>
                     <th>Pendenza (min / avg / max / classe)</th>
                     <td>
-                        {{ number_format($catalogArea->slope_min, 2, ',', '.') }} deg /
-                        {{ number_format($catalogArea->slope_avg, 2, ',', '.') }} deg /
-                        {{ number_format($catalogArea->slope_max, 2, ',', '.') }} deg /
+                        {{ number_format((float) $catalogArea->slope_min, 2, ',', '.') }} deg /
+                        {{ number_format((float) $catalogArea->slope_avg, 2, ',', '.') }} deg /
+                        {{ number_format((float) $catalogArea->slope_max, 2, ',', '.') }} deg /
                         {{ $catalogArea->slope_class }}
                     </td>
                 </tr>
                 <tr>
                     <th>Trasporto (strade / sentieri / classe)</th>
                     <td>
-                        {{ number_format($catalogArea->streets_min_dist, 2, ',', '.') }} m /
-                        {{ number_format($catalogArea->hiking_routes_min_dist, 2, ',', '.') }} m /
+                        {{ number_format((float) $catalogArea->streets_min_dist, 2, ',', '.') }} m /
+                        {{ number_format((float) $catalogArea->hiking_routes_min_dist, 2, ',', '.') }} m /
                         {{ $catalogArea->computeTransportClass() }}
                     </td>
                 </tr>
                 <tr>
                     <th>Sentieri presenti nell'area (metri / dettaglio)</th>
                     <td>
-                        {{ number_format($catalogArea->hiking_routes_length, 0) }} m /
-                        {{ $i['info']['hiking_routes_details'] }}
+                        <div>
+                            <strong>TOTALE: {{ number_format((float) $catalogArea->hiking_routes_length, 0, ',', '.') }}
+                                m</strong>
+                        </div>
+                        @foreach ($hiking_routes_details as $route)
+                            @php
+                                // Separare l'id del sentiero dalla lunghezza
+$routeDetails = explode('(', $route);
+
+if (count($routeDetails) == 2) {
+    $routeId = trim($routeDetails[0]);
+    $routeLength = trim($routeDetails[1], ' m)');
+                                }
+                            @endphp
+                            @if (count($routeDetails) == 2)
+                                <div>
+                                    Sentiero {{ $routeId }}:
+                                    {{ number_format((float) $routeLength, 0, ',', '.') }} m
+                                </div>
+                            @endif
+                        @endforeach
                     </td>
                 </tr>
             </tbody>
         </table>
+
+
+
     </div>
     <hr>
     <div class="pagebreak"> </div>
