@@ -30,7 +30,14 @@ class CatalogGeohubResource extends JsonResource
             $catalogType = CatalogType::where('id', $catalogArea->catalog_type_id)->first();
             $detailsLink = url('catalog-areas/' . $catalogArea->id);
             $detailsLinkHtml = "<a href=\"$detailsLink\">Link</a>";
-            $htmlString = "superficie: $surface ha, Codice Intervento: $catalogType->cod_int, Tipo di Intervento: $catalogType->name, Valore stimato: $estimatedValue € Dettagli: $detailsLinkHtml";
+            $htmlString = "<div style='font-size: 1.1em; line-height: 1.4em;'>
+                   <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>$surface ha,</span><br>
+                   <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>$catalogType->cod_int,</span><br>
+                   <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>$catalogType->name,</span><br>
+                   <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>$estimatedValue €,</span><br>
+                   <strong>Dettagli:</strong> $detailsLinkHtml
+               </div>";
+
             $output['features'][] = [
                 'type' => 'Feature',
                 'properties' => [
