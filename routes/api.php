@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Resources\CatalogGeohubResource;
 use App\Http\Resources\CatalogPoiResource;
 use App\Models\Catalog;
 use App\Models\CatalogArea;
@@ -45,6 +46,11 @@ Route::get('v1/catalog/{catalog_id}/area/{type_id}.geojson', function (string $i
         } else {
                 return response()->json(['error' => 'Not Found'], 404);
         }
+});
+
+Route::get('v1/catalog/geohub/{catalog_id}.geojson', function (string $id) {
+        $catalog = Catalog::findOrFail($id);
+        return new CatalogGeohubResource($catalog);
 });
 
 Route::get('v1/catalog/{catalog_id}.geojson', function (string $id) {
