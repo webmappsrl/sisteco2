@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.2](https://github.com/webmappsrl/sisteco2/compare/v2.2.1...v2.2.2) (2024-05-29)
+
+
+### Bug Fixes
+
+* new configuration for 2024 ([25677e3](https://github.com/webmappsrl/sisteco2/commit/25677e39dc4eae6e16b22d0b771b0bf3be805a9d))
+
 ## [2.2.1](https://github.com/webmappsrl/sisteco2/compare/v2.2.0...v2.2.1) (2024-01-15)
 
 
