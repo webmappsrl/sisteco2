@@ -58,7 +58,7 @@ class CatalogArea extends Model implements HasMedia
      */
     public function registerMediaCollections(): void
     {
-        $acceptedMimeTypes = ['image/jpeg', 'image/png', 'image/jpg','image/webp'];
+        $acceptedMimeTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
 
         $this->addMediaCollection('gallery')
             ->acceptsMimeTypes($acceptedMimeTypes)
@@ -80,7 +80,7 @@ class CatalogArea extends Model implements HasMedia
         if (!in_array($area_slope_class, ['A', 'B', 'C'])) {
             $area_slope_class = 'A';
         }
-        $parcel_code = $area_slope_class . '.' .$this->computeTransportClass();
+        $parcel_code = $area_slope_class . '.' . $this->computeTransportClass();
 
         //define json structure
         $interventions = [];
@@ -130,7 +130,7 @@ class CatalogArea extends Model implements HasMedia
         $intervention_company_price = $supervision_price + $overhead_price + $business_profit_price;
         $intervention_certification = $intervention_price > 0 ? config('sisteco.intervention_certification.value') : 0;
         $total_intervention_certificated_price = $intervention_price + $supervision_price + $overhead_price + $business_profit_price + $intervention_certification;
-        $team_price = $intervention_price > 0 ? config('sisteco.team_management.value') : 0 ;
+        $team_price = $intervention_price > 0 ? config('sisteco.team_management.value') : 0;
         $platform_maintenance_price = $intervention_price > 0 ? $intervention_price * ((config('sisteco.platform_maintenance.value') / 100)) : 0;
         $intervention_certification_and_management_price = $team_price + $platform_maintenance_price + $intervention_certification;
         $intervention_total_net_price = $intervention_certification_and_management_price + $intervention_price + $intervention_company_price;
@@ -184,11 +184,11 @@ class CatalogArea extends Model implements HasMedia
 
         $price = $type->maintenance_price_fist_year;
         $maintenance_year = [
-                'intervention_forest_price' => $intervention_area * $price,
-                'intervention_hiking_route_price' => $hr_price,
-                'intervention_total_price' => $intervention_area * $price + $hr_price,
-                'certification_price' => $price > 0 ? config('sisteco.maintenance_certification.value') : 0,
-                'platform_price' => ((config('sisteco.platform_maintenance.value') / 100)) * ($intervention_area * $price + $hr_price)
+            'intervention_forest_price' => $intervention_area * $price,
+            'intervention_hiking_route_price' => $hr_price,
+            'intervention_total_price' => $intervention_area * $price + $hr_price,
+            'certification_price' => $price > 0 ? config('sisteco.maintenance_certification.value') : 0,
+            'platform_price' => ((config('sisteco.platform_maintenance.value') / 100)) * ($intervention_area * $price + $hr_price)
         ];
         $maintenance_certification_total_price += $maintenance_year['certification_price'];
         $maintenance_platform_total_price += $maintenance_year['platform_price'];
@@ -448,5 +448,4 @@ EOF;
         }
         return '3';
     }
-
 }
