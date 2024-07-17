@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.4](https://github.com/webmappsrl/sisteco2/compare/v2.2.3...v2.2.4) (2024-07-17)
+
+
+### Bug Fixes
+
+* problemi filtro aree giá pianificate OC:3634 ([d1940e4](https://github.com/webmappsrl/sisteco2/commit/d1940e4e2899296f58c09a905a83b98f425a03ac))
+
 ## [2.2.3](https://github.com/webmappsrl/sisteco2/compare/v2.2.2...v2.2.3) (2024-06-03)
 
 
