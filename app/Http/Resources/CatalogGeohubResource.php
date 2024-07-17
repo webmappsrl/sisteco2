@@ -30,13 +30,16 @@ class CatalogGeohubResource extends JsonResource
             $catalogType = CatalogType::where('id', $catalogArea->catalog_type_id)->first();
             $detailsLink = url('catalog-areas/' . $catalogArea->id);
             $detailsLinkHtml = "<a href=\"$detailsLink\">Link</a>";
-            $htmlString = "<div style='font-size: 1.1em; line-height: 1.4em;'>
-                   <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>$surface ha,</span><br>
-                   <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>$catalogType->cod_int,</span><br>
-                   <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>$catalogType->name,</span><br>
-                   <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>$estimatedValue €,</span><br>
-                   <strong>Dettagli:</strong> $detailsLinkHtml
-               </div>";
+            $htmlString = <<<HTML
+            <div style='font-size: 1.1em; line-height: 1.4em;'>
+                <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>$surface ha,</span><br>
+                <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>{$catalogType->cod_int},</span><br>
+                <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>{$catalogType->name},</span><br>
+                <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>$estimatedValue €,</span><br>
+                <strong>Dettagli:</strong> $detailsLinkHtml
+            </div>
+            HTML;
+
 
             $output['features'][] = [
                 'type' => 'Feature',
@@ -53,6 +56,22 @@ class CatalogGeohubResource extends JsonResource
                 'geometry' => json_decode(DB::select("select st_asGeojson(geometry) as geom from catalog_areas where id=$catalogArea->id;")[0]->geom, true),
             ];
         };
+        $areePianificateJsonFeature = storage_path('geodata/aree_pianificate_with_properties_popups.geojson');
+        if (!is_null($areePianificateJsonFeature)) {
+            $areePianificateFeatureCollection = json_decode(file_get_contents($areePianificateJsonFeature), true);
+
+            // Controlliamo che entrambe le feature collection abbiano il formato corretto
+            if (isset($areePianificateFeatureCollection['features']) && isset($output['features'])) {
+                // Uniamo le features delle due feature collection
+                $mergedFeatures = array_merge(
+                    $output['features'],
+                    $areePianificateFeatureCollection['features']
+                );
+
+                // Aggiorniamo la feature collection del catalogResource con le feature unite
+                $output['features'] = $mergedFeatures;
+            }
+        }
         return $output;
     }
 }
