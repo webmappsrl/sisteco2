@@ -56,7 +56,7 @@ class CatalogGeohubResource extends JsonResource
                 'geometry' => json_decode(DB::select("select st_asGeojson(geometry) as geom from catalog_areas where id=$catalogArea->id;")[0]->geom, true),
             ];
         };
-        $areePianificateJsonFeature = storage_path('geodata/aree_pianificate_with_properties_popups.geojson');
+        $areePianificateJsonFeature = storage_path('geodata/aree_pianificate_with_properties_popup_correct.geojson');
         if (!is_null($areePianificateJsonFeature)) {
             $areePianificateFeatureCollection = json_decode(file_get_contents($areePianificateJsonFeature), true);
 
