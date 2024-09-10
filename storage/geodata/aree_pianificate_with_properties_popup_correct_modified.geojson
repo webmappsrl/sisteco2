@@ -36,7 +36,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>4294 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -169,7 +169,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>10351 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -286,7 +286,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>1714 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -379,7 +379,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>24616 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>2,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Taglio ceduo,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -496,7 +496,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>13202 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -597,7 +597,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>24066 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>3,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Avviamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -790,7 +790,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>7173 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>2,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Taglio ceduo,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -875,7 +875,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>10416 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -1032,7 +1032,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>19299 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>3,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Avviamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -1177,7 +1177,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>5834 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -1330,7 +1330,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>4598 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>2,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Taglio ceduo,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -1463,7 +1463,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>7338 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -1672,7 +1672,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>2044 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -1745,7 +1745,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>7031 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>3,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Avviamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -1870,7 +1870,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>3569 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -1971,7 +1971,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>18181 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -2144,7 +2144,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>9314 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -2409,7 +2409,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>4008 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -2482,7 +2482,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>2244 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -2547,7 +2547,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>35348 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>2,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Taglio ceduo,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -2844,7 +2844,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>8569 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -2937,7 +2937,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>5104 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -3010,7 +3010,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>16474 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -3159,7 +3159,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>3987 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -3276,7 +3276,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>13771 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -3385,7 +3385,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>98782 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -3638,7 +3638,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>10164 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -3735,7 +3735,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>10671 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -3880,7 +3880,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>11338 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -4025,7 +4025,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>35974 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -4218,7 +4218,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>4671 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -4335,7 +4335,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>17018 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -4448,7 +4448,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>18639 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -4565,7 +4565,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>59481 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>2,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Taglio ceduo,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -4978,7 +4978,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>32025 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -5111,7 +5111,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>7175 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -5228,7 +5228,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>51793 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -5401,7 +5401,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>17482 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -5546,7 +5546,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>34731 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -5775,7 +5775,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>71705 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>2,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Taglio ceduo,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -5944,7 +5944,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>20651 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>2,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Taglio ceduo,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -6069,7 +6069,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>66241 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -6290,7 +6290,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>15978 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -6435,7 +6435,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>13986 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -6592,7 +6592,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>21545 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -6749,7 +6749,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>154390 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -7222,7 +7222,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>15153 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -7339,7 +7339,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>25396 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -7580,7 +7580,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>15178 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -7813,7 +7813,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>10346 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -7954,7 +7954,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>11025 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -8067,7 +8067,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>7806 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -8232,7 +8232,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>13143 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>2,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Taglio ceduo,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -8425,7 +8425,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>17344 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>3,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Avviamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -8610,7 +8610,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>11154 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -8847,7 +8847,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>8624 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -9048,7 +9048,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>29918 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -9253,7 +9253,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>25975 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -9842,7 +9842,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>7134 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -10123,7 +10123,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>21915 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -10296,7 +10296,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>10310 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -10449,7 +10449,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>59824 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -10582,7 +10582,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>22001 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -10711,7 +10711,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>48791 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -10848,7 +10848,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>37837 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>2,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Taglio ceduo,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -11069,7 +11069,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>21398 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -11206,7 +11206,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>24202 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -11343,7 +11343,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>17223 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -11500,7 +11500,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>18254 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -11633,7 +11633,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>29704 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -11750,7 +11750,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>16979 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -11931,7 +11931,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>46710 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -12188,7 +12188,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>40629 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -12401,7 +12401,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>25489 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -12614,7 +12614,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>15324 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>2,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Taglio ceduo,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -12699,7 +12699,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>18190 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -12840,7 +12840,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>17472 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -12957,7 +12957,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>11632 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -13110,7 +13110,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>39858 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -13511,7 +13511,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>10318 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -13656,7 +13656,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>41694 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -13885,7 +13885,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>7057 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -13978,7 +13978,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>11312 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -14175,7 +14175,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>10334 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -14324,7 +14324,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>10868 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -14429,7 +14429,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>17393 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -14594,7 +14594,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>18150 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -14797,7 +14797,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>20699 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>2,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Taglio ceduo,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -14974,7 +14974,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>11758 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -15219,7 +15219,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>12605 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>3,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Avviamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -15420,7 +15420,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>8407 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -15557,7 +15557,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>10525 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>3,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Avviamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -15718,7 +15718,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>9063 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -15855,7 +15855,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>40187 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>3,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Avviamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -16044,7 +16044,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>48888 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -16217,7 +16217,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>14383 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -16322,7 +16322,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>24355 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -16559,7 +16559,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>22514 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -16676,7 +16676,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>9731 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -16785,7 +16785,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>38159 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -17162,7 +17162,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>22100 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -17391,7 +17391,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>16740 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -17496,7 +17496,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>11450 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -17601,7 +17601,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>22245 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -17734,7 +17734,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>43704 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -17879,7 +17879,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>36373 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -17996,7 +17996,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>23557 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -18177,7 +18177,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>10058 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -18346,7 +18346,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>4908 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -18475,7 +18475,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>109340 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -18860,7 +18860,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>36675 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>3,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Avviamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -19185,7 +19185,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>12317 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -19362,7 +19362,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>18194 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -19547,7 +19547,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>20618 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -19668,7 +19668,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>32899 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>2,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Taglio ceduo,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -19777,7 +19777,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>41571 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -20038,7 +20038,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>76875 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -20275,7 +20275,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>102469 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -20572,7 +20572,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>16020 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -20801,7 +20801,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>52616 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -21086,7 +21086,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>17857 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -21411,7 +21411,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>34945 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -21524,7 +21524,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>73736 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -21777,7 +21777,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>59455 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>2,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Taglio ceduo,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -22094,7 +22094,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>13734 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -22199,7 +22199,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>117636 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -22904,7 +22904,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>77083 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -23517,7 +23517,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>14647 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -23830,7 +23830,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>22132 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -23967,7 +23967,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>52464 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -24408,7 +24408,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>22010 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -24557,7 +24557,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>101077 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -25398,7 +25398,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>27248 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -25599,7 +25599,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>133369 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -25936,7 +25936,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>26782 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -26193,7 +26193,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>87006 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -26746,7 +26746,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>5219 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -26883,7 +26883,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>32973 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -27076,7 +27076,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>68057 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>3,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Avviamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -27181,7 +27181,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>76261 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>3,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Avviamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -27486,7 +27486,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>23299 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -27663,7 +27663,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>122543 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -28344,7 +28344,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>7078 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>2,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Taglio ceduo,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -28525,7 +28525,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>7632 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -28702,7 +28702,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>12356 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -28935,7 +28935,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>25347 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -29160,7 +29160,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>162345 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -29653,7 +29653,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>52963 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -29746,7 +29746,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>27911 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -29839,7 +29839,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>8402 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -29972,7 +29972,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>19982 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -30193,7 +30193,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>25128 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -30426,7 +30426,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>9125 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -30563,7 +30563,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>8026 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>0,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Nessuno,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -30696,7 +30696,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>124520 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -30981,7 +30981,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>11162 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
@@ -31126,7 +31126,7 @@
         "popup": {
           "html": "<div style='font-size: 1.1em; line-height: 1.4em;'>    <strong>Superficie:</strong> <span style='white-space: pre-wrap;'>25347 ha,</span><br>    <strong>Codice Intervento:</strong> <span style='white-space: pre-wrap;'>1,</span><br>    <strong>Tipo di Intervento:</strong> <span style='white-space: pre-wrap;'>Diradamento,</span><br>    <strong>Valore stimato:</strong> <span style='white-space: pre-wrap;'>0 €,</span><br>    <strong>Dettagli:</strong> N/A</div>"
         },
-        "catalog_type_cod_int": 6,
+        "catalog_type_cod_int": "6",
         "catalog_type_name": "Aree pianificate"
       },
       "geometry": {
