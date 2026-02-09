@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/app.css">
     <title>Area n.{{ $catalogArea->id }}</title>
     <link rel="stylesheet"
-        href="https://cdn.statically.io/gh/webmappsrl/feature-collection-widget-map/8778f562/dist/styles.css">
+        href="https://cdn.jsdelivr.net/gh/webmappsrl/feature-collection-widget-map@refs/heads/master/dist_05_04_24/styles.css">
     <base href="/catalog-areas/{{ $catalogArea->id }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -450,12 +450,9 @@ if (count($routeDetails) == 2) {
 
     @endif
 
-    <script src="https://cdn.statically.io/gh/webmappsrl/feature-collection-widget-map/8778f562/dist/runtime.js" defer>
-    </script>
-    <script src="https://cdn.statically.io/gh/webmappsrl/feature-collection-widget-map/8778f562/dist/polyfills.js" defer>
-    </script>
-    <script src="https://cdn.statically.io/gh/webmappsrl/feature-collection-widget-map/8778f562/dist/main.js" defer>
-    </script>
+    <script src="https://cdn.jsdelivr.net/gh/webmappsrl/feature-collection-widget-map@refs/heads/master/dist_05_04_24/runtime.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/webmappsrl/feature-collection-widget-map@refs/heads/master/dist_05_04_24/polyfills.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/webmappsrl/feature-collection-widget-map@refs/heads/master/dist_05_04_24/main.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
