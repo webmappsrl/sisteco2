@@ -9,6 +9,8 @@ class CatalogAreaExportController extends Controller
 {
     public function export()
     {
-        return Excel::download(new CatalogAreaExport(), 'catalog-area.xlsx');
+        $filename = now()->format('Ymd').'_sisteco_catalog_area.xlsx';
+
+        return Excel::download(new CatalogAreaExport(), $filename);
     }
 }
