@@ -5,24 +5,24 @@ namespace App\Exports;
 use App\Models\CatalogArea;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Events\AfterSheet;
-use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Events\AfterSheet;
 
 class CatalogAreaExport implements FromCollection, ShouldAutoSize, WithHeadings, WithEvents, WithMapping
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
     public function collection()
     {
         return CatalogArea::all();
     }
+
     /**
-     * @param CatalogArea $area
-     * @return array
+     * @param  CatalogArea  $area
      */
     public function map($area): array
     {
@@ -41,6 +41,7 @@ class CatalogAreaExport implements FromCollection, ShouldAutoSize, WithHeadings,
             $area->hiking_routes_length,
             $area->estimated_value,
             $area->catalog_estimate['general']['platform_net_price'],
+            rtrim(config('app.url'), '/').'/catalog-areas/'.$area->id.'/',
         ];
     }
 
@@ -54,7 +55,8 @@ class CatalogAreaExport implements FromCollection, ShouldAutoSize, WithHeadings,
             'Superficie (ha)',
             'Sentieri (m)',
             'Stima (€)',
-            'Piattaforma (€)'
+            'Piattaforma (€)',
+            'URL',
         ];
     }
 
@@ -62,7 +64,7 @@ class CatalogAreaExport implements FromCollection, ShouldAutoSize, WithHeadings,
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                $event->sheet->getStyle('A1:S1')->getFont()->setSize(15)->setBold(true);
+                $event->sheet->getStyle('A1:H1')->getFont()->setSize(15)->setBold(true);
             },
         ];
     }
