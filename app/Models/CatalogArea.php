@@ -169,7 +169,8 @@ class CatalogArea extends Model implements HasMedia
             'hiking_routes_total_cost' => $hiking_routes_total_cost,
         ];
 
-        $maintenance_item_price = $intervention_area * config('sisteco.maintenance.value') * (1 + $vat / 100);
+        $maintenance_price_per_ha = (float) config('sisteco.maintenance.value');
+        $maintenance_item_price = $intervention_area * $maintenance_price_per_ha * (1 + $vat / 100);
 
         // Per ciascun anno devono essere presi in considerazione:
         // costi di manutenzioni per interventi forestali
@@ -182,7 +183,9 @@ class CatalogArea extends Model implements HasMedia
         $maintenance_intervention_total_price = 0;
         $hr_price = $this->hiking_routes_length * config('sisteco.hiking_routes_cost_per_km.value') / 1000;
 
-        $price = $type->maintenance_price_fist_year;
+        // Regola: anno 1 e 5 usano il costo manutenzione annua (€/ettaro) da config/env.
+        // Anni 2/3/4 includono solo manutenzione sentieri (se presente), quindi la parte bosco è 0.
+        $price = $maintenance_price_per_ha;
         $maintenance_year = [
             'intervention_forest_price' => $intervention_area * $price,
             'intervention_hiking_route_price' => $hr_price,
@@ -195,7 +198,7 @@ class CatalogArea extends Model implements HasMedia
         $maintenance_intervention_total_price += $maintenance_year['intervention_total_price'];
         $maintenance['years'][] = $maintenance_year;
 
-        $price = $type->maintenance_price_second_year;
+        $price = 0;
         $maintenance_year = [
             'intervention_forest_price' => $intervention_area * $price,
             'intervention_hiking_route_price' => $hr_price,
@@ -208,7 +211,7 @@ class CatalogArea extends Model implements HasMedia
         $maintenance_intervention_total_price += $maintenance_year['intervention_total_price'];
         $maintenance['years'][] = $maintenance_year;
 
-        $price = $type->maintenance_price_third_year;
+        $price = 0;
         $maintenance_year = [
             'intervention_forest_price' => $intervention_area * $price,
             'intervention_hiking_route_price' => $hr_price,
@@ -221,7 +224,7 @@ class CatalogArea extends Model implements HasMedia
         $maintenance_intervention_total_price += $maintenance_year['intervention_total_price'];
         $maintenance['years'][] = $maintenance_year;
 
-        $price = $type->maintenance_price_fourth_year;
+        $price = 0;
         $maintenance_year = [
             'intervention_forest_price' => $intervention_area * $price,
             'intervention_hiking_route_price' => $hr_price,
@@ -234,7 +237,7 @@ class CatalogArea extends Model implements HasMedia
         $maintenance_intervention_total_price += $maintenance_year['intervention_total_price'];
         $maintenance['years'][] = $maintenance_year;
 
-        $price = $type->maintenance_price_fifth_year;
+        $price = $maintenance_price_per_ha;
         $maintenance_year = [
             'intervention_forest_price' => $intervention_area * $price,
             'intervention_hiking_route_price' => $hr_price,
