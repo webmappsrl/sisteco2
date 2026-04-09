@@ -1,5 +1,7 @@
 <?php
 
+$ecmediaBucket = env('AWS_ECMEDIA_BUCKET');
+
 return [
 
     /*
@@ -65,13 +67,22 @@ return [
             'endpoint' => env('AWS_ENDPOINT'),
         ],
         'ecmedia' => [
-            'driver' => 's3',
-            'key' => env('AWS_DUMPS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_DUMPS_SECRET_ACCESS_KEY'),
-            'region' => 'eu-central-1',
-            'bucket' => env('AWS_ECMEDIA_BUCKET'),
-            'url' => env('AWS_URL'),
-            'endpoint' => env('AWS_ENDPOINT'),
+            ...(empty($ecmediaBucket) ? [
+                'driver' => 'local',
+                'root' => storage_path('app/ecmedia'),
+                'url' => env('APP_URL') . '/storage/ecmedia',
+                'visibility' => 'public',
+                'throw' => false,
+            ] : [
+                'driver' => 's3',
+                'key' => env('AWS_DUMPS_ACCESS_KEY_ID'),
+                'secret' => env('AWS_DUMPS_SECRET_ACCESS_KEY'),
+                'region' => 'eu-central-1',
+                'bucket' => $ecmediaBucket,
+                'url' => env('AWS_URL'),
+                'endpoint' => env('AWS_ENDPOINT'),
+                'throw' => false,
+            ]),
         ],
 
     ],
