@@ -1,5 +1,26 @@
 # Changelog
 
+## [2.3.0](https://github.com/webmappsrl/sisteco2/compare/v2.2.3...v2.3.0) (2026-04-09)
+
+
+### Features
+
+* **scripts:** deploy locale via Docker, scp da geobox e restore psql ([45e3ecc](https://github.com/webmappsrl/sisteco2/commit/45e3ecc06bcd66676ecb48b071804bead820f549))
+
+
+### Bug Fixes
+
+* aree pianificate sovrapposte OC:3886 ([a7eb768](https://github.com/webmappsrl/sisteco2/commit/a7eb7688efa5b3224d9b726562a58fdd895de3d6))
+* problemi filtro aree giá pianificate OC:3634 ([d1940e4](https://github.com/webmappsrl/sisteco2/commit/d1940e4e2899296f58c09a905a83b98f425a03ac))
+* updated geojson file aree pianificate ([af6fd94](https://github.com/webmappsrl/sisteco2/commit/af6fd949883d89c26a7586480fda05395c65d325))
+
+
+### Miscellaneous Chores
+
+* **env:** add DOCKER_SHARED_VOLUME and align APP_URL with serve port ([cb07885](https://github.com/webmappsrl/sisteco2/commit/cb07885982d121ad4d17f1cbadba545e67da6aad))
+* update asset links for stability oc: 7099 ([#29](https://github.com/webmappsrl/sisteco2/issues/29)) ([bf3a205](https://github.com/webmappsrl/sisteco2/commit/bf3a2058c575bbc67ee9cd73450467570f2c447b))
+* update asset links for stability oc: 7099 ([#29](https://github.com/webmappsrl/sisteco2/issues/29)) ([#30](https://github.com/webmappsrl/sisteco2/issues/30)) ([fb5ad05](https://github.com/webmappsrl/sisteco2/commit/fb5ad052bad5b87440037afaa7d4d29525bad910))
+
 ## [2.2.3](https://github.com/webmappsrl/sisteco2/compare/v2.2.2...v2.2.3) (2024-06-03)
 
 
