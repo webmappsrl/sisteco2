@@ -23,6 +23,8 @@
 
 ## Decisioni
 
+- **Pool FPM ripulito dopo il deploy, fuori dal piano approvato** (decisione del dev del 23/10). La strategia del tag php2shell lo prevede e il ticket lo cita al punto 6, ma l'overview non lo conteneva. In `docker/configs/phpfpm/www.conf`: `upload_max_filesize` da 1024M a 16M, `post_max_size` da 1024M a 128M, `session.upload_progress.enabled` off. I limiti sono dimensionati sul media più grande in produzione (8,6 MB) e sulla galleria Nova, che manda più foto in una richiesta, come per MPT (oc:8847). Verificato in locale con un nginx davanti all'FPM: 10 MB passano, 140 MB → 413, FPM vivo dopo.
+
 - **La stima è identica su PHP 8.1 e 8.2.** Su una copia locale dei dati di produzione, `sisteco2:estimate_by_catalog` lanciato su PHP 8.1.34 e su 8.2.35 con lo stesso `.env` dà 0 differenze su 194 aree, sia in `estimated_value` sia in `catalog_estimate`.
 - **I valori di stima salvati in produzione non coincidono con quelli ricalcolati** (sulle 194 aree cambiano la manutenzione e i totali che ne derivano). La causa sono i parametri `SISTECO_*` del `.env` (`config/sisteco.php:77`) o un calcolo fatto con una versione precedente del codice, non PHP: la differenza è la stessa con 8.1 e con 8.2.
 - **Build locale ripartita dopo `docker builder prune -f`** (approvato dal dev): la VM di Docker aveva finito lo spazio.
