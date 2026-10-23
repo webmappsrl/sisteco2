@@ -10,7 +10,7 @@
 # verrebbe annullato dallo schema presente nel dump.
 #
 # Prerequisiti: `geobox` in ~/.ssh/config (o host risolvibile), docker compose
-# avviato (php81_${APP_NAME}, postgres_${APP_NAME}), .env in root progetto.
+# avviato (php82_${APP_NAME}, postgres_${APP_NAME}), .env in root progetto.
 #
 set -euo pipefail
 
@@ -33,7 +33,7 @@ set +a
 : "${DB_USERNAME:?Definire DB_USERNAME in .env}"
 : "${DB_PASSWORD:?Definire DB_PASSWORD in .env}"
 
-PHP_CONTAINER="php81_${APP_NAME}"
+PHP_CONTAINER="php82_${APP_NAME}"
 PG_CONTAINER="postgres_${APP_NAME}"
 # Origine backup su server Geobox (stesso path usato da prod_new_backup.sh)
 REMOTE_DUMP="geobox:/root/html/sisteco/storage/app/database/last-dump.sql.gz"

@@ -48,13 +48,13 @@
 
 set -e
 # Epty DB
-docker exec -i php81_sisteco php artisan db:wipe
+docker exec -i php82_sisteco php artisan db:wipe
 
 # Import data
 zless storage/backups/20231111.dump.sql.gz | docker exec -i postgres_sisteco psql -U sisteco sisteco
 
 # RUN migration
-docker exec -i php81_sisteco php artisan migrate
+docker exec -i php82_sisteco php artisan migrate
 
 # MAKE PES ESTIMATE
-docker exec -i php81_sisteco php artisan sisteco2:estimate_by_catalog
+docker exec -i php82_sisteco php artisan sisteco2:estimate_by_catalog
