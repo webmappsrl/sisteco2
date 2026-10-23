@@ -127,6 +127,8 @@ Tutti i comandi li lancia il dev con `! ssh root@23.88.61.96 '...'`. Gli output 
 
 ### Task 6: geobox — rebuild, nuovo container, deploy
 
+> ⚠️ L'implementazione ha deviato da questo task: [notes.md](notes.md#task-6-geobox-rebuild-e-deploy)
+
 - [ ] **Passo 1: Dockerfile nuovo senza sporcare il working tree** (il `git pull` del deploy fallirebbe con modifiche locali):
   ```bash
   cd /root/html/sisteco && git fetch origin && rm -rf /tmp/sisteco-8851 && mkdir /tmp/sisteco-8851 \
